@@ -1,6 +1,6 @@
 //
-//  DisplayStoriesUseCase.swift
-//  HistoriasInfantis
+//  StoriesRepositoryTests.swift
+//  HistoriasInfantisTests
 //
 //  Created by Márcio Oliveira on 10/1/20.
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
@@ -9,20 +9,17 @@
 import XCTest
 @testable import HistoriasInfantis
 
-class DisplayStoriesUseCaseTests: XCTestCase {
+class StoriesRepositoryTests: XCTestCase {
 
-    var fakeStoriesRepository: FakeStoriesRepository!
-
-    var displayStoriesUseCase: DisplayStoriesUseCase!
+    var fakeStoriesLocalGateway: FakeStoriesLocalGateway!
+    var storiesRepository: StoriesRepositoryImplementation!
 
     override func setUp() {
-        fakeStoriesRepository = FakeStoriesRepository()
-        displayStoriesUseCase = DisplayStoriesUseCaseImplementation(
-            storiesRepository: fakeStoriesRepository
-        )
+        fakeStoriesLocalGateway = FakeStoriesLocalGateway()
+        storiesRepository = StoriesRepositoryImplementation(storiesLocalGateway: fakeStoriesLocalGateway)
     }
 
-    func test_it_should_display_stories_list() {
+    func test_when_fetch_all_then_gateway_fetch_all_is_called() {
         let expectedStories = [
             Story(
                 name: "Story 1",
@@ -40,9 +37,9 @@ class DisplayStoriesUseCaseTests: XCTestCase {
                 updateDate: Date())
         ]
 
-        fakeStoriesRepository.stories = expectedStories
-        displayStoriesUseCase.invoke { [weak self] result in
-            XCTAssertEqual(self?.fakeStoriesRepository.fetchAllWasCalled, true)
+        fakeStoriesLocalGateway.stories = expectedStories
+        storiesRepository.fetchAll() { [weak self] result in
+            XCTAssertEqual(self?.fakeStoriesLocalGateway.fetchAllWasCalled, true)
             XCTAssertTrue(result == Result.success(expectedStories))
         }
     }

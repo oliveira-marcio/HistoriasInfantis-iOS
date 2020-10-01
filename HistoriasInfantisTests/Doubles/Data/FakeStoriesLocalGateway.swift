@@ -1,5 +1,5 @@
 //
-//  FakeStoriesRepository.swift
+//  FakeStoriesLocalGateway.swift
 //  HistoriasInfantisTests
 //
 //  Created by Márcio Oliveira on 10/1/20.
@@ -8,11 +8,11 @@
 
 @testable import HistoriasInfantis
 
-class FakeStoriesRepository: StoriesRepository {
+class FakeStoriesLocalGateway: StoriesLocalGateway {
     var stories = [Story]()
     var fetchAllWasCalled = false
 
-    func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
+    func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
         fetchAllWasCalled = true
         handler(.success(stories))
     }

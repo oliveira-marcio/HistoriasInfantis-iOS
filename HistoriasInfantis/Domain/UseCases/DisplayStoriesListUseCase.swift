@@ -20,8 +20,8 @@ class DisplayStoriesUseCaseImplementation: DisplayStoriesUseCase {
     }
 
     func invoke(completion: @escaping DisplayStoriesUseCaseCompletionHandler) {
-        storiesRepository.fetchAll() { results in
-            completion(results)
+        storiesRepository.fetchAll() { result in
+            completion(result)
         }
     }
 }
