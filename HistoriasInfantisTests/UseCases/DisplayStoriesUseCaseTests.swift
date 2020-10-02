@@ -40,9 +40,17 @@ class DisplayStoriesUseCaseTests: XCTestCase {
         ]
 
         fakeStoriesRepository.stories = expectedStories
-        displayStoriesUseCase.invoke { [weak self] result in
-            XCTAssertEqual(self?.fakeStoriesRepository.fetchAllWasCalled, true)
-            XCTAssertTrue(result == Result.success(expectedStories))
+
+        var stories: [Story]?
+        let useCaseExpectation = expectation(description: "use case expectation")
+
+        displayStoriesUseCase.invoke { result in
+            stories = try? result.dematerialize()
+            useCaseExpectation.fulfill()
         }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(fakeStoriesRepository.fetchAllWasCalled)
+        XCTAssertEqual(stories, expectedStories)
     }
 }

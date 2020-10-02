@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Story {
-    enum Paragraph {
+struct Story: Equatable {
+    enum Paragraph: Equatable {
         case text(String), image(String), author(String), end(String)
     }
     

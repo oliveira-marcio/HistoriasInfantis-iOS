@@ -6,8 +6,11 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-typealias StoriesLocalGatewayFetchAllCompletionHandler = (_ stories: Result<[Story]>) -> Void
+typealias StoriesLocalGatewayFetchAllCompletionHandler = (Result<[Story]>) -> Void
+typealias StoriesLocalGatewayWriteErrorCompletionHandler = (StoriesRepositoryError?) -> Void
 
 protocol StoriesLocalGateway {
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler)
+    func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
+    func insert(stories: [Story], then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
 }

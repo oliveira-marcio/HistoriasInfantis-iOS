@@ -11,9 +11,31 @@
 class FakeStoriesLocalGateway: StoriesLocalGateway {
     var stories = [Story]()
     var fetchAllWasCalled = false
+    var clearAllWasCalled = false
+    var insertWasCalled = false
+
+    var shouldClearAllFail = false
+    var shouldInsertFail = false
 
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
         fetchAllWasCalled = true
         handler(.success(stories))
+    }
+
+    func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
+        clearAllWasCalled = true
+        if !shouldClearAllFail {
+            stories = []
+        }
+        handler(shouldClearAllFail ? nil : StoriesRepositoryError.unableToSave)
+
+    }
+
+    func insert(stories: [Story], then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
+        insertWasCalled = true
+        if !shouldInsertFail {
+            self.stories = stories
+        }
+        handler(shouldInsertFail ? nil : StoriesRepositoryError.unableToSave)
     }
 }

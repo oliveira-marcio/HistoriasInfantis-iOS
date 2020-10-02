@@ -6,7 +6,7 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-typealias DisplayStoriesUseCaseCompletionHandler = (_ stories: Result<[Story]>) -> Void
+typealias DisplayStoriesUseCaseCompletionHandler = (Result<[Story]>) -> Void
 
 protocol DisplayStoriesUseCase {
     func invoke(completion: @escaping DisplayStoriesUseCaseCompletionHandler)
@@ -20,7 +20,7 @@ class DisplayStoriesUseCaseImplementation: DisplayStoriesUseCase {
     }
 
     func invoke(completion: @escaping DisplayStoriesUseCaseCompletionHandler) {
-        storiesRepository.fetchAll() { result in
+        storiesRepository.fetchAll { result in
             completion(result)
         }
     }

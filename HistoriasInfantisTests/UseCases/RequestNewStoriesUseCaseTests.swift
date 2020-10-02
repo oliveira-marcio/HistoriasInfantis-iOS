@@ -40,27 +40,53 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
         ]
 
         fakeStoriesRepository.stories = expectedStories
-        requestNewStoriesUseCase.invoke { [weak self] result in
-            XCTAssertEqual(self?.fakeStoriesRepository.requestNewWasCalled, true)
-            XCTAssertTrue(result == Result.success(expectedStories))
+
+        var stories: [Story]?
+        let useCaseExpectation = expectation(description: "use case expectation")
+
+        requestNewStoriesUseCase.invoke { result in
+            stories = try? result.dematerialize()
+            useCaseExpectation.fulfill()
         }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(fakeStoriesRepository.requestNewWasCalled)
+        XCTAssertEqual(stories, expectedStories)
     }
 
     func test_it_should_return_gateway_error_when_request_new_stories_fails_because_of_web_gateway() {
+        fakeStoriesRepository.shouldGatewayFail = true
 
-        fakeStoriesRepository.shouldWebGatewayFail = true
-        requestNewStoriesUseCase.invoke { [weak self] result in
-            XCTAssertEqual(self?.fakeStoriesRepository.requestNewWasCalled, true)
-            XCTAssertTrue(result == .failure(StoriesRepositoryError.gatewayFail))
+        var error: StoriesRepositoryError?
+        let useCaseExpectation = expectation(description: "use case expectation")
+
+        requestNewStoriesUseCase.invoke { result in
+            if case .failure(let resultError) = result {
+                error = resultError as? StoriesRepositoryError
+            }
+            useCaseExpectation.fulfill()
         }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(fakeStoriesRepository.requestNewWasCalled)
+        XCTAssertEqual(error, StoriesRepositoryError.gatewayFail)
     }
 
     func test_it_should_return_save_error_when_request_new_stories_fails_because_of_local_gateway() {
-
         fakeStoriesRepository.shouldLocalGatewayFail = true
-        requestNewStoriesUseCase.invoke { [weak self] result in
-            XCTAssertEqual(self?.fakeStoriesRepository.requestNewWasCalled, true)
-            XCTAssertTrue(result == .failure(StoriesRepositoryError.unableToSave))
+
+        var error: StoriesRepositoryError?
+        let useCaseExpectation = expectation(description: "use case expectation")
+
+        requestNewStoriesUseCase.invoke { result in
+            if case .failure(let resultError) = result {
+                error = resultError as? StoriesRepositoryError
+            }
+            useCaseExpectation.fulfill()
         }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(fakeStoriesRepository.requestNewWasCalled)
+        XCTAssertEqual(error, StoriesRepositoryError.unableToSave)
     }
 }

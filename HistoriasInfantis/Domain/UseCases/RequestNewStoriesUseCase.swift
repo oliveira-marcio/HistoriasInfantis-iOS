@@ -6,7 +6,7 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-typealias RequestNewStoriesUseCaseCompletionHandler = (_ stories: Result<[Story]>) -> Void
+typealias RequestNewStoriesUseCaseCompletionHandler = (Result<[Story]>) -> Void
 
 protocol RequestNewStoriesUseCase {
     func invoke(completion: @escaping RequestNewStoriesUseCaseCompletionHandler)
@@ -20,7 +20,7 @@ class RequestNewStoriesUseCaseImplementation: RequestNewStoriesUseCase {
     }
 
     func invoke(completion: @escaping RequestNewStoriesUseCaseCompletionHandler) {
-        storiesRepository.requestNew() { result in
+        storiesRepository.requestNew { result in
             completion(result)
         }
     }
