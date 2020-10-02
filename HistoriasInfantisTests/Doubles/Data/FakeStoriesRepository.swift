@@ -12,6 +12,8 @@ class FakeStoriesRepository: StoriesRepository {
     var stories = [Story]()
     var fetchAllWasCalled = false
     var requestNewWasCalled = false
+    var shouldWebGatewayFail = false
+    var shouldLocalGatewayFail = false
 
     func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
         fetchAllWasCalled = true
@@ -20,6 +22,12 @@ class FakeStoriesRepository: StoriesRepository {
 
     func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
         requestNewWasCalled = true
-        handler(.success(stories))
+        if shouldWebGatewayFail {
+            handler(.failure(StoriesRepositoryError.gatewayFail))
+        } else if shouldLocalGatewayFail {
+            handler(.failure(StoriesRepositoryError.unableToSave))
+        } else {
+            handler(.success(stories))
+        }
     }
 }

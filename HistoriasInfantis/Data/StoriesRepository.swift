@@ -9,6 +9,11 @@
 
 typealias StoriesRepositoryFetchAllCompletionHandler = (_ stories: Result<[Story]>) -> Void
 
+public enum StoriesRepositoryError: Error {
+    case gatewayFail
+    case unableToSave
+}
+
 protocol StoriesRepository {
     func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler)
     func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler)

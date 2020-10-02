@@ -45,4 +45,22 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
             XCTAssertTrue(result == Result.success(expectedStories))
         }
     }
+
+    func test_it_should_return_gateway_error_when_request_new_stories_fails_because_of_web_gateway() {
+
+        fakeStoriesRepository.shouldWebGatewayFail = true
+        requestNewStoriesUseCase.invoke { [weak self] result in
+            XCTAssertEqual(self?.fakeStoriesRepository.requestNewWasCalled, true)
+            XCTAssertTrue(result == .failure(StoriesRepositoryError.gatewayFail))
+        }
+    }
+
+    func test_it_should_return_save_error_when_request_new_stories_fails_because_of_local_gateway() {
+
+        fakeStoriesRepository.shouldLocalGatewayFail = true
+        requestNewStoriesUseCase.invoke { [weak self] result in
+            XCTAssertEqual(self?.fakeStoriesRepository.requestNewWasCalled, true)
+            XCTAssertTrue(result == .failure(StoriesRepositoryError.unableToSave))
+        }
+    }
 }
