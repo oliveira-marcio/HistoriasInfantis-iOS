@@ -1,27 +1,27 @@
 //
-//  DisplayStoriesUseCase.swift
-//  HistoriasInfantis
+//  RequestNewStoriesUseCaseTests.swift
+//  HistoriasInfantisTests
 //
-//  Created by Márcio Oliveira on 10/1/20.
+//  Created by Márcio Oliveira on 10/2/20.
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
 import XCTest
 @testable import HistoriasInfantis
 
-class DisplayStoriesUseCaseTests: XCTestCase {
+class RequestNewStoriesUseCaseTests: XCTestCase {
 
     var fakeStoriesRepository: FakeStoriesRepository!
-    var displayStoriesUseCase: DisplayStoriesUseCase!
+    var requestNewStoriesUseCase: RequestNewStoriesUseCase!
 
     override func setUp() {
         fakeStoriesRepository = FakeStoriesRepository()
-        displayStoriesUseCase = DisplayStoriesUseCaseImplementation(
+        requestNewStoriesUseCase = RequestNewStoriesUseCaseImplementation(
             storiesRepository: fakeStoriesRepository
         )
     }
 
-    func test_it_should_display_stories_list() {
+    func test_it_should_request_new_stories() {
         let expectedStories = [
             Story(
                 name: "Story 1",
@@ -40,8 +40,8 @@ class DisplayStoriesUseCaseTests: XCTestCase {
         ]
 
         fakeStoriesRepository.stories = expectedStories
-        displayStoriesUseCase.invoke { [weak self] result in
-            XCTAssertEqual(self?.fakeStoriesRepository.fetchAllWasCalled, true)
+        requestNewStoriesUseCase.invoke { [weak self] result in
+            XCTAssertEqual(self?.fakeStoriesRepository.requestNewWasCalled, true)
             XCTAssertTrue(result == Result.success(expectedStories))
         }
     }

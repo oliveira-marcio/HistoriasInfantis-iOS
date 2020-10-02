@@ -11,6 +11,7 @@ typealias StoriesRepositoryFetchAllCompletionHandler = (_ stories: Result<[Story
 
 protocol StoriesRepository {
     func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler)
+    func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler)
 }
 
 class StoriesRepositoryImplementation: StoriesRepository {
@@ -24,5 +25,9 @@ class StoriesRepositoryImplementation: StoriesRepository {
         storiesLocalGateway.fetchAll() { result in
             handler(result)
         }
+    }
+
+    func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
+        // TODO Do right implementation
     }
 }
