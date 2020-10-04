@@ -8,22 +8,12 @@
 
 struct StoriesEntity: Codable {
     let stories: [StoryEntity]
-    let meta: MetaEntity
-    var hasMoreStories: Bool {
-        meta.next_page != nil
-    }
 
     enum CodingKeys: String, CodingKey {
         case stories = "posts"
-        case meta
     }
-}
-
-struct MetaEntity: Codable {
-    let next_page: String?
 }
 
 struct StoryEntity: Codable {
     let title: String
 }
-

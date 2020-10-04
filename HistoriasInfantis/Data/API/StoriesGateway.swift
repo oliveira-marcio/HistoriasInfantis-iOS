@@ -15,10 +15,14 @@ protocol StoriesGateway {
 }
 
 class StoriesGatewayImplementation: StoriesGateway {
-    let urlSession: URLSessionProtocol
+    let urlSession: URLSessionProtocol!
+    let resultsPerPage: Int!
+    let maxPages: Int!
 
-    init(urlSession: URLSessionProtocol) {
+    init(urlSession: URLSessionProtocol, resultsPerPage: Int, maxPages: Int) {
         self.urlSession = urlSession
+        self.resultsPerPage = resultsPerPage
+        self.maxPages = maxPages
     }
 
     enum Historinhas {
@@ -60,15 +64,16 @@ class StoriesGatewayImplementation: StoriesGateway {
     }
 
     func fetchStories(then handler: @escaping StoriesGatewayRequestCompletionHandler) {
-        fetchStoriesPerPage(then: handler)
+        fetchStoriesPerPage(resultsPerPage: resultsPerPage, then: handler)
     }
 
     private func fetchStoriesPerPage(
         page: Int = 1,
-        resultPerPage: Int = 50,
+        resultsPerPage: Int,
         stories: [Story] = [],
         then handler: @escaping StoriesGatewayRequestCompletionHandler) {
-        let request = URLRequest(url: Historinhas.getStories(page, resultPerPage).url!)
+        print(page)
+        let request = URLRequest(url: Historinhas.getStories(page, resultsPerPage).url!)
         let task = urlSession.dataTask(with: request) { data, response, error in
             guard let data = data
                 else {
@@ -78,14 +83,20 @@ class StoriesGatewayImplementation: StoriesGateway {
 
             do {
                 let storiesObject = try JSONDecoder().decode(StoriesEntity.self, from: data)
-                let parsedStories = self.parse(stories: storiesObject.stories)
-                let updatedStories = stories + parsedStories
 
-                if storiesObject.hasMoreStories {
-                    self.fetchStoriesPerPage(page: page + 1, stories: updatedStories, then: handler)
-                } else {
-                    handler(.success(updatedStories))
+                if storiesObject.stories.count == 0 {
+                    handler(.success(stories))
+                    return
                 }
+
+                let parsedStories = self.parse(stories: storiesObject.stories)
+
+                self.fetchStoriesPerPage(
+                    page: page + 1,
+                    resultsPerPage: resultsPerPage,
+                    stories: stories + parsedStories,
+                    then: handler
+                )
             } catch {
                 handler(.failure(StoriesRepositoryError.gatewayParseFail(error.localizedDescription)))
                 return

@@ -16,10 +16,10 @@ class StoriesGatewayTest: XCTestCase {
 
     override func setUp() {
         urlSessionStub = URLSessionStub()
-        storiesGateway = StoriesGatewayImplementation(urlSession: urlSessionStub)
+        storiesGateway = StoriesGatewayImplementation(urlSession: urlSessionStub, resultsPerPage: 50, maxPages: 10)
     }
 
-    func test_should_fetch_stories_from_api() throws {
+    func test_should_fetch_stories_page_from_api_until_empty_response() {
         let response = """
         {
             "posts": [
@@ -41,12 +41,15 @@ class StoriesGatewayTest: XCTestCase {
                     "content": "<p>Just another paragraph in HTML</p>",
                     "featured_image": "https://story2.jpg"
                 }
-            ],
-            "meta": {
-            }
+            ]
         }
         """
-        // "next_page": "/next_page"
+
+        let emptyResponse = """
+        {
+            "posts": []
+        }
+        """
 
         let httpResponse = HTTPURLResponse(
             url: URL(string: "http://marcio.com")!,
@@ -58,6 +61,13 @@ class StoriesGatewayTest: XCTestCase {
         urlSessionStub.enqueue(
             response: (
                 data: response.data(using: .utf8),
+                response: httpResponse,
+                error: nil
+            )
+        )
+        urlSessionStub.enqueue(
+            response: (
+                data: emptyResponse.data(using: .utf8),
                 response: httpResponse,
                 error: nil
             )
