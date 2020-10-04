@@ -9,8 +9,9 @@
 
 typealias StoriesRepositoryFetchAllCompletionHandler = (Result<[Story]>) -> Void
 
-public enum StoriesRepositoryError: Error {
-    case gatewayFail
+public enum StoriesRepositoryError: Error, Equatable {
+    case gatewayRequestFail(String)
+    case gatewayParseFail(String)
     case unableToSave
 }
 
@@ -38,7 +39,7 @@ class StoriesRepositoryImplementation: StoriesRepository {
     }
 
     func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
-        storiesGateway.request { [weak self] result in
+        storiesGateway.fetchStories { [weak self] result in
             if result.isSuccess {
                 let stories = try? result.dematerialize()
                 self?.syncPersistence(stories: stories)

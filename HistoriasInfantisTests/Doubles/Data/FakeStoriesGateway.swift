@@ -12,9 +12,10 @@ class FakeStoriesGateway: StoriesGateway {
     var stories = [Story]()
     var requestWasCalled = false
     var shouldRequestFail = false
+    var serverErrorMessage = "Bad Server Response"
 
-    func request(then handler: @escaping StoriesGatewayRequestCompletionHandler) {
+    func fetchStories(then handler: @escaping StoriesGatewayRequestCompletionHandler) {
         requestWasCalled = true
-        handler(shouldRequestFail ? .failure(StoriesRepositoryError.gatewayFail) : .success(stories))
+        handler(shouldRequestFail ? .failure(StoriesRepositoryError.gatewayRequestFail(serverErrorMessage)) : .success(stories))
     }
 }

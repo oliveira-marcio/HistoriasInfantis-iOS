@@ -24,14 +24,14 @@ class DisplayStoriesUseCaseTests: XCTestCase {
     func test_it_should_display_stories_list() {
         let expectedStories = [
             Story(
-                name: "Story 1",
+                title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
                 createDate: Date(),
                 updateDate: Date()),
             Story(
-                name: "Story 2",
+                title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],

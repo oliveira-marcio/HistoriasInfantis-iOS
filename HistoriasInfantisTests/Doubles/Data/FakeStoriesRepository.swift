@@ -14,6 +14,7 @@ class FakeStoriesRepository: StoriesRepository {
     var requestNewWasCalled = false
     var shouldGatewayFail = false
     var shouldLocalGatewayFail = false
+    var serverErrorMessage = "Bad Server Response"
 
     func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
         fetchAllWasCalled = true
@@ -23,7 +24,7 @@ class FakeStoriesRepository: StoriesRepository {
     func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
         requestNewWasCalled = true
         if shouldGatewayFail {
-            handler(.failure(StoriesRepositoryError.gatewayFail))
+            handler(.failure(StoriesRepositoryError.gatewayRequestFail(serverErrorMessage)))
         } else if shouldLocalGatewayFail {
             handler(.failure(StoriesRepositoryError.unableToSave))
         } else {
