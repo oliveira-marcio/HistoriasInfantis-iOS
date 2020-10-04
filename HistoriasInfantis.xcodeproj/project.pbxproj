@@ -19,7 +19,6 @@
 		9C0D1DF625261A1600B73A3F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DF525261A1600B73A3F /* Story.swift */; };
 		9C0D1DFD252633B600B73A3F /* StoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DFC252633B600B73A3F /* StoriesRepository.swift */; };
 		9C0D1E01252634BD00B73A3F /* FakeStoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E00252634BD00B73A3F /* FakeStoriesRepository.swift */; };
-		9C0D1E032526449E00B73A3F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E022526449E00B73A3F /* Result.swift */; };
 		9C0D1E0625264D5100B73A3F /* StoriesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0525264D5100B73A3F /* StoriesRepositoryTests.swift */; };
 		9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */; };
 		9C0D1E0C25264FF200B73A3F /* FakeStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0B25264FF200B73A3F /* FakeStoriesLocalGateway.swift */; };
@@ -60,7 +59,6 @@
 		9C0D1DF525261A1600B73A3F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		9C0D1DFC252633B600B73A3F /* StoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRepository.swift; sourceTree = "<group>"; };
 		9C0D1E00252634BD00B73A3F /* FakeStoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStoriesRepository.swift; sourceTree = "<group>"; };
-		9C0D1E022526449E00B73A3F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9C0D1E0525264D5100B73A3F /* StoriesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRepositoryTests.swift; sourceTree = "<group>"; };
 		9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesLocalGateway.swift; sourceTree = "<group>"; };
 		9C0D1E0B25264FF200B73A3F /* FakeStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStoriesLocalGateway.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				9C0D1DF925262D6000B73A3F /* UseCases */,
 				9C0D1E0425264D1D00B73A3F /* Data */,
 				9C0D1DE32525F9E800B73A3F /* Info.plist */,
-				9C0D1E022526449E00B73A3F /* Result.swift */,
 			);
 			path = HistoriasInfantisTests;
 			sourceTree = "<group>";
@@ -358,7 +355,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C0D1E032526449E00B73A3F /* Result.swift in Sources */,
 				9C0D1E142527750800B73A3F /* FakeStoriesGateway.swift in Sources */,
 				9C0D1E01252634BD00B73A3F /* FakeStoriesRepository.swift in Sources */,
 				9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */,
