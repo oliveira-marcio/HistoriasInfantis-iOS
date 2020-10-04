@@ -64,15 +64,15 @@ class StoriesGatewayImplementation: StoriesGateway {
     }
 
     func fetchStories(then handler: @escaping StoriesGatewayRequestCompletionHandler) {
-        fetchStoriesPerPage(resultsPerPage: resultsPerPage, then: handler)
+        fetchStoriesPerPage(resultsPerPage: resultsPerPage, maxPages: maxPages, then: handler)
     }
 
     private func fetchStoriesPerPage(
         page: Int = 1,
         resultsPerPage: Int,
+        maxPages: Int,
         stories: [Story] = [],
         then handler: @escaping StoriesGatewayRequestCompletionHandler) {
-        print(page)
         let request = URLRequest(url: Historinhas.getStories(page, resultsPerPage).url!)
         let task = urlSession.dataTask(with: request) { data, response, error in
             guard let data = data
@@ -82,9 +82,13 @@ class StoriesGatewayImplementation: StoriesGateway {
             }
 
             do {
-                let storiesObject = try JSONDecoder().decode(StoriesEntity.self, from: data)
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                jsonDecoder.dateDecodingStrategy = .iso8601
 
-                if storiesObject.stories.count == 0 {
+                let storiesObject = try jsonDecoder.decode(StoriesEntity.self, from: data)
+
+                if storiesObject.stories.count == 0 || page > maxPages {
                     handler(.success(stories))
                     return
                 }
@@ -94,6 +98,7 @@ class StoriesGatewayImplementation: StoriesGateway {
                 self.fetchStoriesPerPage(
                     page: page + 1,
                     resultsPerPage: resultsPerPage,
+                    maxPages: maxPages,
                     stories: stories + parsedStories,
                     then: handler
                 )
@@ -111,12 +116,13 @@ class StoriesGatewayImplementation: StoriesGateway {
         for story in stories {
             parsedStories.append(
                 Story(
+                    id: story.ID,
                     title: story.title,
-                    url: "",
-                    imageUrl: "",
+                    url: story.URL,
+                    imageUrl: story.featuredImage,
                     paragraphs: [],
-                    createDate: Date(),
-                    updateDate: Date()
+                    createDate: story.date,
+                    updateDate: story.modified
                 )
             )
         }

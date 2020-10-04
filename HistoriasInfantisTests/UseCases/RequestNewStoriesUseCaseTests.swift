@@ -24,6 +24,7 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
     func test_it_should_request_new_stories() {
         let expectedStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -31,6 +32,7 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
                 createDate: Date(),
                 updateDate: Date()),
             Story(
+                id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",

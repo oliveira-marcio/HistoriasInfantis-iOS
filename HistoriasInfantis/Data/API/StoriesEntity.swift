@@ -6,6 +6,8 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
+import Foundation
+
 struct StoriesEntity: Codable {
     let stories: [StoryEntity]
 
@@ -15,5 +17,11 @@ struct StoriesEntity: Codable {
 }
 
 struct StoryEntity: Codable {
+    let ID: Int
+    let date: Date
+    let modified: Date
     let title: String
+    let URL: String
+    let content: String
+    let featuredImage: String
 }

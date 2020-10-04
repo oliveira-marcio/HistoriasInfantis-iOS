@@ -27,6 +27,7 @@ class StoriesRepositoryTests: XCTestCase {
     func test_when_fetch_all_then_local_gateway_fetch_all_is_called() {
         let expectedStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -34,6 +35,7 @@ class StoriesRepositoryTests: XCTestCase {
                 createDate: Date(),
                 updateDate: Date()),
             Story(
+                id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
@@ -60,6 +62,7 @@ class StoriesRepositoryTests: XCTestCase {
     func test_when_request_new_then_stories_are_synced_between_web_and_local_gateway() {
         let currentStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -70,6 +73,7 @@ class StoriesRepositoryTests: XCTestCase {
 
         let expectedStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -77,6 +81,7 @@ class StoriesRepositoryTests: XCTestCase {
                 createDate: Date(),
                 updateDate: Date()),
             Story(
+                id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
@@ -128,6 +133,7 @@ class StoriesRepositoryTests: XCTestCase {
     func test_when_request_new_and_local_gateway_fails_to_clear_current_stories_then_should_just_return_fetched_stories() {
         let currentStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -138,6 +144,7 @@ class StoriesRepositoryTests: XCTestCase {
 
         let fetchedStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -145,6 +152,7 @@ class StoriesRepositoryTests: XCTestCase {
                 createDate: Date(),
                 updateDate: Date()),
             Story(
+                id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
@@ -176,6 +184,7 @@ class StoriesRepositoryTests: XCTestCase {
     func test_when_request_new_and_local_gateway_fails_to_save_new_stories_then_should_just_return_fetched_stories() {
         let currentStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -186,6 +195,7 @@ class StoriesRepositoryTests: XCTestCase {
 
         let fetchedStories = [
             Story(
+                id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
@@ -193,6 +203,7 @@ class StoriesRepositoryTests: XCTestCase {
                 createDate: Date(),
                 updateDate: Date()),
             Story(
+                id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",

@@ -43,3 +43,12 @@ public class URLSessionStub: URLSessionProtocol {
         }
     }
 }
+
+public extension HTTPURLResponse {
+    convenience init(statusCode: Int) {
+        self.init(url: URL(string: "https://marcio.com")!,
+                  statusCode: statusCode,
+                  httpVersion: nil,
+                  headerFields: nil)!
+    }
+}

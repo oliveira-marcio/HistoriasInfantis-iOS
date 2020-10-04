@@ -13,6 +13,7 @@ struct Story: Equatable {
         case text(String), image(String), author(String), end(String)
     }
     
+    let id: Int
     let title: String
     let url: String
     let imageUrl: String
