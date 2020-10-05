@@ -15,7 +15,10 @@ class HtmlParserTests: XCTestCase {
     var expectedStory: Story!
 
     override func setUp() {
-        htmlParser = SwiftSoupHtmlParser()
+        htmlParser = SwiftSoupHtmlParser(
+            author: "Steve Jobs",
+            end: "The End"
+        )
     }
 
     func test_it_should_parse_text_paragraphs_from_P_tags() {
@@ -106,6 +109,65 @@ class HtmlParserTests: XCTestCase {
         XCTAssertEqual(story, expectedStory)
     }
 
+    func test_it_should_parse_end_paragraph_from_P_tags_when_end_content_matches() {
+        let html = """
+            <html>
+                <p>First Paragraph.</p>
+                <p>Second Paragraph.</p>
+                <p>The End</p>
+            </html>
+        """
+
+        let paragraphs: [Story.Paragraph] = [
+            .text("First Paragraph."),
+            .text("Second Paragraph."),
+            .end("The End")
+        ]
+
+        expectedStory = createStory(with: paragraphs)
+
+        let story = htmlParser.parse(
+            html: html,
+            id: expectedStory.id,
+            title: expectedStory.title,
+            url: expectedStory.url,
+            imageUrl: expectedStory.imageUrl,
+            createDate: expectedStory.createDate,
+            updateDate: expectedStory.updateDate
+        )
+
+        XCTAssertEqual(story, expectedStory)
+    }
+
+    func test_it_should_parse_author_paragraph_from_P_tags_when_author_content_matches_and_terminate_parsing() {
+        let html = """
+            <html>
+                <p>First Paragraph.</p>
+                <p>Steve Jobs</p>
+                <p>One More Paragraph</p>
+            </html>
+        """
+
+        let paragraphs: [Story.Paragraph] = [
+            .text("First Paragraph."),
+            .author("Steve Jobs")
+        ]
+
+        expectedStory = createStory(with: paragraphs)
+
+        let story = htmlParser.parse(
+            html: html,
+            id: expectedStory.id,
+            title: expectedStory.title,
+            url: expectedStory.url,
+            imageUrl: expectedStory.imageUrl,
+            createDate: expectedStory.createDate,
+            updateDate: expectedStory.updateDate
+        )
+
+        XCTAssertEqual(story, expectedStory)
+    }
+
     func test_it_should_parse_images_urls_in_paragraphs_from_IMG_tags_ignoring_url_params() {
         let html = """
             <html>
@@ -121,6 +183,53 @@ class HtmlParserTests: XCTestCase {
             .image("http://image1.jpg"),
             .image("http://image2.jpg"),
             .image("http://image3.jpg")
+        ]
+
+        expectedStory = createStory(with: paragraphs)
+
+        let story = htmlParser.parse(
+            html: html,
+            id: expectedStory.id,
+            title: expectedStory.title,
+            url: expectedStory.url,
+            imageUrl: expectedStory.imageUrl,
+            createDate: expectedStory.createDate,
+            updateDate: expectedStory.updateDate
+        )
+
+        XCTAssertEqual(story, expectedStory)
+    }
+
+    func test_it_should_parse_multiple_paragraphs_types() {
+        let html = """
+            <html>
+                <c>Invalid paragraph.</c>
+                <p>First paragraph.</p>
+                <p>
+                    Second paragraph<br>
+                    with<br>break lines.
+                </p>
+                <p>
+                    Third paragraph with images<br>
+                    and break line.
+                    <img src="http://image1.jpg">
+                    <img src="http://image2.jpg?useless_params">
+                </p>
+                <c>One more invalid paragraph.</c>
+                <p>The End</p>
+                <p>Steve Jobs</p>
+                <p>Paragraph that shouldn't be parsed.</p>
+            </html>
+        """
+
+        let paragraphs: [Story.Paragraph] = [
+            .text("First paragraph."),
+            .text("Second paragraph\nwith\nbreak lines."),
+            .text("Third paragraph with images\nand break line."),
+            .image("http://image1.jpg"),
+            .image("http://image2.jpg"),
+            .end("The End"),
+            .author("Steve Jobs")
         ]
 
         expectedStory = createStory(with: paragraphs)

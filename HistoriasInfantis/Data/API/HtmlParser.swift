@@ -20,6 +20,14 @@ protocol HtmlParser {
 }
 
 class SwiftSoupHtmlParser: HtmlParser {
+    let author: String!
+    let end: String!
+
+    init(author: String, end: String) {
+        self.author = author
+        self.end = end
+    }
+
     func parse(
         html: String,
         id: Int,
@@ -43,14 +51,23 @@ class SwiftSoupHtmlParser: HtmlParser {
             if let paragraphs = try? doc.select(tagP) {
                 var paragraphsArray = [Story.Paragraph]()
 
-                for paragraph in paragraphs.array() {
+                paragraphLoop: for paragraph in paragraphs.array() {
                     if let text = try? paragraph.text(), !text.isEmpty {
-                        let paragraphString = text.replacingOccurrences(of: tokenBR, with: "\n")
+                        var paragraphString = text.trimmingCharacters(in: .whitespacesAndNewlines)
+                        paragraphString = replaceAll(from: paragraphString, regEx: "\(tokenBR)\\s*", with: "\n")
 
-                        paragraphsArray.append(.text(paragraphString))
+                        switch paragraphString.lowercased() {
+                        case author.lowercased():
+                            paragraphsArray.append(.author(paragraphString))
+                            break paragraphLoop
+                        case end.lowercased():
+                            paragraphsArray.append(.end(paragraphString))
+                        default:
+                            paragraphsArray.append(.text(paragraphString))
+                        }
                     }
 
-                    if let images = try? doc.select(tagIMG) {
+                    if let images = try? paragraph.select(tagIMG) {
                         for image in images.array() {
                             if let url = try? image.absUrl(tagSRC) {
                                 var imageUrl: String
