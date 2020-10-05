@@ -12,11 +12,21 @@ import XCTest
 
 class StoriesGatewayTest: XCTestCase {
     var urlSessionStub: URLSessionStub!
+    var fakeHtmlParser: FakeHtmlParser!
     var storiesGateway: StoriesGatewayImplementation!
 
     func test_should_fetch_stories_pages_from_api_until_empty_response_when_max_pages_is_big() {
         setRegularResponseTests()
-        storiesGateway = StoriesGatewayImplementation(urlSession: urlSessionStub, resultsPerPage: 2, maxPages: 10)
+
+        fakeHtmlParser = FakeHtmlParser()
+        fakeHtmlParser.stories = [story1, story2, story3]
+
+        storiesGateway = StoriesGatewayImplementation(
+            urlSession: urlSessionStub,
+            htmlParser: fakeHtmlParser,
+            resultsPerPage: 2,
+            maxPages: 10
+        )
 
         var stories: [Story]?
         var storiesCount = 0
@@ -30,12 +40,21 @@ class StoriesGatewayTest: XCTestCase {
         waitForExpectations(timeout: 1)
 
         XCTAssertEqual(storiesCount, 3)
+        XCTAssertEqual(fakeHtmlParser.parseWasCalled, 3)
         XCTAssertEqual(stories, [story1, story2, story3])
     }
 
     func test_should_fetch_stories_pages_from_api_until_max_pages() {
         setRegularResponseTests()
-        storiesGateway = StoriesGatewayImplementation(urlSession: urlSessionStub, resultsPerPage: 2, maxPages: 1)
+
+        fakeHtmlParser = FakeHtmlParser()
+        fakeHtmlParser.stories = [story1, story2]
+
+        storiesGateway = StoriesGatewayImplementation(
+            urlSession: urlSessionStub,
+            htmlParser: fakeHtmlParser,
+            resultsPerPage: 2,
+            maxPages: 1)
 
         var stories: [Story]?
         var storiesCount = 0
@@ -49,12 +68,22 @@ class StoriesGatewayTest: XCTestCase {
         waitForExpectations(timeout: 1)
 
         XCTAssertEqual(storiesCount, 2)
+        XCTAssertEqual(fakeHtmlParser.parseWasCalled, 2)
         XCTAssertEqual(stories, [story1, story2])
     }
 
     func test_should_return_request_fail_when_gateway_fails() {
         urlSessionStub = URLSessionStub()
-        storiesGateway = StoriesGatewayImplementation(urlSession: urlSessionStub, resultsPerPage: 2, maxPages: 10)
+
+        fakeHtmlParser = FakeHtmlParser()
+        fakeHtmlParser.stories = [story1, story2]
+
+        storiesGateway = StoriesGatewayImplementation(
+            urlSession: urlSessionStub,
+            htmlParser: fakeHtmlParser,
+            resultsPerPage: 2,
+            maxPages: 10
+        )
 
         urlSessionStub.enqueue(
             response: (
@@ -82,6 +111,7 @@ class StoriesGatewayTest: XCTestCase {
         waitForExpectations(timeout: 1)
 
         XCTAssertEqual(requestResult?.isSuccess, false)
+        XCTAssertEqual(fakeHtmlParser.parseWasCalled, 2)
     }
 
     // MARK: Helpers

@@ -16,11 +16,18 @@ protocol StoriesGateway {
 
 class StoriesGatewayImplementation: StoriesGateway {
     let urlSession: URLSessionProtocol!
+    let htmlParser: HtmlParser!
     let resultsPerPage: Int!
     let maxPages: Int!
 
-    init(urlSession: URLSessionProtocol, resultsPerPage: Int, maxPages: Int) {
+    init(
+        urlSession: URLSessionProtocol,
+        htmlParser: HtmlParser,
+        resultsPerPage: Int,
+        maxPages: Int
+    ) {
         self.urlSession = urlSession
+        self.htmlParser = htmlParser
         self.resultsPerPage = resultsPerPage
         self.maxPages = maxPages
     }
@@ -115,12 +122,12 @@ class StoriesGatewayImplementation: StoriesGateway {
         var parsedStories = [Story]()
         for story in stories {
             parsedStories.append(
-                Story(
+                htmlParser.parse(
+                    html: story.content,
                     id: story.ID,
                     title: story.title,
                     url: story.URL,
                     imageUrl: story.featuredImage,
-                    paragraphs: [],
                     createDate: story.date,
                     updateDate: story.modified
                 )

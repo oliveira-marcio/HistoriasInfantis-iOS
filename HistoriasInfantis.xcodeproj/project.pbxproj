@@ -34,6 +34,8 @@
 		9CF9420C252B01A30089801D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF9420D252B01A40089801D /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF9420A252B01A30089801D /* SwiftSoup.framework */; };
 		9CF9420E252B01A40089801D /* SwiftSoup.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF9420A252B01A30089801D /* SwiftSoup.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9CF94212252B02E30089801D /* HtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94211252B02E30089801D /* HtmlParser.swift */; };
+		9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94213252B04000089801D /* FakeHtmlParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		9CF942062529F6B30089801D /* StoriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesEntity.swift; sourceTree = "<group>"; };
 		9CF94209252B01A30089801D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
+		9CF94211252B02E30089801D /* HtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlParser.swift; sourceTree = "<group>"; };
+		9CF94213252B04000089801D /* FakeHtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHtmlParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,7 @@
 				9C0D1E00252634BD00B73A3F /* FakeStoriesRepository.swift */,
 				9C0D1E0B25264FF200B73A3F /* FakeStoriesLocalGateway.swift */,
 				9C0D1E132527750800B73A3F /* FakeStoriesGateway.swift */,
+				9CF94213252B04000089801D /* FakeHtmlParser.swift */,
 				9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */,
 			);
 			path = Data;
@@ -255,6 +260,7 @@
 				9CF942062529F6B30089801D /* StoriesEntity.swift */,
 				9C0D1E1125276FE300B73A3F /* StoriesGateway.swift */,
 				9C0D1E162529D5AA00B73A3F /* URLSessionProtocol.swift */,
+				9CF94211252B02E30089801D /* HtmlParser.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 			files = (
 				9C0D1DCF2525F9E500B73A3F /* ViewController.swift in Sources */,
 				9C0D1DF32526191F00B73A3F /* Result.swift in Sources */,
+				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
 				9C0D1DFD252633B600B73A3F /* StoriesRepository.swift in Sources */,
 				9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */,
@@ -413,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C0D1E142527750800B73A3F /* FakeStoriesGateway.swift in Sources */,
+				9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */,
 				9C0D1E01252634BD00B73A3F /* FakeStoriesRepository.swift in Sources */,
 				9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */,
 				9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */,
