@@ -36,6 +36,7 @@
 		9CF9420E252B01A40089801D /* SwiftSoup.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF9420A252B01A30089801D /* SwiftSoup.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF94212252B02E30089801D /* HtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94211252B02E30089801D /* HtmlParser.swift */; };
 		9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94213252B04000089801D /* FakeHtmlParser.swift */; };
+		9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94215252B09910089801D /* HtmlParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
 		9CF94211252B02E30089801D /* HtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlParser.swift; sourceTree = "<group>"; };
 		9CF94213252B04000089801D /* FakeHtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHtmlParser.swift; sourceTree = "<group>"; };
+		9CF94215252B09910089801D /* HtmlParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HtmlParserTests.swift; path = HistoriasInfantisTests/Data/HtmlParserTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			children = (
 				9C0D1E0525264D5100B73A3F /* StoriesRepositoryTests.swift */,
 				9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */,
+				9CF94215252B09910089801D /* HtmlParserTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */,
 				9C0D1DE22525F9E800B73A3F /* DisplayStoriesUseCaseTests.swift in Sources */,
 				9C0D1E0625264D5100B73A3F /* StoriesRepositoryTests.swift in Sources */,
+				9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */,
 				9C0D1E0C25264FF200B73A3F /* FakeStoriesLocalGateway.swift in Sources */,
 				9C0D1E1D2529D9D500B73A3F /* StoriesGatewayTest.swift in Sources */,
 			);
