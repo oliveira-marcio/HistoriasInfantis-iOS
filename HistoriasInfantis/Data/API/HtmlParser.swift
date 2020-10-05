@@ -23,6 +23,12 @@ class SwiftSoupHtmlParser: HtmlParser {
     let author: String!
     let end: String!
 
+    private let tokenBR = "#!#br2n#!#"
+    private let tagP = "p"
+    private let tagIMG = "img"
+    private let tagSRC = "src"
+    private let tagFIGURE = "figure"
+
     init(author: String, end: String) {
         self.author = author
         self.end = end
@@ -37,62 +43,30 @@ class SwiftSoupHtmlParser: HtmlParser {
         createDate: Date,
         updateDate: Date) -> Story {
 
-        let tokenBR = "#!#br2n#!#"
-        let tagP = "p"
-        let tagIMG = "img"
-        let tagSRC = "src"
-        let tagFIGURE = "figure"
-
         do {
+            /// Replace <BR> tags with temporary token
             var preparedHtml = replaceAll(from: html, regEx: "(?i)<br[^>]*>", with: tokenBR)
+
+            /// Replace <FIGURE> tags by <P> tags.
             preparedHtml = replaceAll(from: preparedHtml, regEx: "<((\\\\/)?)\(tagFIGURE)", with: "<$1\(tagP)")
 
             let doc: Document = try SwiftSoup.parse(preparedHtml)
+            var paragraphsArray = [Story.Paragraph]()
+
+            /// Parse content from <P> tags only
             if let paragraphs = try? doc.select(tagP) {
-                var paragraphsArray = [Story.Paragraph]()
-
-                paragraphLoop: for paragraph in paragraphs.array() {
-                    if let text = try? paragraph.text(), !text.isEmpty {
-                        var paragraphString = text.trimmingCharacters(in: .whitespacesAndNewlines)
-                        paragraphString = replaceAll(from: paragraphString, regEx: "\(tokenBR)\\s*", with: "\n")
-
-                        switch paragraphString.lowercased() {
-                        case author.lowercased():
-                            paragraphsArray.append(.author(paragraphString))
-                            break paragraphLoop
-                        case end.lowercased():
-                            paragraphsArray.append(.end(paragraphString))
-                        default:
-                            paragraphsArray.append(.text(paragraphString))
-                        }
-                    }
-
-                    if let images = try? paragraph.select(tagIMG) {
-                        for image in images.array() {
-                            if let url = try? image.absUrl(tagSRC) {
-                                var imageUrl: String
-                                if let urlEnd = url.firstIndex(of: "?") {
-                                    imageUrl = String(url[..<urlEnd])
-                                } else {
-                                    imageUrl = url
-                                }
-
-                                paragraphsArray.append(.image(imageUrl))
-                            }
-                        }
-                    }
-                }
-
-                return Story(
-                    id: id,
-                    title: title,
-                    url: url,
-                    imageUrl: imageUrl,
-                    paragraphs: paragraphsArray,
-                    createDate: createDate,
-                    updateDate: updateDate
-                )
+                paragraphsArray += parseParagraphs(paragraphs: paragraphs.array())
             }
+
+            return Story(
+                id: id,
+                title: title,
+                url: url,
+                imageUrl: imageUrl,
+                paragraphs: paragraphsArray,
+                createDate: createDate,
+                updateDate: updateDate
+            )
         } catch Exception.Error(_, let message) {
             print(message)
         } catch {
@@ -113,5 +87,57 @@ class SwiftSoupHtmlParser: HtmlParser {
     private func replaceAll(from text: String, regEx: String, with substr: String) -> String {
         let regex = try? NSRegularExpression(pattern: regEx, options: .caseInsensitive)
         return regex?.stringByReplacingMatches(in: text, options: [], range: NSRange(0..<text.utf16.count), withTemplate: substr) ?? text
+    }
+
+    private func parseParagraphs(paragraphs: [Element]) -> [Story.Paragraph] {
+        var paragraphsArray = [Story.Paragraph]()
+
+        /// Try to extract author, end and regular paragraphs. Author should be the last one, so it should ignore paragraphs after.
+        paragraphLoop: for paragraph in paragraphs {
+            if let text = try? paragraph.text(), !text.isEmpty {
+                var paragraphString = text.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                /// Replace temporary tokens by break lines
+                paragraphString = replaceAll(from: paragraphString, regEx: "\(tokenBR)\\s*", with: "\n")
+
+                switch paragraphString.lowercased() {
+                case author.lowercased():
+                    paragraphsArray.append(.author(paragraphString))
+                    break paragraphLoop
+                case end.lowercased():
+                    paragraphsArray.append(.end(paragraphString))
+                default:
+                    paragraphsArray.append(.text(paragraphString))
+                }
+            }
+
+            /// Try to extract images URLs from <IMG> tags inside <P> or <FIGURE> tags
+            if let images = try? paragraph.select(tagIMG) {
+                paragraphsArray += parseImagesFromParagraph(images: images.array())
+            }
+        }
+
+        return paragraphsArray
+    }
+
+    private func parseImagesFromParagraph(images: [Element]) -> [Story.Paragraph] {
+        var paragraphsArray = [Story.Paragraph]()
+
+        for image in images {
+            if let url = try? image.absUrl(tagSRC) {
+                var imageUrl: String
+
+                /// Ignore extra query parameters in image URL
+                if let urlEnd = url.firstIndex(of: "?") {
+                    imageUrl = String(url[..<urlEnd])
+                } else {
+                    imageUrl = url
+                }
+
+                paragraphsArray.append(.image(imageUrl))
+            }
+        }
+
+        return paragraphsArray
     }
 }
