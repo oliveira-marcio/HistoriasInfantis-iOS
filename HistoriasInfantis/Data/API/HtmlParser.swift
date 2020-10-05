@@ -29,13 +29,40 @@ class SwiftSoupHtmlParser: HtmlParser {
         createDate: Date,
         updateDate: Date) -> Story {
 
+        let tokenBR = "#!#br2n#!#"
+        let tagP = "p"
+        let tagIMG = "img"
+        let tagSRC = "src"
+        let tagFIGURE = "figure"
+
         do {
-            let doc: Document = try SwiftSoup.parse(html)
-            if let paragraphs = try? doc.select("p") {
+            var preparedHtml = replaceAll(from: html, regEx: "(?i)<br[^>]*>", with: tokenBR)
+            preparedHtml = replaceAll(from: preparedHtml, regEx: "<((\\\\/)?)\(tagFIGURE)", with: "<$1\(tagP)")
+
+            let doc: Document = try SwiftSoup.parse(preparedHtml)
+            if let paragraphs = try? doc.select(tagP) {
                 var paragraphsArray = [Story.Paragraph]()
+
                 for paragraph in paragraphs.array() {
-                    if let text = try? paragraph.text() {
-                        paragraphsArray.append(.text(text))
+                    if let text = try? paragraph.text(), !text.isEmpty {
+                        let paragraphString = text.replacingOccurrences(of: tokenBR, with: "\n")
+
+                        paragraphsArray.append(.text(paragraphString))
+                    }
+
+                    if let images = try? doc.select(tagIMG) {
+                        for image in images.array() {
+                            if let url = try? image.absUrl(tagSRC) {
+                                var imageUrl: String
+                                if let urlEnd = url.firstIndex(of: "?") {
+                                    imageUrl = String(url[..<urlEnd])
+                                } else {
+                                    imageUrl = url
+                                }
+
+                                paragraphsArray.append(.image(imageUrl))
+                            }
+                        }
                     }
                 }
 
@@ -64,5 +91,10 @@ class SwiftSoupHtmlParser: HtmlParser {
             createDate: createDate,
             updateDate: updateDate
         )
+    }
+
+    private func replaceAll(from text: String, regEx: String, with substr: String) -> String {
+        let regex = try? NSRegularExpression(pattern: regEx, options: .caseInsensitive)
+        return regex?.stringByReplacingMatches(in: text, options: [], range: NSRange(0..<text.utf16.count), withTemplate: substr) ?? text
     }
 }
