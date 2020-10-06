@@ -16,6 +16,7 @@ class StoriesRepositoryTests: XCTestCase {
     var storiesRepository: StoriesRepositoryImplementation!
 
     override func setUp() {
+        super.setUp()
         fakeStoriesGateway = FakeStoriesGateway()
         fakeStoriesLocalGateway = FakeStoriesLocalGateway()
         storiesRepository = StoriesRepositoryImplementation(

@@ -6,7 +6,8 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-class MemoryStoriesLocalGateway: StoriesLocalGateway {
+/// TODO: Initially an in-memory database. It should be replaced by real CoreData stack
+class CoreDataStoriesLocalGateway: StoriesLocalGateway {
     var stories = [Story]()
 
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
@@ -20,7 +21,7 @@ class MemoryStoriesLocalGateway: StoriesLocalGateway {
     }
 
     func insert(stories: [Story], then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
-        self.stories = stories
+        self.stories += stories
         handler(nil)
     }
 }

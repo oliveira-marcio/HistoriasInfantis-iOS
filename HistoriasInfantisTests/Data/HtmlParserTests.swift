@@ -15,6 +15,7 @@ class HtmlParserTests: XCTestCase {
     var expectedStory: Story!
 
     override func setUp() {
+        super.setUp()
         htmlParser = SwiftSoupHtmlParser(
             author: "Steve Jobs",
             end: "The End"

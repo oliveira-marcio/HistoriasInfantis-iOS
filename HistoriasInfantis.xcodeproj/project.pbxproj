@@ -37,8 +37,9 @@
 		9CF94212252B02E30089801D /* HtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94211252B02E30089801D /* HtmlParser.swift */; };
 		9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94213252B04000089801D /* FakeHtmlParser.swift */; };
 		9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94215252B09910089801D /* HtmlParserTests.swift */; };
-		9CF94219252CE9D20089801D /* MemoryStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94218252CE9D20089801D /* MemoryStoriesLocalGateway.swift */; };
+		9CF94219252CE9D20089801D /* CoreDataStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94218252CE9D20089801D /* CoreDataStoriesLocalGateway.swift */; };
 		9CF9421B252CEA420089801D /* StoriesGatewayImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */; };
+		9CF9421D252CF1CF0089801D /* StoriesLocalGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9421C252CF1CF0089801D /* StoriesLocalGatewayTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,8 +100,9 @@
 		9CF94211252B02E30089801D /* HtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlParser.swift; sourceTree = "<group>"; };
 		9CF94213252B04000089801D /* FakeHtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHtmlParser.swift; sourceTree = "<group>"; };
 		9CF94215252B09910089801D /* HtmlParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HtmlParserTests.swift; path = HistoriasInfantisTests/Data/HtmlParserTests.swift; sourceTree = SOURCE_ROOT; };
-		9CF94218252CE9D20089801D /* MemoryStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryStoriesLocalGateway.swift; sourceTree = "<group>"; };
+		9CF94218252CE9D20089801D /* CoreDataStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoriesLocalGateway.swift; sourceTree = "<group>"; };
 		9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayImplementation.swift; sourceTree = "<group>"; };
+		9CF9421C252CF1CF0089801D /* StoriesLocalGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesLocalGatewayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				9C0D1E0525264D5100B73A3F /* StoriesRepositoryTests.swift */,
 				9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */,
 				9CF94215252B09910089801D /* HtmlParserTests.swift */,
+				9CF9421C252CF1CF0089801D /* StoriesLocalGatewayTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -286,7 +289,7 @@
 		9CF94217252CE94B0089801D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9CF94218252CE9D20089801D /* MemoryStoriesLocalGateway.swift */,
+				9CF94218252CE9D20089801D /* CoreDataStoriesLocalGateway.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -423,7 +426,7 @@
 				9C0D1DFD252633B600B73A3F /* StoriesRepository.swift in Sources */,
 				9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */,
 				9C0D1E172529D5AA00B73A3F /* URLSessionProtocol.swift in Sources */,
-				9CF94219252CE9D20089801D /* MemoryStoriesLocalGateway.swift in Sources */,
+				9CF94219252CE9D20089801D /* CoreDataStoriesLocalGateway.swift in Sources */,
 				9C0D1DCB2525F9E500B73A3F /* AppDelegate.swift in Sources */,
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
 				9CF9421B252CEA420089801D /* StoriesGatewayImplementation.swift in Sources */,
@@ -448,6 +451,7 @@
 				9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */,
 				9C0D1E0C25264FF200B73A3F /* FakeStoriesLocalGateway.swift in Sources */,
 				9C0D1E1D2529D9D500B73A3F /* StoriesGatewayTest.swift in Sources */,
+				9CF9421D252CF1CF0089801D /* StoriesLocalGatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

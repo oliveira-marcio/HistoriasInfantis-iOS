@@ -15,6 +15,7 @@ class DisplayStoriesUseCaseTests: XCTestCase {
     var displayStoriesUseCase: DisplayStoriesUseCase!
 
     override func setUp() {
+        super.setUp()
         fakeStoriesRepository = FakeStoriesRepository()
         displayStoriesUseCase = DisplayStoriesUseCaseImplementation(
             storiesRepository: fakeStoriesRepository
