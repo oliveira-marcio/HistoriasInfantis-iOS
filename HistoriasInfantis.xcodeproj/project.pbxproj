@@ -37,6 +37,8 @@
 		9CF94212252B02E30089801D /* HtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94211252B02E30089801D /* HtmlParser.swift */; };
 		9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94213252B04000089801D /* FakeHtmlParser.swift */; };
 		9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94215252B09910089801D /* HtmlParserTests.swift */; };
+		9CF94219252CE9D20089801D /* MemoryStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94218252CE9D20089801D /* MemoryStoriesLocalGateway.swift */; };
+		9CF9421B252CEA420089801D /* StoriesGatewayImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		9CF94211252B02E30089801D /* HtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlParser.swift; sourceTree = "<group>"; };
 		9CF94213252B04000089801D /* FakeHtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHtmlParser.swift; sourceTree = "<group>"; };
 		9CF94215252B09910089801D /* HtmlParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HtmlParserTests.swift; path = HistoriasInfantisTests/Data/HtmlParserTests.swift; sourceTree = SOURCE_ROOT; };
+		9CF94218252CE9D20089801D /* MemoryStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryStoriesLocalGateway.swift; sourceTree = "<group>"; };
+		9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayImplementation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				9C0D1E152529D48200B73A3F /* API */,
+				9CF94217252CE94B0089801D /* CoreData */,
 				9C0D1DFC252633B600B73A3F /* StoriesRepository.swift */,
+				9C0D1E1125276FE300B73A3F /* StoriesGateway.swift */,
 				9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */,
 			);
 			path = Data;
@@ -261,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF942062529F6B30089801D /* StoriesEntity.swift */,
-				9C0D1E1125276FE300B73A3F /* StoriesGateway.swift */,
+				9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */,
 				9C0D1E162529D5AA00B73A3F /* URLSessionProtocol.swift */,
 				9CF94211252B02E30089801D /* HtmlParser.swift */,
 			);
@@ -275,6 +281,14 @@
 				9CF9420A252B01A30089801D /* SwiftSoup.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9CF94217252CE94B0089801D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9CF94218252CE9D20089801D /* MemoryStoriesLocalGateway.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,8 +423,10 @@
 				9C0D1DFD252633B600B73A3F /* StoriesRepository.swift in Sources */,
 				9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */,
 				9C0D1E172529D5AA00B73A3F /* URLSessionProtocol.swift in Sources */,
+				9CF94219252CE9D20089801D /* MemoryStoriesLocalGateway.swift in Sources */,
 				9C0D1DCB2525F9E500B73A3F /* AppDelegate.swift in Sources */,
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
+				9CF9421B252CEA420089801D /* StoriesGatewayImplementation.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGateway.swift in Sources */,
 				9C0D1DF625261A1600B73A3F /* Story.swift in Sources */,

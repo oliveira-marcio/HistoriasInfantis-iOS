@@ -53,7 +53,7 @@ class StoriesRepositoryImplementation: StoriesRepository {
         guard let stories = stories else { return }
 
         storiesLocalGateway.clearAll { [weak self] error in
-            guard let _ = error else {
+            if let _ = error {
                 print("Clear persistence failed.")
                 return
             }

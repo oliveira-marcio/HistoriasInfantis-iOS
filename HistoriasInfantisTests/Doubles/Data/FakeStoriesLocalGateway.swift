@@ -27,7 +27,7 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
         if !shouldClearAllFail {
             stories = []
         }
-        handler(shouldClearAllFail ? nil : StoriesRepositoryError.unableToSave)
+        handler(shouldClearAllFail ? StoriesRepositoryError.unableToSave : nil)
 
     }
 
@@ -36,6 +36,6 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
         if !shouldInsertFail {
             self.stories = stories
         }
-        handler(shouldInsertFail ? nil : StoriesRepositoryError.unableToSave)
+        handler(shouldInsertFail ? StoriesRepositoryError.unableToSave : nil)
     }
 }
