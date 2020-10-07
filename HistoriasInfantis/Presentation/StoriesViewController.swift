@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class StoriesViewController: UIViewController {
+
+    @IBOutlet weak var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        label.text = "Abobrinha"
     }
 
 
