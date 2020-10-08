@@ -17,14 +17,14 @@
 		9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DF02526158B00B73A3F /* DisplayStoriesListUseCase.swift */; };
 		9C0D1DF32526191F00B73A3F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DF22526191F00B73A3F /* Result.swift */; };
 		9C0D1DF625261A1600B73A3F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DF525261A1600B73A3F /* Story.swift */; };
-		9C0D1DFD252633B600B73A3F /* StoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DFC252633B600B73A3F /* StoriesRepository.swift */; };
+		9C0D1DFD252633B600B73A3F /* StoriesRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DFC252633B600B73A3F /* StoriesRepositoryImplementation.swift */; };
 		9C0D1E01252634BD00B73A3F /* FakeStoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E00252634BD00B73A3F /* FakeStoriesRepository.swift */; };
 		9C0D1E0625264D5100B73A3F /* StoriesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0525264D5100B73A3F /* StoriesRepositoryTests.swift */; };
 		9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */; };
 		9C0D1E0C25264FF200B73A3F /* FakeStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0B25264FF200B73A3F /* FakeStoriesLocalGateway.swift */; };
 		9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0D252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift */; };
 		9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E0F2527493000B73A3F /* RequestNewStoriesUseCase.swift */; };
-		9C0D1E1225276FE300B73A3F /* StoriesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1125276FE300B73A3F /* StoriesGateway.swift */; };
+		9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1125276FE300B73A3F /* StoriesGatewayImplementation.swift */; };
 		9C0D1E142527750800B73A3F /* FakeStoriesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E132527750800B73A3F /* FakeStoriesGateway.swift */; };
 		9C0D1E172529D5AA00B73A3F /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E162529D5AA00B73A3F /* URLSessionProtocol.swift */; };
 		9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */; };
@@ -38,8 +38,9 @@
 		9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94213252B04000089801D /* FakeHtmlParser.swift */; };
 		9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94215252B09910089801D /* HtmlParserTests.swift */; };
 		9CF94219252CE9D20089801D /* CoreDataStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94218252CE9D20089801D /* CoreDataStoriesLocalGateway.swift */; };
-		9CF9421B252CEA420089801D /* StoriesGatewayImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */; };
 		9CF9421D252CF1CF0089801D /* StoriesLocalGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9421C252CF1CF0089801D /* StoriesLocalGatewayTests.swift */; };
+		9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9421E252F45660089801D /* StoriesRepository.swift */; };
+		9CF94221252F469E0089801D /* StoriesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF94220252F469E0089801D /* StoriesGateway.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,14 +83,14 @@
 		9C0D1DF02526158B00B73A3F /* DisplayStoriesListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayStoriesListUseCase.swift; sourceTree = "<group>"; };
 		9C0D1DF22526191F00B73A3F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9C0D1DF525261A1600B73A3F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		9C0D1DFC252633B600B73A3F /* StoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRepository.swift; sourceTree = "<group>"; };
+		9C0D1DFC252633B600B73A3F /* StoriesRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRepositoryImplementation.swift; sourceTree = "<group>"; };
 		9C0D1E00252634BD00B73A3F /* FakeStoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStoriesRepository.swift; sourceTree = "<group>"; };
 		9C0D1E0525264D5100B73A3F /* StoriesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRepositoryTests.swift; sourceTree = "<group>"; };
 		9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesLocalGateway.swift; sourceTree = "<group>"; };
 		9C0D1E0B25264FF200B73A3F /* FakeStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStoriesLocalGateway.swift; sourceTree = "<group>"; };
 		9C0D1E0D252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNewStoriesUseCaseTests.swift; sourceTree = "<group>"; };
 		9C0D1E0F2527493000B73A3F /* RequestNewStoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNewStoriesUseCase.swift; sourceTree = "<group>"; };
-		9C0D1E1125276FE300B73A3F /* StoriesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGateway.swift; sourceTree = "<group>"; };
+		9C0D1E1125276FE300B73A3F /* StoriesGatewayImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayImplementation.swift; sourceTree = "<group>"; };
 		9C0D1E132527750800B73A3F /* FakeStoriesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStoriesGateway.swift; sourceTree = "<group>"; };
 		9C0D1E162529D5AA00B73A3F /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
@@ -101,8 +102,9 @@
 		9CF94213252B04000089801D /* FakeHtmlParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHtmlParser.swift; sourceTree = "<group>"; };
 		9CF94215252B09910089801D /* HtmlParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HtmlParserTests.swift; path = HistoriasInfantisTests/Data/HtmlParserTests.swift; sourceTree = SOURCE_ROOT; };
 		9CF94218252CE9D20089801D /* CoreDataStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoriesLocalGateway.swift; sourceTree = "<group>"; };
-		9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayImplementation.swift; sourceTree = "<group>"; };
 		9CF9421C252CF1CF0089801D /* StoriesLocalGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesLocalGatewayTests.swift; sourceTree = "<group>"; };
+		9CF9421E252F45660089801D /* StoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRepository.swift; sourceTree = "<group>"; };
+		9CF94220252F469E0089801D /* StoriesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGateway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				9C0D1DEF252614F500B73A3F /* UseCases */,
 				9C0D1DF4252619EF00B73A3F /* Models */,
 				9C0D1DF22526191F00B73A3F /* Result.swift */,
+				9CF9421E252F45660089801D /* StoriesRepository.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -228,9 +231,9 @@
 			children = (
 				9C0D1E152529D48200B73A3F /* API */,
 				9CF94217252CE94B0089801D /* CoreData */,
-				9C0D1DFC252633B600B73A3F /* StoriesRepository.swift */,
-				9C0D1E1125276FE300B73A3F /* StoriesGateway.swift */,
+				9CF94220252F469E0089801D /* StoriesGateway.swift */,
 				9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */,
+				9C0D1DFC252633B600B73A3F /* StoriesRepositoryImplementation.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -270,7 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF942062529F6B30089801D /* StoriesEntity.swift */,
-				9CF9421A252CEA420089801D /* StoriesGatewayImplementation.swift */,
+				9C0D1E1125276FE300B73A3F /* StoriesGatewayImplementation.swift */,
 				9C0D1E162529D5AA00B73A3F /* URLSessionProtocol.swift */,
 				9CF94211252B02E30089801D /* HtmlParser.swift */,
 			);
@@ -423,15 +426,16 @@
 				9C0D1DF32526191F00B73A3F /* Result.swift in Sources */,
 				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
-				9C0D1DFD252633B600B73A3F /* StoriesRepository.swift in Sources */,
+				9C0D1DFD252633B600B73A3F /* StoriesRepositoryImplementation.swift in Sources */,
 				9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */,
 				9C0D1E172529D5AA00B73A3F /* URLSessionProtocol.swift in Sources */,
 				9CF94219252CE9D20089801D /* CoreDataStoriesLocalGateway.swift in Sources */,
 				9C0D1DCB2525F9E500B73A3F /* AppDelegate.swift in Sources */,
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
-				9CF9421B252CEA420089801D /* StoriesGatewayImplementation.swift in Sources */,
+				9CF94221252F469E0089801D /* StoriesGateway.swift in Sources */,
+				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
-				9C0D1E1225276FE300B73A3F /* StoriesGateway.swift in Sources */,
+				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
 				9C0D1DF625261A1600B73A3F /* Story.swift in Sources */,
 				9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */,
 			);
