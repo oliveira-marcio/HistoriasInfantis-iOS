@@ -20,12 +20,8 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.register(StoriesHeaderView.nib, forHeaderFooterViewReuseIdentifier: StoriesHeaderView.reuseIdentifier)
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section > 0 ? textList.count : 0
+        return textList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,14 +30,14 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
 
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return section > 0 ? nil : (tableView.dequeueReusableHeaderFooterView(
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(
             withIdentifier: StoriesHeaderView.reuseIdentifier)
-            as! StoriesHeaderView)
+            as! StoriesHeaderView
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section > 0 ? 0 : 100
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
     }
 }
 
