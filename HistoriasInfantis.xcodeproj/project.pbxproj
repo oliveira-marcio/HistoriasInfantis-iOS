@@ -32,6 +32,9 @@
 		9C40617A252F77C9002CDA3E /* StoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C406179252F77C9002CDA3E /* StoryViewCell.swift */; };
 		9C40617D252F808E002CDA3E /* StoriesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C40617C252F808E002CDA3E /* StoriesHeaderView.xib */; };
 		9C40617F252F82CA002CDA3E /* StoriesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */; };
+		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
+		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
+		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
 		9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF942062529F6B30089801D /* StoriesEntity.swift */; };
 		9CF9420B252B01A30089801D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; };
 		9CF9420C252B01A30089801D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -101,6 +104,9 @@
 		9C406179252F77C9002CDA3E /* StoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewCell.swift; sourceTree = "<group>"; };
 		9C40617C252F808E002CDA3E /* StoriesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesHeaderView.xib; sourceTree = "<group>"; };
 		9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesHeaderView.swift; sourceTree = "<group>"; };
+		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
+		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
+		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
 		9CF942062529F6B30089801D /* StoriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesEntity.swift; sourceTree = "<group>"; };
 		9CF94209252B01A30089801D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				9C0D1DFE252634A500B73A3F /* Doubles */,
 				9C0D1DF925262D6000B73A3F /* UseCases */,
 				9C0D1E0425264D1D00B73A3F /* Data */,
+				9CF73F37252F9CC000DBD943 /* Presentation */,
 				9C0D1DE32525F9E800B73A3F /* Info.plist */,
 			);
 			path = HistoriasInfantisTests;
@@ -248,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				9C0D1DFF252634AF00B73A3F /* Data */,
+				9CF73F3C252FA17300DBD943 /* Presentation */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -289,9 +297,10 @@
 		9C406178252F774E002CDA3E /* StoriesList */ = {
 			isa = PBXGroup;
 			children = (
+				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
 				9C0D1DCE2525F9E500B73A3F /* StoriesViewController.swift */,
-				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
 				9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */,
+				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
 			);
 			path = StoriesList;
 			sourceTree = "<group>";
@@ -303,6 +312,22 @@
 				9C40617C252F808E002CDA3E /* StoriesHeaderView.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9CF73F37252F9CC000DBD943 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9CF73F3C252FA17300DBD943 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		9CF94208252B01A30089801D /* Frameworks */ = {
@@ -449,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C0D1DCF2525F9E500B73A3F /* StoriesViewController.swift in Sources */,
+				9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */,
 				9C0D1DF32526191F00B73A3F /* Result.swift in Sources */,
 				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
@@ -483,6 +509,8 @@
 				9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */,
 				9C0D1E0C25264FF200B73A3F /* FakeStoriesLocalGateway.swift in Sources */,
 				9C0D1E1D2529D9D500B73A3F /* StoriesGatewayTest.swift in Sources */,
+				9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */,
+				9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */,
 				9CF9421D252CF1CF0089801D /* StoriesLocalGatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
