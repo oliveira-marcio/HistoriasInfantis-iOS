@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StoriesListViewController.swift
 //  HistoriasInfantis
 //
 //  Created by Márcio Oliveira on 10/1/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoriesListView {
+class StoriesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoriesListView {
 
     var presenter: StoriesListPresenter!
 

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C0D1DCB2525F9E500B73A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DCA2525F9E500B73A3F /* AppDelegate.swift */; };
 		9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DCC2525F9E500B73A3F /* SceneDelegate.swift */; };
-		9C0D1DCF2525F9E500B73A3F /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DCE2525F9E500B73A3F /* StoriesViewController.swift */; };
+		9C0D1DCF2525F9E500B73A3F /* StoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1DCE2525F9E500B73A3F /* StoriesListViewController.swift */; };
 		9C0D1DD22525F9E500B73A3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D1DD02525F9E500B73A3F /* Main.storyboard */; };
 		9C0D1DD42525F9E800B73A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D1DD32525F9E800B73A3F /* Assets.xcassets */; };
 		9C0D1DD72525F9E800B73A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D1DD52525F9E800B73A3F /* LaunchScreen.storyboard */; };
@@ -37,6 +37,9 @@
 		9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */; };
 		9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */; };
 		9CF73F462530C4A200DBD943 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F452530C4A200DBD943 /* TabBarViewController.swift */; };
+		9CF73F482530E99200DBD943 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F472530E99200DBD943 /* ViewRouter.swift */; };
+		9CF73F4A2530E9C800DBD943 /* StoriesListViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */; };
+		9CF73F4D2530ED3500DBD943 /* StoriesListViewRouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F4C2530ED3500DBD943 /* StoriesListViewRouterSpy.swift */; };
 		9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF942062529F6B30089801D /* StoriesEntity.swift */; };
 		9CF9420B252B01A30089801D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; };
 		9CF9420C252B01A30089801D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,7 +83,7 @@
 		9C0D1DC72525F9E500B73A3F /* HistoriasInfantis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoriasInfantis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0D1DCA2525F9E500B73A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C0D1DCC2525F9E500B73A3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9C0D1DCE2525F9E500B73A3F /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
+		9C0D1DCE2525F9E500B73A3F /* StoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewController.swift; sourceTree = "<group>"; };
 		9C0D1DD12525F9E500B73A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C0D1DD32525F9E800B73A3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C0D1DD62525F9E800B73A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,6 +114,9 @@
 		9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewConfigurator.swift; sourceTree = "<group>"; };
 		9CF73F452530C4A200DBD943 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		9CF73F472530E99200DBD943 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewRouter.swift; sourceTree = "<group>"; };
+		9CF73F4C2530ED3500DBD943 /* StoriesListViewRouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewRouterSpy.swift; sourceTree = "<group>"; };
 		9CF942062529F6B30089801D /* StoriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesEntity.swift; sourceTree = "<group>"; };
 		9CF94209252B01A30089801D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -203,7 +209,9 @@
 			children = (
 				9CF73F452530C4A200DBD943 /* TabBarViewController.swift */,
 				9C406178252F774E002CDA3E /* StoriesList */,
+				9CF73F4B2530EC9000DBD943 /* Story */,
 				9C40617B252F8048002CDA3E /* UI */,
+				9CF73F472530E99200DBD943 /* ViewRouter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -304,7 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
-				9C0D1DCE2525F9E500B73A3F /* StoriesViewController.swift */,
+				9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */,
+				9C0D1DCE2525F9E500B73A3F /* StoriesListViewController.swift */,
 				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
 				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
 			);
@@ -332,8 +341,16 @@
 			children = (
 				9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */,
 				9CF73F3F25309E9100DBD943 /* StoryCellViewSpy.swift */,
+				9CF73F4C2530ED3500DBD943 /* StoriesListViewRouterSpy.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9CF73F4B2530EC9000DBD943 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Story;
 			sourceTree = "<group>";
 		};
 		9CF94208252B01A30089801D /* Frameworks */ = {
@@ -478,13 +495,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C0D1DCF2525F9E500B73A3F /* StoriesViewController.swift in Sources */,
+				9CF73F4A2530E9C800DBD943 /* StoriesListViewRouter.swift in Sources */,
+				9C0D1DCF2525F9E500B73A3F /* StoriesListViewController.swift in Sources */,
 				9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */,
 				9CF73F462530C4A200DBD943 /* TabBarViewController.swift in Sources */,
 				9C0D1DF32526191F00B73A3F /* Result.swift in Sources */,
 				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
 				9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */,
+				9CF73F482530E99200DBD943 /* ViewRouter.swift in Sources */,
 				9C40617A252F77C9002CDA3E /* StoryViewCell.swift in Sources */,
 				9C0D1DFD252633B600B73A3F /* StoriesRepositoryImplementation.swift in Sources */,
 				9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */,
@@ -509,6 +528,7 @@
 				9C0D1E142527750800B73A3F /* FakeStoriesGateway.swift in Sources */,
 				9CF94214252B04000089801D /* FakeHtmlParser.swift in Sources */,
 				9C0D1E01252634BD00B73A3F /* FakeStoriesRepository.swift in Sources */,
+				9CF73F4D2530ED3500DBD943 /* StoriesListViewRouterSpy.swift in Sources */,
 				9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */,
 				9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */,
 				9CF73F4025309E9100DBD943 /* StoryCellViewSpy.swift in Sources */,

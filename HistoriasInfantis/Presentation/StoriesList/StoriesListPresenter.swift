@@ -26,15 +26,18 @@ protocol StoryCellView: class {
 class StoriesListPresenter {
 
     private(set) weak var view: StoriesListView?
+    private(set) public var router: StoriesListViewRouter
     private(set) var displayStoriesUseCase: DisplayStoriesUseCase
     private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
 
     var stories = [Story]()
 
     init(view: StoriesListView,
+         router: StoriesListViewRouter,
          displayStoriesUseCase: DisplayStoriesUseCase,
          requestNewStoriesUseCase: RequestNewStoriesUseCase) {
         self.view = view
+        self.router = router
         self.displayStoriesUseCase = displayStoriesUseCase
         self.requestNewStoriesUseCase = requestNewStoriesUseCase
     }
@@ -77,5 +80,9 @@ class StoriesListPresenter {
             self.stories = stories
             view?.refreshStories()
         }
+    }
+
+    public func showStory(at row: Int) {
+        router.navigateToStory(stories[row])
     }
 }

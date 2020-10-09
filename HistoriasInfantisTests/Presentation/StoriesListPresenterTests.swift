@@ -13,14 +13,17 @@ class StoriesListPresenterTests: XCTestCase {
 
     var presenter: StoriesListPresenter!
     var viewSpy: StoriesListViewSpy!
+    var routerSpy: StoriesListViewRouterSpy!
     var fakeStoriesRepository: FakeStoriesRepository!
 
     override func setUp() {
         super.setUp()
 
         viewSpy = StoriesListViewSpy()
+        routerSpy = StoriesListViewRouterSpy()
         fakeStoriesRepository = FakeStoriesRepository()
         presenter = StoriesListPresenter(view: viewSpy,
+                                         router: routerSpy,
                                          displayStoriesUseCase: DisplayStoriesUseCase(storiesRepository: fakeStoriesRepository),
                                          requestNewStoriesUseCase: RequestNewStoriesUseCase(storiesRepository: fakeStoriesRepository))
     }
@@ -145,5 +148,22 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
+    }
+
+    func test_it_should_navigate_to_selected_story_when_show_story_is_called() {
+        presenter.stories = [
+            Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: Date(),
+                updateDate: Date())
+        ]
+
+        presenter.showStory(at: 0)
+
+        XCTAssertEqual(routerSpy.story, presenter.stories[0])
     }
 }

@@ -20,9 +20,9 @@ class TabBarViewController: UITabBarController {
 
         viewControllers.forEach { viewController in
             if let navigationController = viewController as? UINavigationController,
-                let storiesListVC = navigationController.topViewController as? StoriesViewController {
+                let storiesListVC = navigationController.topViewController as? StoriesListViewController {
                 let configurator = StoriesListViewConfigurator()
-                configurator.configure(storiesViewController: storiesListVC)
+                configurator.configure(storiesListViewController: storiesListVC)
             }
         }
     }
