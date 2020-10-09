@@ -22,16 +22,39 @@ protocol StoryCellView: class {
 class StoriesListPresenter {
 
     private(set) weak var view: StoriesListView?
-    private(set) var storiesRepository: StoriesRepository
+    private(set) var displayStoriesUseCase: DisplayStoriesUseCase
+    private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
 
-    init(view: StoriesListView, storiesRepository: StoriesRepository) {
+    init(view: StoriesListView,
+         displayStoriesUseCase: DisplayStoriesUseCase,
+         requestNewStoriesUseCase: RequestNewStoriesUseCase) {
         self.view = view
-        self.storiesRepository = storiesRepository
+        self.displayStoriesUseCase = displayStoriesUseCase
+        self.requestNewStoriesUseCase = requestNewStoriesUseCase
     }
 
     func viewDidLoad() {
-        storiesRepository.fetchAll { result in
+        displayStoriesUseCase.invoke { [weak self] result in
+            DispatchQueue.main.async {
+                if result.isSuccess {
+                    self?.view?.refreshStories()
+                } else {
+                    self?.view?.displayEmptyStories()
+                    self?.view?.displayStoriesRetrievalError(message: "Server Error")
+                }
+            }
+        }
+    }
 
+    func refresh() {
+        requestNewStoriesUseCase.invoke { [weak self] result in
+            DispatchQueue.main.async {
+                if result.isSuccess {
+                    self?.view?.refreshStories()
+                } else {
+                    self?.view?.displayStoriesRetrievalError(message: "Server Error")
+                }
+            }
         }
     }
 }

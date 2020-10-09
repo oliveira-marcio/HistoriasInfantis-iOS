@@ -11,6 +11,7 @@ typealias StoriesRepositoryFetchAllCompletionHandler = (Result<[Story]>) -> Void
 public enum StoriesRepositoryError: Error, Equatable {
     case gatewayRequestFail(String)
     case gatewayParseFail(String)
+    case unableToRetrieve
     case unableToSave
 }
 

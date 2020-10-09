@@ -14,12 +14,13 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
     var clearAllWasCalled = false
     var insertWasCalled = false
 
+    var shouldFetchAllFail = false
     var shouldClearAllFail = false
     var shouldInsertFail = false
 
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
         fetchAllWasCalled = true
-        handler(.success(stories))
+        handler(shouldFetchAllFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
     }
 
     func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {

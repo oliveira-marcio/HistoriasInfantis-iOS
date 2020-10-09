@@ -17,11 +17,6 @@ class StoriesLocalGatewayTests: XCTestCase {
         super.setUp()
         gateway = CoreDataStoriesLocalGateway()
         clearStoredData()
-        /*
-         func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler)
-         func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
-         func insert(stories: [Story], then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
-         */
     }
 
     func test_given_no_entries_stored_when_fetch_all_entries_then_return_empty() {

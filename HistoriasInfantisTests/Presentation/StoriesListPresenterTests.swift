@@ -21,22 +21,64 @@ class StoriesListPresenterTests: XCTestCase {
         viewSpy = StoriesListViewSpy()
         fakeStoriesRepository = FakeStoriesRepository()
         presenter = StoriesListPresenter(view: viewSpy,
-                                         storiesRepository: fakeStoriesRepository)
+                                         displayStoriesUseCase: DisplayStoriesUseCase(storiesRepository: fakeStoriesRepository),
+                                         requestNewStoriesUseCase: RequestNewStoriesUseCase(storiesRepository: fakeStoriesRepository))
     }
 
     func test_it_should_display_stories_list_when_view_did_load_and_there_are_stories_available() {
+        presenter.viewDidLoad()
 
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.refreshStoriesHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(viewSpy.didRequestRefreshStories)
     }
 
     func test_it_should_display_empty_view_and_display_error_when_view_did_load_and_there_are_no_stories_available() {
+        fakeStoriesRepository.shouldFetchAllFail = true
 
+        presenter.viewDidLoad()
+
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.displayStoriesRetrievalErrorHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
     }
 
     func test_it_should_display_refreshed_stories_when_refresh_is_called_and_there_are_stories_available() {
+        presenter.refresh()
 
+        let loadExpectation = expectation(description: "refresh expectation")
+        viewSpy.refreshStoriesHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(viewSpy.didRequestRefreshStories)
     }
 
     func test_it_should_display_error_when_refresh_is_called_and_repository_fails_to_retrieve_new_stories() {
+        fakeStoriesRepository.shouldGatewayFail = true
 
+        presenter.refresh()
+
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.displayStoriesRetrievalErrorHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
     }
 }

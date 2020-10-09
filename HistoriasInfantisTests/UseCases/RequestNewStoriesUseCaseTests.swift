@@ -17,7 +17,7 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         fakeStoriesRepository = FakeStoriesRepository()
-        requestNewStoriesUseCase = RequestNewStoriesUseCaseImplementation(
+        requestNewStoriesUseCase = RequestNewStoriesUseCase(
             storiesRepository: fakeStoriesRepository
         )
     }

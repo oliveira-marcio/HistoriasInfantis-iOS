@@ -8,11 +8,7 @@
 
 typealias DisplayStoriesUseCaseCompletionHandler = (Result<[Story]>) -> Void
 
-protocol DisplayStoriesUseCase {
-    func invoke(completion: @escaping DisplayStoriesUseCaseCompletionHandler)
-}
-
-class DisplayStoriesUseCaseImplementation: DisplayStoriesUseCase {
+class DisplayStoriesUseCase {
     private let storiesRepository: StoriesRepository!
 
     init(storiesRepository: StoriesRepository) {

@@ -233,6 +233,47 @@ class StoriesRepositoryTests: XCTestCase {
         XCTAssertEqual(stories, expectedStories)
     }
 
+    func test_when_fetch_all_and_local_gateway_fails_then_request_new_is_called() {
+        let expectedStories = [
+            Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: Date(),
+                updateDate: Date()),
+            Story(
+                id: 2,
+                title: "Story 2",
+                url: "http://story2",
+                imageUrl: "http://image2",
+                paragraphs: [.text("paragraph2")],
+                createDate: Date(),
+                updateDate: Date())
+        ]
+
+        fakeStoriesLocalGateway.shouldFetchAllFail = true
+        fakeStoriesGateway.stories = expectedStories
+
+        var stories: [Story]?
+        let requestExpectation = expectation(description: "request expectation")
+
+        storiesRepository.fetchAll() { result in
+            stories = try? result.dematerialize()
+            requestExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(fakeStoriesLocalGateway.fetchAllWasCalled)
+        XCTAssertTrue(fakeStoriesGateway.requestWasCalled)
+        XCTAssertTrue(fakeStoriesLocalGateway.clearAllWasCalled)
+        XCTAssertTrue(fakeStoriesLocalGateway.insertWasCalled)
+
+        XCTAssertEqual(fakeStoriesLocalGateway.stories, expectedStories)
+        XCTAssertEqual(stories, expectedStories)
+    }
+
     func test_when_fetch_all_and_there_is_no_local_stories_then_request_new_is_called() {
         let expectedStories = [
             Story(

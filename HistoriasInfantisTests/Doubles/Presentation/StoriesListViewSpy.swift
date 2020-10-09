@@ -14,16 +14,16 @@ class StoriesListViewSpy: StoriesListView {
     var didRequestRefreshStories: Bool = false
     var storiesRetrievalError: String?
 
-    var displayEmptyStoriesHandler: (() -> Void)?
+    var displayStoriesRetrievalErrorHandler: (() -> Void)?
     var refreshStoriesHandler: (() -> Void)?
 
     func displayEmptyStories() {
         didRequestDisplayEmptyStories = true
-        displayEmptyStoriesHandler?()
     }
 
     func displayStoriesRetrievalError(message: String?) {
         storiesRetrievalError = message
+        displayStoriesRetrievalErrorHandler?()
     }
 
     func refreshStories() {

@@ -17,7 +17,7 @@ class DisplayStoriesUseCaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         fakeStoriesRepository = FakeStoriesRepository()
-        displayStoriesUseCase = DisplayStoriesUseCaseImplementation(
+        displayStoriesUseCase = DisplayStoriesUseCase(
             storiesRepository: fakeStoriesRepository
         )
     }
@@ -55,5 +55,23 @@ class DisplayStoriesUseCaseTests: XCTestCase {
 
         XCTAssertTrue(fakeStoriesRepository.fetchAllWasCalled)
         XCTAssertEqual(stories, expectedStories)
+    }
+
+    func test_it_should_display_gateway_error_when_fetch_all_fails() {
+        fakeStoriesRepository.shouldFetchAllFail = true
+
+        var error: StoriesRepositoryError?
+        let useCaseExpectation = expectation(description: "use case expectation")
+
+        displayStoriesUseCase.invoke { result in
+            if case .failure(let resultError) = result {
+                error = resultError as? StoriesRepositoryError
+            }
+            useCaseExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertTrue(fakeStoriesRepository.fetchAllWasCalled)
+        XCTAssertEqual(error, StoriesRepositoryError.gatewayRequestFail(fakeStoriesRepository.serverErrorMessage))
     }
 }
