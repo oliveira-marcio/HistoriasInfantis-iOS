@@ -8,27 +8,56 @@
 
 import UIKit
 
-class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoriesListView {
 
+    var presenter: StoriesListPresenter!
+    var configurator = StoriesListViewConfigurator()
+
+    // MARK: - Outlets
 
     @IBOutlet weak var tableView: UITableView!
 
-    let textList = ["Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3","Test 1", "Test 2", "Test 3"]
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(StoriesHeaderView.nib, forHeaderFooterViewReuseIdentifier: StoriesHeaderView.reuseIdentifier)
+        setupTableView()
+        configurator.configure(storiesViewController: self)
+        presenter.viewDidLoad()
     }
 
+    private func setupTableView() {
+        tableView.register(StoriesHeaderView.nib,
+                           forHeaderFooterViewReuseIdentifier: StoriesHeaderView.reuseIdentifier)
+    }
+
+    // MARK: - CallHistoryView
+
+    func displayEmptyStories() {
+        print("EMPTY")
+    }
+
+    func displayStoriesRetrievalError(message: String?) {
+        print("ERROR")
+    }
+
+    func refreshStories() {
+        tableView.reloadData()
+    }
+
+    // MARK: - UITableViewDataSource
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return textList.count
+        return presenter.stories.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoryViewCell.reuseIdentifier, for: indexPath) as! StoryViewCell
-        cell.label.text = textList[indexPath.row]
+        presenter.configureStoryCellView(cell, for: indexPath.row)
         return cell
     }
+
+    // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return tableView.dequeueReusableHeaderFooterView(

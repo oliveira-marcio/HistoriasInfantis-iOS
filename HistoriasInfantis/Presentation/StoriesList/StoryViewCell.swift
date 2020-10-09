@@ -8,9 +8,21 @@
 
 import UIKit
 
-class StoryViewCell: UITableViewCell {
+class StoryViewCell: UITableViewCell, StoryCellView {
+
     static var reuseIdentifier: String { "\(self)" }
 
     @IBOutlet weak var label: UILabel!
-    
+
+    func display(image from: Data) {
+
+    }
+
+    func display(image named: String) {
+
+    }
+
+    func display(title: String) {
+        label.text = title
+    }
 }

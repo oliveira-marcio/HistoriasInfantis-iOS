@@ -36,6 +36,8 @@
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
 		9CF73F4025309E9100DBD943 /* StoryCellViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3F25309E9100DBD943 /* StoryCellViewSpy.swift */; };
+		9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */; };
+		9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */; };
 		9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF942062529F6B30089801D /* StoriesEntity.swift */; };
 		9CF9420B252B01A30089801D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; };
 		9CF9420C252B01A30089801D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -109,6 +111,8 @@
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
 		9CF73F3F25309E9100DBD943 /* StoryCellViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellViewSpy.swift; sourceTree = "<group>"; };
+		9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewConfigurator.swift; sourceTree = "<group>"; };
 		9CF942062529F6B30089801D /* StoriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesEntity.swift; sourceTree = "<group>"; };
 		9CF94209252B01A30089801D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			children = (
 				9C0D1DCA2525F9E500B73A3F /* AppDelegate.swift */,
 				9C0D1DCC2525F9E500B73A3F /* SceneDelegate.swift */,
+				9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				9C0D1DCE2525F9E500B73A3F /* StoriesViewController.swift */,
 				9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */,
 				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
+				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
 			);
 			path = StoriesList;
 			sourceTree = "<group>";
@@ -481,6 +487,7 @@
 				9C0D1DF32526191F00B73A3F /* Result.swift in Sources */,
 				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
+				9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */,
 				9C40617A252F77C9002CDA3E /* StoryViewCell.swift in Sources */,
 				9C0D1DFD252633B600B73A3F /* StoriesRepositoryImplementation.swift in Sources */,
 				9C0D1DF12526158B00B73A3F /* DisplayStoriesListUseCase.swift in Sources */,
@@ -492,6 +499,7 @@
 				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
 				9C40617F252F82CA002CDA3E /* StoriesHeaderView.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
+				9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
 				9C0D1DF625261A1600B73A3F /* Story.swift in Sources */,
 				9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */,
