@@ -205,9 +205,9 @@
 		9C0D1DED2525FC4D00B73A3F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				9CF73F452530C4A200DBD943 /* TabBarViewController.swift */,
 				9C406178252F774E002CDA3E /* StoriesList */,
 				9C40617B252F8048002CDA3E /* UI */,
-				9CF73F452530C4A200DBD943 /* TabBarViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";

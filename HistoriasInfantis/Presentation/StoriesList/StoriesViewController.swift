@@ -15,6 +15,7 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Outlets
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var noStoriesView: UIView!
 
     // MARK: - Lifecycle
 
@@ -32,7 +33,7 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - CallHistoryView
 
     func displayEmptyStories() {
-        print("EMPTY")
+        tableView.backgroundView = noStoriesView
     }
 
     func displayStoriesRetrievalError(message: String?) {
@@ -41,6 +42,7 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func refreshStories() {
         tableView.reloadData()
+        tableView.backgroundView = nil
     }
 
     // MARK: - UITableViewDataSource

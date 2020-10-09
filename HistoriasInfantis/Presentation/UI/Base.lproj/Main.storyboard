@@ -60,10 +60,35 @@
                     </view>
                     <navigationItem key="navigationItem" title="Histórias Infantis" id="7BS-p3-DxC"/>
                     <connections>
+                        <outlet property="noStoriesView" destination="rco-ol-h79" id="uCu-Le-fD8"/>
                         <outlet property="tableView" destination="8dA-dH-kL9" id="43S-NR-dmT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Zn8-CT-yRW" userLabel="Header View">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <viewLayoutGuide key="safeArea" id="DV1-vL-DOn"/>
+                </view>
+                <view contentMode="scaleToFill" id="rco-ol-h79" userLabel="No Stories View">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No stories found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38W-ML-D4O">
+                            <rect key="frame" x="57" y="75.5" width="126.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="38W-ML-D4O" firstAttribute="centerX" secondItem="jXe-Xe-QNz" secondAttribute="centerX" id="NJC-H3-4rC"/>
+                        <constraint firstItem="38W-ML-D4O" firstAttribute="centerY" secondItem="jXe-Xe-QNz" secondAttribute="centerY" id="cuL-Xl-1yV"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="jXe-Xe-QNz"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2108.695652173913" y="101.78571428571428"/>
         </scene>
