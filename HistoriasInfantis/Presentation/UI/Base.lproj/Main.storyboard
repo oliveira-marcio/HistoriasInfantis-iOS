@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="2108.695652173913" y="101.78571428571428"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="L1V-gu-659">
             <objects>
-                <tabBarController id="Ich-Wf-a2e" sceneMemberID="viewController">
+                <tabBarController id="Ich-Wf-a2e" customClass="TabBarViewController" customModule="HistoriasInfantis" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dfi-Vx-xzJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

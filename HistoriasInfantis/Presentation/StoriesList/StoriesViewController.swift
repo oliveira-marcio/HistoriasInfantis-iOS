@@ -11,7 +11,6 @@ import UIKit
 class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoriesListView {
 
     var presenter: StoriesListPresenter!
-    var configurator = StoriesListViewConfigurator()
 
     // MARK: - Outlets
 
@@ -22,7 +21,6 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        configurator.configure(storiesViewController: self)
         presenter.viewDidLoad()
     }
 
