@@ -20,7 +20,13 @@ class StoriesRepositoryImplementation: StoriesRepository {
     
     func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
         storiesLocalGateway.fetchAll { result in
-            handler(result)
+            if result.isSuccess,
+                let stories = try? result.dematerialize(),
+                stories.count > 0 {
+                handler(result)
+            } else {
+                self.requestNew(then: handler)
+            }
         }
     }
 
