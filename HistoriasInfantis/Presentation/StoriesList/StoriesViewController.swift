@@ -17,6 +17,8 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var noStoriesView: UIView!
     @IBOutlet var tableHeaderView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
 
     // MARK: - Lifecycle
 
@@ -31,6 +33,11 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     // MARK: - CallHistoryView
+
+    func displayLoading(isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        refreshButton.isEnabled = !isLoading
+    }
 
     func displayEmptyStories() {
         tableView.backgroundView = noStoriesView
@@ -61,5 +68,10 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: - UITableViewDelegate
 
+    // MARK: - IBActions
+
+    @IBAction func refreshTapped(_ sender: Any) {
+        presenter.refresh()
+    }
 }
 

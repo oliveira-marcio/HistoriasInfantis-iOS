@@ -11,6 +11,7 @@ import Foundation
 protocol StoriesListView: class {
     var presenter: StoriesListPresenter! { get set }
 
+    func displayLoading(isLoading: Bool)
     func displayEmptyStories()
     func displayStoriesRetrievalError(message: String?)
     func refreshStories()
@@ -39,8 +40,10 @@ class StoriesListPresenter {
     }
 
     func viewDidLoad() {
+        view?.displayLoading(isLoading: true)
         displayStoriesUseCase.invoke { [weak self] result in
             DispatchQueue.main.async {
+                self?.view?.displayLoading(isLoading: false)
                 if result.isSuccess {
                     self?.updateStories(result: result)
                 } else {
@@ -52,8 +55,10 @@ class StoriesListPresenter {
     }
 
     func refresh() {
+        view?.displayLoading(isLoading: true)
         requestNewStoriesUseCase.invoke { [weak self] result in
             DispatchQueue.main.async {
+                self?.view?.displayLoading(isLoading: false)
                 if result.isSuccess {
                     self?.updateStories(result: result)
                 } else {

@@ -59,6 +59,7 @@ class StoriesListPresenterTests: XCTestCase {
             presenter.configureStoryCellView(cellSpies[index], for: index)
         }
 
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertTrue(viewSpy.didRequestRefreshStories)
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertEqual(viewSpy.storiesRetrievalError, nil)
@@ -79,6 +80,7 @@ class StoriesListPresenterTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
 
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
@@ -118,6 +120,7 @@ class StoriesListPresenterTests: XCTestCase {
             presenter.configureStoryCellView(cellSpies[index], for: index)
         }
 
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertTrue(viewSpy.didRequestRefreshStories)
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertEqual(viewSpy.storiesRetrievalError, nil)
@@ -138,6 +141,7 @@ class StoriesListPresenterTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
 
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")

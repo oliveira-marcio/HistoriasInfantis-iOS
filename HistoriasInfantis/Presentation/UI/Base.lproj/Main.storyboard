@@ -49,6 +49,10 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LOr-8F-Csd"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="XjP-x2-Qgi">
+                                <rect key="frame" x="185" y="426" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -59,9 +63,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Histórias Infantis" id="7BS-p3-DxC"/>
+                    <navigationItem key="navigationItem" title="Histórias Infantis" id="7BS-p3-DxC">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="MOo-GR-nMO">
+                            <connections>
+                                <action selector="refreshTapped:" destination="BYZ-38-t0r" id="awa-7K-dTU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="XjP-x2-Qgi" id="9Vj-lg-EEL"/>
                         <outlet property="noStoriesView" destination="rco-ol-h79" id="uCu-Le-fD8"/>
+                        <outlet property="refreshButton" destination="MOo-GR-nMO" id="GdA-LY-a8g"/>
                         <outlet property="tableHeaderView" destination="Zn8-CT-yRW" id="Ge9-qW-oGg"/>
                         <outlet property="tableView" destination="8dA-dH-kL9" id="43S-NR-dmT"/>
                     </connections>
@@ -115,7 +127,7 @@
                     <viewLayoutGuide key="safeArea" id="jXe-Xe-QNz"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2108.695652173913" y="101.78571428571428"/>
+            <point key="canvasLocation" x="2107.2463768115945" y="101.78571428571428"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="L1V-gu-659">
@@ -154,6 +166,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="book.fill" catalog="system" width="128" height="100"/>
     </resources>
 </document>

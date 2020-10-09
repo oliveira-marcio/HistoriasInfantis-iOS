@@ -10,12 +10,17 @@
 
 class StoriesListViewSpy: StoriesListView {
     var presenter: StoriesListPresenter!
+    var didDisplayLoading = [Bool]()
     var didRequestDisplayEmptyStories: Bool = false
     var didRequestRefreshStories: Bool = false
     var storiesRetrievalError: String?
 
     var displayStoriesRetrievalErrorHandler: (() -> Void)?
     var refreshStoriesHandler: (() -> Void)?
+
+    func displayLoading(isLoading: Bool) {
+        didDisplayLoading.append(isLoading)
+    }
 
     func displayEmptyStories() {
         didRequestDisplayEmptyStories = true
