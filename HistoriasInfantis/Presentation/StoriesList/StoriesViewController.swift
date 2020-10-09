@@ -16,6 +16,7 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var noStoriesView: UIView!
+    @IBOutlet var tableHeaderView: UIView!
 
     // MARK: - Lifecycle
 
@@ -26,14 +27,14 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     private func setupTableView() {
-        tableView.register(StoriesHeaderView.nib,
-                           forHeaderFooterViewReuseIdentifier: StoriesHeaderView.reuseIdentifier)
+        tableView.tableHeaderView = tableHeaderView
     }
 
     // MARK: - CallHistoryView
 
     func displayEmptyStories() {
         tableView.backgroundView = noStoriesView
+        tableView.isScrollEnabled = false
     }
 
     func displayStoriesRetrievalError(message: String?) {
@@ -42,6 +43,7 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func refreshStories() {
         tableView.reloadData()
+        tableView.isScrollEnabled = true
         tableView.backgroundView = nil
     }
 
@@ -59,14 +61,5 @@ class StoriesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: - UITableViewDelegate
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: StoriesHeaderView.reuseIdentifier)
-            as! StoriesHeaderView
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
 }
 

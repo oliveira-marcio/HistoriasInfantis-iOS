@@ -30,8 +30,6 @@
 		9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */; };
 		9C0D1E1D2529D9D500B73A3F /* StoriesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */; };
 		9C40617A252F77C9002CDA3E /* StoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C406179252F77C9002CDA3E /* StoryViewCell.swift */; };
-		9C40617D252F808E002CDA3E /* StoriesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C40617C252F808E002CDA3E /* StoriesHeaderView.xib */; };
-		9C40617F252F82CA002CDA3E /* StoriesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
@@ -106,8 +104,6 @@
 		9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 		9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayTest.swift; sourceTree = "<group>"; };
 		9C406179252F77C9002CDA3E /* StoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewCell.swift; sourceTree = "<group>"; };
-		9C40617C252F808E002CDA3E /* StoriesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesHeaderView.xib; sourceTree = "<group>"; };
-		9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesHeaderView.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
@@ -309,7 +305,6 @@
 			children = (
 				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
 				9C0D1DCE2525F9E500B73A3F /* StoriesViewController.swift */,
-				9C40617E252F82CA002CDA3E /* StoriesHeaderView.swift */,
 				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
 				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
 			);
@@ -320,7 +315,6 @@
 			isa = PBXGroup;
 			children = (
 				9C0D1DD02525F9E500B73A3F /* Main.storyboard */,
-				9C40617C252F808E002CDA3E /* StoriesHeaderView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -445,7 +439,6 @@
 				9C0D1DD72525F9E800B73A3F /* LaunchScreen.storyboard in Resources */,
 				9C0D1DD42525F9E800B73A3F /* Assets.xcassets in Resources */,
 				9C0D1DD22525F9E500B73A3F /* Main.storyboard in Resources */,
-				9C40617D252F808E002CDA3E /* StoriesHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +494,6 @@
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
 				9CF94221252F469E0089801D /* StoriesGateway.swift in Sources */,
 				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
-				9C40617F252F82CA002CDA3E /* StoriesHeaderView.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
