@@ -16,11 +16,15 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var tableHeaderView: UIView!
+    @IBOutlet weak var tableHeaderImageView: UIImageView!
+    @IBOutlet weak var tableHeaderLabel: UILabel!
+    @IBOutlet weak var favoriteButton: FloatActionButton!
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableHeaderView = tableHeaderView
 
         presenter.viewDidLoad()
     }
@@ -28,7 +32,7 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - StoryView
 
     func display(title: String) {
-        print(title)
+        tableHeaderLabel.text = title
     }
 
     func display(image: Data) {
@@ -45,5 +49,11 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: ParagraphViewCell.reuseIdentifier, for: indexPath) as! ParagraphCellView
         presenter.configureCell(cell, for: indexPath.row)
         return cell as! UITableViewCell
+    }
+
+    // MARK: - IBActions
+
+    @IBAction func favoriteTapped(_ sender: Any) {
+        print("Favorited!")
     }
 }
