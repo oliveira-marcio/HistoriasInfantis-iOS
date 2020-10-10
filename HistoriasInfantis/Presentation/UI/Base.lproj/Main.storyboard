@@ -76,6 +76,7 @@
                         <outlet property="refreshButton" destination="MOo-GR-nMO" id="GdA-LY-a8g"/>
                         <outlet property="tableHeaderView" destination="Zn8-CT-yRW" id="Ge9-qW-oGg"/>
                         <outlet property="tableView" destination="8dA-dH-kL9" id="43S-NR-dmT"/>
+                        <segue destination="XAv-XJ-Fs5" kind="presentation" identifier="toStory" id="wAj-S1-sx3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -128,6 +129,22 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="2107.2463768115945" y="101.78571428571428"/>
+        </scene>
+        <!--Story View Controller-->
+        <scene sceneID="yBF-4q-mo7">
+            <objects>
+                <viewController id="XAv-XJ-Fs5" customClass="StoryViewController" customModule="HistoriasInfantis" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YTp-GH-1XG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="8O1-3l-KGL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aef-a8-V4G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rf3-xV-6hF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3013" y="102"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="L1V-gu-659">

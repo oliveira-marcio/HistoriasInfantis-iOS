@@ -32,7 +32,7 @@ class StoriesListViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableHeaderView = tableHeaderView
     }
 
-    // MARK: - CallHistoryView
+    // MARK: - StoriesListView
 
     func displayLoading(isLoading: Bool) {
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
@@ -68,10 +68,20 @@ class StoriesListViewController: UIViewController, UITableViewDelegate, UITableV
 
     // MARK: - UITableViewDelegate
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showStory(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     // MARK: - IBActions
 
     @IBAction func refreshTapped(_ sender: Any) {
         presenter.refresh()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        presenter.router.prepare(for: segue, sender: sender)
     }
 }
 

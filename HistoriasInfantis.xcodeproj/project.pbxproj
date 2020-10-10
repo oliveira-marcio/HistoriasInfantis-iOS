@@ -44,6 +44,8 @@
 		9CF73F512530F35700DBD943 /* StoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F502530F35700DBD943 /* StoryPresenter.swift */; };
 		9CF73F532530F6C200DBD943 /* ParagraphCellViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F522530F6C200DBD943 /* ParagraphCellViewSpy.swift */; };
 		9CF73F8B253207BA00DBD943 /* StoryViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F8A253207BA00DBD943 /* StoryViewSpy.swift */; };
+		9CF73F8D253216ED00DBD943 /* StoryViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F8C253216ED00DBD943 /* StoryViewConfigurator.swift */; };
+		9CF73F8F2532173F00DBD943 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F8E2532173F00DBD943 /* StoryViewController.swift */; };
 		9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF942062529F6B30089801D /* StoriesEntity.swift */; };
 		9CF9420B252B01A30089801D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; };
 		9CF9420C252B01A30089801D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -125,6 +127,8 @@
 		9CF73F502530F35700DBD943 /* StoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPresenter.swift; sourceTree = "<group>"; };
 		9CF73F522530F6C200DBD943 /* ParagraphCellViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphCellViewSpy.swift; sourceTree = "<group>"; };
 		9CF73F8A253207BA00DBD943 /* StoryViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewSpy.swift; sourceTree = "<group>"; };
+		9CF73F8C253216ED00DBD943 /* StoryViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewConfigurator.swift; sourceTree = "<group>"; };
+		9CF73F8E2532173F00DBD943 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		9CF942062529F6B30089801D /* StoriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesEntity.swift; sourceTree = "<group>"; };
 		9CF94209252B01A30089801D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -319,11 +323,11 @@
 		9C406178252F774E002CDA3E /* StoriesList */ = {
 			isa = PBXGroup;
 			children = (
-				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
+				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
 				9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */,
+				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
 				9C0D1DCE2525F9E500B73A3F /* StoriesListViewController.swift */,
 				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
-				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
 			);
 			path = StoriesList;
 			sourceTree = "<group>";
@@ -360,7 +364,9 @@
 		9CF73F4B2530EC9000DBD943 /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				9CF73F8C253216ED00DBD943 /* StoryViewConfigurator.swift */,
 				9CF73F502530F35700DBD943 /* StoryPresenter.swift */,
+				9CF73F8E2532173F00DBD943 /* StoryViewController.swift */,
 			);
 			path = Story;
 			sourceTree = "<group>";
@@ -524,8 +530,10 @@
 				9CF94219252CE9D20089801D /* CoreDataStoriesLocalGateway.swift in Sources */,
 				9C0D1DCB2525F9E500B73A3F /* AppDelegate.swift in Sources */,
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
+				9CF73F8D253216ED00DBD943 /* StoryViewConfigurator.swift in Sources */,
 				9CF94221252F469E0089801D /* StoriesGateway.swift in Sources */,
 				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
+				9CF73F8F2532173F00DBD943 /* StoryViewController.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
