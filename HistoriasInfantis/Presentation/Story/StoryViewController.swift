@@ -38,10 +38,12 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        presenter.getParagraphsCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ParagraphViewCell.reuseIdentifier, for: indexPath) as! ParagraphCellView
+        presenter.configureCell(cell, for: indexPath.row)
+        return cell as! UITableViewCell
     }
 }
