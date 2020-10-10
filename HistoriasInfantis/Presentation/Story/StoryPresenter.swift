@@ -10,7 +10,15 @@ import Foundation
 
 protocol StoryView: class {
     var presenter: StoryPresenter! { get set }
-    func display(story: Story)
+    func display(title: String)
+    func display(image: Data)
+}
+
+protocol ParagraphCellView: class {
+    func display(text: String)
+    func display(author: String)
+    func display(end: String)
+    func display(image: Data)
 }
 
 class StoryPresenter {
@@ -24,8 +32,23 @@ class StoryPresenter {
     }
 
     func viewDidLoad() {
-        DispatchQueue.main.async {
-            self.view?.display(story: self.story)
+        view?.display(title: story.title)
+    }
+
+    func getParagraphsCount() -> Int {
+        return story.paragraphs.count
+    }
+
+    func getParagraphType(for row: Int) -> String {
+        return story.paragraphs[row].type
+    }
+
+    func configureCell(_ view: ParagraphCellView, for row: Int) {
+        switch story.paragraphs[row] {
+        case .text(let text): view.display(text: text)
+        case .author(let author): view.display(author: author)
+        case .end(let end): view.display(end: end)
+        case .image(_): view.display(image: Data())
         }
     }
 }

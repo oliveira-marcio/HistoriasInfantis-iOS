@@ -1,5 +1,5 @@
 //
-//  StoryViewSpy.swift
+//  ParagraphCellViewSpy..swift
 //  HistoriasInfantisTests
 //
 //  Created by Márcio Oliveira on 10/9/20.
@@ -9,15 +9,24 @@
 import Foundation
 @testable import HistoriasInfantis
 
-class StoryViewSpy: StoryView {
-    var presenter: StoryPresenter!
-    var title: String?
+class ParagraphCellViewSpy: ParagraphCellView {
+    var text: String?
+    var author: String?
+    var end: String?
     var image: Data?
 
     var displayImageHandler: (() -> Void)?
 
-    func display(title: String) {
-        self.title = title
+    func display(text: String) {
+        self.text = text
+    }
+
+    func display(author: String) {
+        self.author = author
+    }
+
+    func display(end: String) {
+        self.end = end
     }
 
     func display(image: Data) {

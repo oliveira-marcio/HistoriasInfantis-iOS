@@ -11,6 +11,15 @@ import Foundation
 struct Story: Equatable {
     enum Paragraph: Equatable {
         case text(String), image(String), author(String), end(String)
+
+        var type: String {
+            switch self {
+            case .text(_): return "text"
+            case .image(_): return "image"
+            case .author(_): return "author"
+            case .end(_): return "end"
+            }
+        }
     }
     
     let id: Int
