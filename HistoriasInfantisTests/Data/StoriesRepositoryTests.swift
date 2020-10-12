@@ -14,14 +14,17 @@ class StoriesRepositoryTests: XCTestCase {
     var fakeStoriesGateway: FakeStoriesGateway!
     var fakeStoriesLocalGateway: FakeStoriesLocalGateway!
     var storiesRepository: StoriesRepositoryImplementation!
+    var eventNotifierStub: EventNotifierStub!
 
     override func setUp() {
         super.setUp()
         fakeStoriesGateway = FakeStoriesGateway()
         fakeStoriesLocalGateway = FakeStoriesLocalGateway()
+        eventNotifierStub = EventNotifierStub()
         storiesRepository = StoriesRepositoryImplementation(
             storiesGateway: fakeStoriesGateway,
-            storiesLocalGateway: fakeStoriesLocalGateway
+            storiesLocalGateway: fakeStoriesLocalGateway,
+            eventNotifier: eventNotifierStub
         )
     }
 
@@ -410,7 +413,7 @@ class StoriesRepositoryTests: XCTestCase {
         XCTAssertEqual(error, StoriesRepositoryError.unableToRetrieve)
     }
 
-    func test_given_unfavorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_true() {
+    func test_given_unfavorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_true_and_update_is_notified() {
         let unfavoritedStory = Story(
                 id: 1,
                 title: "Story 1",
@@ -422,6 +425,8 @@ class StoriesRepositoryTests: XCTestCase {
                 favorite: false
             )
 
+        let notificationRawName = StoriesRepositoryNotification.didUpdateFavorites.notificationName.rawValue
+
         let fetchExpectation = expectation(description: "toggle favorite expectation")
 
         storiesRepository.toggleFavorite(story: unfavoritedStory) { _ in
@@ -431,9 +436,10 @@ class StoriesRepositoryTests: XCTestCase {
 
         XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
         XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, true)
+        XCTAssertEqual(eventNotifierStub.didPost(eventNamed: notificationRawName), true)
     }
 
-    func test_given_favorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_false() {
+    func test_given_favorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_false_and_update_is_notified() {
         let favoritedStory = Story(
                 id: 1,
                 title: "Story 1",
@@ -445,6 +451,8 @@ class StoriesRepositoryTests: XCTestCase {
                 favorite: true
             )
 
+        let notificationRawName = StoriesRepositoryNotification.didUpdateFavorites.notificationName.rawValue
+
         let fetchExpectation = expectation(description: "toggle favorite expectation")
 
         storiesRepository.toggleFavorite(story: favoritedStory) { _ in
@@ -454,9 +462,10 @@ class StoriesRepositoryTests: XCTestCase {
 
         XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
         XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, false)
+        XCTAssertEqual(eventNotifierStub.didPost(eventNamed: notificationRawName), true)
     }
 
-    func test_given_favorited_story_when_toggle_favorite_and_local_gateway_fails_then_should_return_error() {
+    func test_given_favorited_story_when_toggle_favorite_and_local_gateway_fails_then_should_return_error_and_do_not_notify_update() {
         let favoritedStory = Story(
                 id: 1,
                 title: "Story 1",
@@ -471,6 +480,7 @@ class StoriesRepositoryTests: XCTestCase {
         fakeStoriesLocalGateway.shouldUpdateFail = true
 
         var error: StoriesRepositoryError?
+        let notificationRawName = StoriesRepositoryNotification.didUpdateFavorites.notificationName.rawValue
         let fetchExpectation = expectation(description: "toggle favorite expectation")
 
         storiesRepository.toggleFavorite(story: favoritedStory) { resultError in
@@ -482,5 +492,6 @@ class StoriesRepositoryTests: XCTestCase {
         XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
         XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, false)
         XCTAssertEqual(error, StoriesRepositoryError.unableToSave)
+        XCTAssertEqual(eventNotifierStub.didPost(eventNamed: notificationRawName), false)
     }
 }

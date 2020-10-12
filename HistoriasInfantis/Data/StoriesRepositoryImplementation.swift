@@ -9,13 +9,16 @@
 class StoriesRepositoryImplementation: StoriesRepository {
     private let storiesLocalGateway: StoriesLocalGateway!
     private let storiesGateway: StoriesGateway!
+    private let eventNotifier: EventNotifier!
 
     init(
         storiesGateway: StoriesGateway,
-        storiesLocalGateway: StoriesLocalGateway
+        storiesLocalGateway: StoriesLocalGateway,
+        eventNotifier: EventNotifier
     ) {
         self.storiesGateway = storiesGateway
         self.storiesLocalGateway = storiesLocalGateway
+        self.eventNotifier = eventNotifier
     }
     
     func fetchAll(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
@@ -69,8 +72,11 @@ class StoriesRepositoryImplementation: StoriesRepository {
     }
 
     func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryWriteErrorCompletionHandler) {
-        storiesLocalGateway.update(storyId: story.id, favorite: !story.favorite) { result in
-            handler(result)
+        storiesLocalGateway.update(storyId: story.id, favorite: !story.favorite) { error in
+            if error == nil {
+                self.eventNotifier.notify(notification: StoriesRepositoryNotification.didUpdateFavorites)
+            }
+            handler(error)
         }
     }
 }

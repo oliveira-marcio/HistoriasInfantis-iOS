@@ -35,6 +35,7 @@
 		9CB70E8D2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E8C2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift */; };
 		9CB70E8F2534D8780096FA25 /* EventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E8E2534D8780096FA25 /* EventNotifier.swift */; };
 		9CB70E912534DB940096FA25 /* EventNotifierStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E902534DB940096FA25 /* EventNotifierStub.swift */; };
+		9CB70E942534F2980096FA25 /* NotificationCenterEventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E932534F2980096FA25 /* NotificationCenterEventNotifier.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
@@ -127,6 +128,7 @@
 		9CB70E8C2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFavoritesListUseCaseTests.swift; sourceTree = "<group>"; };
 		9CB70E8E2534D8780096FA25 /* EventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifier.swift; sourceTree = "<group>"; };
 		9CB70E902534DB940096FA25 /* EventNotifierStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifierStub.swift; sourceTree = "<group>"; };
+		9CB70E932534F2980096FA25 /* NotificationCenterEventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterEventNotifier.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				9C0D1DCA2525F9E500B73A3F /* AppDelegate.swift */,
 				9C0D1DCC2525F9E500B73A3F /* SceneDelegate.swift */,
 				9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */,
+				9CB70E932534F2980096FA25 /* NotificationCenterEventNotifier.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				9CB70E892534CC0C0096FA25 /* BaseStoriesListPresenter.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9CF73F9125321E9300DBD943 /* ParagraphViewCell.swift in Sources */,
+				9CB70E942534F2980096FA25 /* NotificationCenterEventNotifier.swift in Sources */,
 				9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
 				9C0D1DF625261A1600B73A3F /* Story.swift in Sources */,

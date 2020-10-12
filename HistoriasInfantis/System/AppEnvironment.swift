@@ -29,10 +29,12 @@ final class DependencyResolver {
 
     lazy var storiesLocalGateway: StoriesLocalGateway = CoreDataStoriesLocalGateway()
 
+    lazy var eventNotifier: NotificationCenterEventNotifier = NotificationCenterEventNotifier()
+
     lazy var storiesRepository: StoriesRepository = StoriesRepositoryImplementation(storiesGateway: storiesGateway,
-                                                                                    storiesLocalGateway: storiesLocalGateway)
+                                                                                    storiesLocalGateway: storiesLocalGateway,
+                                                                                    eventNotifier: eventNotifier)
 
     lazy var displayStoriesUseCase = DisplayStoriesListUseCase(storiesRepository: storiesRepository)
     lazy var requestNewStoriesUseCase = RequestNewStoriesUseCase(storiesRepository: storiesRepository)
 }
-
