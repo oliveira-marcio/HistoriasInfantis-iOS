@@ -270,6 +270,15 @@ class HtmlParserTests: XCTestCase {
         XCTAssertEqual(story, expectedStory)
     }
 
+
+    func test_it_should_unescape_html_story_titles_when_parse_called() {
+        let encodedTitle = "This title contains &#8216;special &#8211; characters&#8217;"
+
+        let story = htmlParser.parse(html: "", id: 1, title: encodedTitle, url: "", imageUrl: "", createDate: Date(), updateDate: Date())
+
+        XCTAssertEqual(story.title, "This title contains ‘special – characters’")
+    }
+
     private func createStory(with paragraphs: [Story.Paragraph]) -> Story {
         return Story(
             id: 1,

@@ -60,7 +60,7 @@ class SwiftSoupHtmlParser: HtmlParser {
 
             return Story(
                 id: id,
-                title: title,
+                title: unescapeHtml(from: title),
                 url: url,
                 imageUrl: imageUrl,
                 paragraphs: paragraphsArray,
@@ -82,6 +82,10 @@ class SwiftSoupHtmlParser: HtmlParser {
             createDate: createDate,
             updateDate: updateDate
         )
+    }
+
+    private func unescapeHtml(from htmlEncodedString: String) -> String {
+        return (try? Entities.unescape(htmlEncodedString)) ?? htmlEncodedString
     }
 
     private func replaceAll(from text: String, regEx: String, with substr: String) -> String {
