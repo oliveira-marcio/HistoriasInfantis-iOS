@@ -33,6 +33,8 @@
 		9CB70E892534CC0C0096FA25 /* BaseStoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */; };
 		9CB70E8B2534CD9B0096FA25 /* DisplayFavoritesListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E8A2534CD9B0096FA25 /* DisplayFavoritesListUseCase.swift */; };
 		9CB70E8D2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E8C2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift */; };
+		9CB70E8F2534D8780096FA25 /* EventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E8E2534D8780096FA25 /* EventNotifier.swift */; };
+		9CB70E912534DB940096FA25 /* EventNotifierStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E902534DB940096FA25 /* EventNotifierStub.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
@@ -123,6 +125,8 @@
 		9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CB70E8A2534CD9B0096FA25 /* DisplayFavoritesListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFavoritesListUseCase.swift; sourceTree = "<group>"; };
 		9CB70E8C2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFavoritesListUseCaseTests.swift; sourceTree = "<group>"; };
+		9CB70E8E2534D8780096FA25 /* EventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifier.swift; sourceTree = "<group>"; };
+		9CB70E902534DB940096FA25 /* EventNotifierStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifierStub.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 				9C0D1DF4252619EF00B73A3F /* Models */,
 				9C0D1DF22526191F00B73A3F /* Result.swift */,
 				9CF9421E252F45660089801D /* StoriesRepository.swift */,
+				9CB70E8E2534D8780096FA25 /* EventNotifier.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 		9C0D1DFE252634A500B73A3F /* Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				9CB70E922534DB9A0096FA25 /* Domain */,
 				9C0D1DFF252634AF00B73A3F /* Data */,
 				9CF73F3C252FA17300DBD943 /* Presentation */,
 			);
@@ -356,6 +362,14 @@
 				9C0D1DD02525F9E500B73A3F /* Main.storyboard */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9CB70E922534DB9A0096FA25 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9CB70E902534DB940096FA25 /* EventNotifierStub.swift */,
+			);
+			name = Domain;
 			sourceTree = "<group>";
 		};
 		9CF73F37252F9CC000DBD943 /* Presentation */ = {
@@ -558,6 +572,7 @@
 				9C0D1E172529D5AA00B73A3F /* URLSessionProtocol.swift in Sources */,
 				9CF94219252CE9D20089801D /* CoreDataStoriesLocalGateway.swift in Sources */,
 				9C0D1DCB2525F9E500B73A3F /* AppDelegate.swift in Sources */,
+				9CB70E8F2534D8780096FA25 /* EventNotifier.swift in Sources */,
 				9CB70E8B2534CD9B0096FA25 /* DisplayFavoritesListUseCase.swift in Sources */,
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
 				9CF73F8D253216ED00DBD943 /* StoryViewConfigurator.swift in Sources */,
@@ -586,6 +601,7 @@
 				9C0D1E01252634BD00B73A3F /* FakeStoriesRepository.swift in Sources */,
 				9CF73F532530F6C200DBD943 /* ParagraphCellViewSpy.swift in Sources */,
 				9CF73F4D2530ED3500DBD943 /* StoriesListViewRouterSpy.swift in Sources */,
+				9CB70E912534DB940096FA25 /* EventNotifierStub.swift in Sources */,
 				9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */,
 				9CF73F8B253207BA00DBD943 /* StoryViewSpy.swift in Sources */,
 				9CF73F952534C46500DBD943 /* FavoritesListPresenterTests.swift in Sources */,

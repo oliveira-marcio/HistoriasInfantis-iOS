@@ -13,8 +13,10 @@ class FakeStoriesRepository: StoriesRepository {
     var fetchAllWasCalled = false
     var fetchFavoritesWasCalled = false
     var requestNewWasCalled = false
+    var toggleFavoriteWasCalled = false
     var shouldFetchAllFail = false
     var shouldFetchFavoritesFail = false
+    var shouldToggleFavoriteFail = false
     var shouldGatewayFail = false
     var shouldLocalGatewayFail = false
     var serverErrorMessage = "Bad Server Response"
@@ -22,11 +24,6 @@ class FakeStoriesRepository: StoriesRepository {
     func fetchAll(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
         fetchAllWasCalled = true
         handler(shouldFetchAllFail ? .failure(StoriesRepositoryError.gatewayRequestFail(serverErrorMessage)) : .success(stories))
-    }
-
-    func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
-        fetchFavoritesWasCalled = true
-        handler(shouldFetchFavoritesFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
     }
 
     func requestNew(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
@@ -38,5 +35,15 @@ class FakeStoriesRepository: StoriesRepository {
         } else {
             handler(.success(stories))
         }
+    }
+
+    func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
+        fetchFavoritesWasCalled = true
+        handler(shouldFetchFavoritesFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
+    }
+
+    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryWriteErrorCompletionHandler) {
+        toggleFavoriteWasCalled = true
+         handler(shouldToggleFavoriteFail ? StoriesRepositoryError.unableToSave : nil)
     }
 }

@@ -30,12 +30,6 @@ class StoriesRepositoryImplementation: StoriesRepository {
         }
     }
 
-    func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
-        storiesLocalGateway.fetchFavorites { result in
-            handler(result)
-        }
-    }
-
     func requestNew(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
         storiesGateway.fetchStories { [weak self] result in
             if result.isSuccess {
@@ -65,6 +59,18 @@ class StoriesRepositoryImplementation: StoriesRepository {
                     handler(.success(stories))
                 }
             }
+        }
+    }
+
+    func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
+        storiesLocalGateway.fetchFavorites { result in
+            handler(result)
+        }
+    }
+
+    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryWriteErrorCompletionHandler) {
+        storiesLocalGateway.update(storyId: story.id, favorite: !story.favorite) { result in
+            handler(result)
         }
     }
 }

@@ -409,4 +409,78 @@ class StoriesRepositoryTests: XCTestCase {
         XCTAssertTrue(fakeStoriesLocalGateway.fetchFavoritesWasCalled)
         XCTAssertEqual(error, StoriesRepositoryError.unableToRetrieve)
     }
+
+    func test_given_unfavorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_true() {
+        let unfavoritedStory = Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: Date(),
+                updateDate: Date(),
+                favorite: false
+            )
+
+        let fetchExpectation = expectation(description: "toggle favorite expectation")
+
+        storiesRepository.toggleFavorite(story: unfavoritedStory) { _ in
+            fetchExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
+        XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, true)
+    }
+
+    func test_given_favorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_false() {
+        let favoritedStory = Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: Date(),
+                updateDate: Date(),
+                favorite: true
+            )
+
+        let fetchExpectation = expectation(description: "toggle favorite expectation")
+
+        storiesRepository.toggleFavorite(story: favoritedStory) { _ in
+            fetchExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
+        XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, false)
+    }
+
+    func test_given_favorited_story_when_toggle_favorite_and_local_gateway_fails_then_should_return_error() {
+        let favoritedStory = Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: Date(),
+                updateDate: Date(),
+                favorite: true
+            )
+
+        fakeStoriesLocalGateway.shouldUpdateFail = true
+
+        var error: StoriesRepositoryError?
+        let fetchExpectation = expectation(description: "toggle favorite expectation")
+
+        storiesRepository.toggleFavorite(story: favoritedStory) { resultError in
+            error = resultError
+            fetchExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
+        XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, false)
+        XCTAssertEqual(error, StoriesRepositoryError.unableToSave)
+    }
 }

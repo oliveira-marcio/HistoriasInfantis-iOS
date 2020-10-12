@@ -15,7 +15,8 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
     var fetchFavoritesWasCalled = false
     var clearAllWasCalled = false
     var insertWasCalled = false
-    var updateWasCalled = false
+    var updateStoryId: Int?
+    var updateFavorite: Bool?
 
     var shouldFetchAllFail = false
     var shouldFetchFavoritesFail = false
@@ -51,10 +52,11 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
     }
 
     func update(storyId: Int, favorite: Bool, then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
-        updateWasCalled = true
+        updateStoryId = storyId
+        updateFavorite = favorite
         if !shouldUpdateFail {
             self.stories = updatedStories
         }
-        handler(updateWasCalled ? StoriesRepositoryError.unableToSave : nil)
+        handler(shouldUpdateFail ? StoriesRepositoryError.unableToSave : nil)
     }
 }
