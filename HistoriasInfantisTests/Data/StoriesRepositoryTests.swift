@@ -96,7 +96,7 @@ class StoriesRepositoryTests: XCTestCase {
         XCTAssertFalse(fakeStoriesLocalGateway.insertWasCalled)
     }
 
-    func test_when_request_new_and_local_gateway_fails_to_clear_current_stories_then_should_just_return_fetched_stories() {
+    func test_when_request_new_and_local_gateway_fails_to_clear_current_stories_then_should_return_persistence_save_error() {
         let currentStories = [
             Story(
                 id: 1,
@@ -131,23 +131,25 @@ class StoriesRepositoryTests: XCTestCase {
         fakeStoriesLocalGateway.stories = currentStories
         fakeStoriesLocalGateway.shouldClearAllFail = true
 
-        var stories: [Story]?
+        var error: StoriesRepositoryError?
         let fetchExpectation = expectation(description: "fetch expectation")
 
         storiesRepository.requestNew { result in
-            stories = try? result.dematerialize()
+            if case .failure(let resultError) = result {
+                error = resultError as? StoriesRepositoryError
+            }
             fetchExpectation.fulfill()
         }
         waitForExpectations(timeout: 1)
 
         XCTAssertTrue(fakeStoriesGateway.requestWasCalled)
-        XCTAssertEqual(stories, fetchedStories)
+        XCTAssertEqual(error, StoriesRepositoryError.unableToSave)
         XCTAssertTrue(fakeStoriesLocalGateway.clearAllWasCalled)
         XCTAssertFalse(fakeStoriesLocalGateway.insertWasCalled)
         XCTAssertEqual(fakeStoriesLocalGateway.stories, currentStories)
     }
 
-    func test_when_request_new_and_local_gateway_fails_to_save_new_stories_then_should_just_return_fetched_stories() {
+    func test_when_request_new_and_local_gateway_fails_to_save_new_stories_then_should_return_persistence_save_error() {
         let currentStories = [
             Story(
                 id: 1,
@@ -182,17 +184,19 @@ class StoriesRepositoryTests: XCTestCase {
         fakeStoriesLocalGateway.stories = currentStories
         fakeStoriesLocalGateway.shouldInsertFail = true
 
-        var stories: [Story]?
+        var error: StoriesRepositoryError?
         let fetchExpectation = expectation(description: "fetch expectation")
 
         storiesRepository.requestNew { result in
-            stories = try? result.dematerialize()
+            if case .failure(let resultError) = result {
+                error = resultError as? StoriesRepositoryError
+            }
             fetchExpectation.fulfill()
         }
         waitForExpectations(timeout: 1)
 
         XCTAssertTrue(fakeStoriesGateway.requestWasCalled)
-        XCTAssertEqual(stories, fetchedStories)
+        XCTAssertEqual(error, StoriesRepositoryError.unableToSave)
         XCTAssertTrue(fakeStoriesLocalGateway.clearAllWasCalled)
         XCTAssertTrue(fakeStoriesLocalGateway.insertWasCalled)
         XCTAssertEqual(fakeStoriesLocalGateway.stories, [Story]())

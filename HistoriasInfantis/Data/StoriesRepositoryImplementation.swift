@@ -34,25 +34,29 @@ class StoriesRepositoryImplementation: StoriesRepository {
         storiesGateway.fetchStories { [weak self] result in
             if result.isSuccess {
                 let stories = try? result.dematerialize()
-                self?.syncPersistence(stories: stories)
+                self?.syncPersistence(stories: stories, then: handler)
+            } else {
+                handler(result)
             }
-
-            handler(result)
         }
     }
 
-    private func syncPersistence(stories: [Story]?) {
+    private func syncPersistence(stories: [Story]?, then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
         guard let stories = stories else { return }
 
         storiesLocalGateway.clearAll { [weak self] error in
-            if let _ = error {
+            if let error = error {
                 print("Clear persistence failed.")
+                handler(.failure(error))
                 return
             }
 
             self?.storiesLocalGateway.insert(stories: stories) { error in
-                if let _ = error {
+                if let error = error {
                     print("Insert new stories into persistence failed.")
+                    handler(.failure(error))
+                } else {
+                    handler(.success(stories))
                 }
             }
         }

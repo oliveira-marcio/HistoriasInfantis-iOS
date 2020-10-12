@@ -132,7 +132,7 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(cellSpies[1].title, "Story 2")
     }
 
-    func test_it_should_display_error_when_refresh_is_called_and_repository_fails_to_retrieve_new_stories() {
+    func test_it_should_display_server_error_when_refresh_is_called_and_web_gateway_fails() {
         fakeStoriesRepository.shouldGatewayFail = true
 
         presenter.refresh()
@@ -148,6 +148,24 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
+    }
+
+    func test_it_should_display_empty_stories_and_persistence_error_when_refresh_is_called_and_sync_with_local_gateway_fails() {
+        fakeStoriesRepository.shouldLocalGatewayFail = true
+
+        presenter.refresh()
+
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.displayStoriesRetrievalErrorHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
+        XCTAssertFalse(viewSpy.didRequestRefreshStories)
+        XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "Persistence Error")
     }
 
     func test_it_should_navigate_to_selected_story_when_show_story_is_called() {

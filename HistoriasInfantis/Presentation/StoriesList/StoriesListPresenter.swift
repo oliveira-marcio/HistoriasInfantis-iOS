@@ -65,8 +65,20 @@ class StoriesListPresenter {
                 if result.isSuccess {
                     self?.updateStories(result: result)
                 } else {
-                    self?.view?.displayStoriesRetrievalError(message: "Server Error")
+                    self?.handleRefreshError(result: result)
                 }
+            }
+        }
+    }
+
+    private func handleRefreshError(result: Result<[Story]>) {
+        if case .failure(let resultError) = result,
+            let error = resultError as? StoriesRepositoryError {
+            if error == .unableToSave {
+                updateStories(result: result)
+                view?.displayStoriesRetrievalError(message: "Persistence Error")
+            } else {
+                view?.displayStoriesRetrievalError(message: "Server Error")
             }
         }
     }
@@ -79,6 +91,9 @@ class StoriesListPresenter {
         if let stories = try? result.dematerialize() {
             self.stories = stories
             view?.refreshStories()
+        } else {
+            stories = []
+            view?.displayEmptyStories()
         }
     }
 
