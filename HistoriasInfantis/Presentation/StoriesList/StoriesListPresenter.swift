@@ -12,24 +12,24 @@ class StoriesListPresenter: BaseStoriesListPresenter {
 
     internal(set) public weak var view: StoriesListView?
     internal(set) public var router: StoriesListViewRouter
-    private(set) var displayStoriesUseCase: DisplayStoriesUseCase
+    private(set) var displayStoriesListUseCase: DisplayStoriesListUseCase
     private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
 
     var stories = [Story]()
 
     init(view: StoriesListView,
          router: StoriesListViewRouter,
-         displayStoriesUseCase: DisplayStoriesUseCase,
+         displayStoriesListUseCase: DisplayStoriesListUseCase,
          requestNewStoriesUseCase: RequestNewStoriesUseCase) {
         self.view = view
         self.router = router
-        self.displayStoriesUseCase = displayStoriesUseCase
+        self.displayStoriesListUseCase = displayStoriesListUseCase
         self.requestNewStoriesUseCase = requestNewStoriesUseCase
     }
 
     func viewDidLoad() {
         view?.displayLoading(isLoading: true)
-        displayStoriesUseCase.invoke { [weak self] result in
+        displayStoriesListUseCase.invoke { [weak self] result in
             DispatchQueue.main.async {
                 self?.view?.displayLoading(isLoading: false)
                 if result.isSuccess {

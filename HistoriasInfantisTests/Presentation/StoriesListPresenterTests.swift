@@ -24,7 +24,7 @@ class StoriesListPresenterTests: XCTestCase {
         fakeStoriesRepository = FakeStoriesRepository()
         presenter = StoriesListPresenter(view: viewSpy,
                                          router: routerSpy,
-                                         displayStoriesUseCase: DisplayStoriesUseCase(storiesRepository: fakeStoriesRepository),
+                                         displayStoriesListUseCase: DisplayStoriesListUseCase(storiesRepository: fakeStoriesRepository),
                                          requestNewStoriesUseCase: RequestNewStoriesUseCase(storiesRepository: fakeStoriesRepository))
     }
 

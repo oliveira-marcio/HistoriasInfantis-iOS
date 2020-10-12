@@ -32,7 +32,7 @@ final class DependencyResolver {
     lazy var storiesRepository: StoriesRepository = StoriesRepositoryImplementation(storiesGateway: storiesGateway,
                                                                                     storiesLocalGateway: storiesLocalGateway)
 
-    lazy var displayStoriesUseCase = DisplayStoriesUseCase(storiesRepository: storiesRepository)
+    lazy var displayStoriesUseCase = DisplayStoriesListUseCase(storiesRepository: storiesRepository)
     lazy var requestNewStoriesUseCase = RequestNewStoriesUseCase(storiesRepository: storiesRepository)
 }
 
