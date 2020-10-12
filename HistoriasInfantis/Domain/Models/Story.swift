@@ -29,4 +29,23 @@ struct Story: Equatable {
     let paragraphs: [Paragraph]
     let createDate: Date
     let updateDate: Date
+    let favorite: Bool
+
+    init(id: Int,
+         title: String,
+         url: String,
+         imageUrl: String,
+         paragraphs: [Paragraph],
+         createDate: Date,
+         updateDate: Date,
+         favorite: Bool = false) {
+        self.id = id
+        self.title = title
+        self.url = url
+        self.imageUrl = imageUrl
+        self.paragraphs = paragraphs
+        self.createDate = createDate
+        self.updateDate = updateDate
+        self.favorite = favorite
+    }
 }

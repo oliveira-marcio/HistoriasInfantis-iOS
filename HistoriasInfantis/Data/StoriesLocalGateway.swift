@@ -11,6 +11,8 @@ typealias StoriesLocalGatewayWriteErrorCompletionHandler = (StoriesRepositoryErr
 
 protocol StoriesLocalGateway {
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler)
+    func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler)
     func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
     func insert(stories: [Story], then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
+    func update(storyId: Int, favorite: Bool, then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler)
 }

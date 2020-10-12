@@ -50,6 +50,39 @@ class StoriesLocalGatewayTests: XCTestCase {
         XCTAssertEqual(fetchResult, expectedStories)
     }
 
+    func test_given_no_entries_stored_when_fetch_favorites_entries_then_return_empty() {
+        var fetchResult: [Story]?
+
+        let fetchExpectation = expectation(description: "fetch favorites expectation")
+
+        gateway.fetchFavorites { result in
+            fetchResult = try? result.dematerialize()
+            fetchExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(fetchResult, [])
+    }
+
+    func test_given_entries_stored_when_fetch_favorites_entries_then_should_return_favorite_entries() {
+        let stories = populateSampleData(favorites: [2, 3])
+        let expectedStories = [stories[1], stories[2]]
+
+        var fetchResult: [Story]?
+
+        let fetchExpectation = expectation(description: "fetch favorites expectation")
+
+        gateway.fetchFavorites { result in
+            fetchResult = try? result.dematerialize()
+            fetchExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(fetchResult, expectedStories)
+    }
+
     func test_given_entries_stored_when_clear_all_then_should_return_empty_entries_on_fetch_all() {
         let _ = populateSampleData()
         var fetchResult: [Story]?
@@ -68,7 +101,7 @@ class StoriesLocalGatewayTests: XCTestCase {
         XCTAssertEqual(fetchResult, [])
     }
 
-    func test_given_entries_stored_when_insert_stories_then_should_return_entries_on_fetch_all() {
+    func test_given_entries_stored_when_insert_stories_then_should_return_updated_entries_on_fetch_all() {
         let initialStories = populateSampleData()
         let newStory = [
             Story(
@@ -98,7 +131,39 @@ class StoriesLocalGatewayTests: XCTestCase {
         XCTAssertEqual(fetchResult, initialStories + newStory)
     }
 
-    private func populateSampleData() -> [Story] {
+    func test_given_entries_stored_when_update_story_then_should_return_updated_entries_on_fetch_all() {
+        _ = populateSampleData()
+
+        var fetchResult: [Story]?
+
+        let fetchExpectation = expectation(description: "update story expectation")
+
+        gateway.update(storyId: 2, favorite: true) { [weak self] _ in
+            self?.gateway.fetchAll { result in
+                fetchResult = try? result.dematerialize()
+                fetchExpectation.fulfill()
+            }
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(fetchResult?[0].id, 1)
+        XCTAssertEqual(fetchResult?[0].favorite, false)
+
+        XCTAssertEqual(fetchResult?[1].id, 2)
+        XCTAssertEqual(fetchResult?[1].favorite, true)
+
+        XCTAssertEqual(fetchResult?[2].id, 3)
+        XCTAssertEqual(fetchResult?[2].favorite, false)
+
+        XCTAssertEqual(fetchResult?[3].id, 4)
+        XCTAssertEqual(fetchResult?[3].favorite, false)
+
+        XCTAssertEqual(fetchResult?[4].id, 5)
+        XCTAssertEqual(fetchResult?[4].favorite, false)
+    }
+
+    private func populateSampleData(favorites: [Int] = []) -> [Story] {
         let stories = Array(1...5).map { id in
             Story(
                 id: id,
@@ -107,7 +172,9 @@ class StoriesLocalGatewayTests: XCTestCase {
                 imageUrl: "http://image\(id)",
                 paragraphs: [.text("paragraph\(id)")],
                 createDate: Date(),
-                updateDate: Date())
+                updateDate: Date(),
+                favorite: favorites.contains(id)
+            )
         }
 
         let insertExpectation = expectation(description: "Insert records expectation")

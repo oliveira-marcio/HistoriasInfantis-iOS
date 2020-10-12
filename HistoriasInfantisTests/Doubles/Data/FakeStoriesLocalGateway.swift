@@ -10,16 +10,25 @@
 
 class FakeStoriesLocalGateway: StoriesLocalGateway {
     var stories = [Story]()
+    var updatedStories = [Story]()
     var fetchAllWasCalled = false
+    var fetchFavoritesWasCalled = false
     var clearAllWasCalled = false
     var insertWasCalled = false
+    var updateWasCalled = false
 
     var shouldFetchAllFail = false
     var shouldClearAllFail = false
     var shouldInsertFail = false
+    var shouldUpdateFail = false
 
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
         fetchAllWasCalled = true
+        handler(shouldFetchAllFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
+    }
+
+    func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
+        fetchFavoritesWasCalled = true
         handler(shouldFetchAllFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
     }
 
@@ -38,5 +47,13 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
             self.stories = stories
         }
         handler(shouldInsertFail ? StoriesRepositoryError.unableToSave : nil)
+    }
+
+    func update(storyId: Int, favorite: Bool, then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
+        updateWasCalled = true
+        if !shouldUpdateFail {
+            self.stories = updatedStories
+        }
+        handler(updateWasCalled ? StoriesRepositoryError.unableToSave : nil)
     }
 }
