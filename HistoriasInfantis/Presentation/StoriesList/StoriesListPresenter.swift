@@ -8,25 +8,10 @@
 
 import Foundation
 
-protocol StoriesListView: class {
-    var presenter: StoriesListPresenter! { get set }
+class StoriesListPresenter: BaseStoriesListPresenter {
 
-    func displayLoading(isLoading: Bool)
-    func displayEmptyStories()
-    func displayStoriesRetrievalError(message: String?)
-    func refreshStories()
-}
-
-protocol StoryCellView: class {
-    func display(image from: Data)
-    func display(image named: String)
-    func display(title: String)
-}
-
-class StoriesListPresenter {
-
-    private(set) weak var view: StoriesListView?
-    private(set) public var router: StoriesListViewRouter
+    internal(set) public weak var view: StoriesListView?
+    internal(set) public var router: StoriesListViewRouter
     private(set) var displayStoriesUseCase: DisplayStoriesUseCase
     private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
 
@@ -83,10 +68,6 @@ class StoriesListPresenter {
         }
     }
 
-    public func configureStoryCellView(_ storyView: StoryCellView, for row: Int) {
-        storyView.display(title: stories[row].title)
-    }
-
     private func updateStories(result: Result<[Story]>) {
         if let stories = try? result.dematerialize() {
             self.stories = stories
@@ -95,9 +76,5 @@ class StoriesListPresenter {
             stories = []
             view?.displayEmptyStories()
         }
-    }
-
-    public func showStory(at row: Int) {
-        router.navigateToStory(stories[row])
     }
 }

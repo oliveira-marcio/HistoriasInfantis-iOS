@@ -30,6 +30,7 @@
 		9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */; };
 		9C0D1E1D2529D9D500B73A3F /* StoriesGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */; };
 		9C40617A252F77C9002CDA3E /* StoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C406179252F77C9002CDA3E /* StoryViewCell.swift */; };
+		9CB70E892534CC0C0096FA25 /* BaseStoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
@@ -48,6 +49,8 @@
 		9CF73F8F2532173F00DBD943 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F8E2532173F00DBD943 /* StoryViewController.swift */; };
 		9CF73F9125321E9300DBD943 /* ParagraphViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F9025321E9300DBD943 /* ParagraphViewCell.swift */; };
 		9CF73F932532317600DBD943 /* FloatActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F922532317600DBD943 /* FloatActionButton.swift */; };
+		9CF73F952534C46500DBD943 /* FavoritesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F942534C46500DBD943 /* FavoritesListPresenterTests.swift */; };
+		9CF73F982534C53700DBD943 /* FavoritesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F972534C53700DBD943 /* FavoritesListPresenter.swift */; };
 		9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF942062529F6B30089801D /* StoriesEntity.swift */; };
 		9CF9420B252B01A30089801D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; };
 		9CF9420C252B01A30089801D /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF94209252B01A30089801D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -115,6 +118,7 @@
 		9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 		9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayTest.swift; sourceTree = "<group>"; };
 		9C406179252F77C9002CDA3E /* StoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewCell.swift; sourceTree = "<group>"; };
+		9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		9CF73F8E2532173F00DBD943 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		9CF73F9025321E9300DBD943 /* ParagraphViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphViewCell.swift; sourceTree = "<group>"; };
 		9CF73F922532317600DBD943 /* FloatActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatActionButton.swift; sourceTree = "<group>"; };
+		9CF73F942534C46500DBD943 /* FavoritesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListPresenterTests.swift; sourceTree = "<group>"; };
+		9CF73F972534C53700DBD943 /* FavoritesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListPresenter.swift; sourceTree = "<group>"; };
 		9CF942062529F6B30089801D /* StoriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesEntity.swift; sourceTree = "<group>"; };
 		9CF94209252B01A30089801D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		9CF9420A252B01A30089801D /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = Carthage/Build/iOS/SwiftSoup.framework; sourceTree = "<group>"; };
@@ -327,6 +333,8 @@
 		9C406178252F774E002CDA3E /* StoriesList */ = {
 			isa = PBXGroup;
 			children = (
+				9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */,
+				9CF73F962534C51900DBD943 /* FavoritesList */,
 				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
 				9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */,
 				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
@@ -348,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */,
+				9CF73F942534C46500DBD943 /* FavoritesListPresenterTests.swift */,
 				9CF73F4E2530F33F00DBD943 /* StoryPresenterTests.swift */,
 			);
 			path = Presentation;
@@ -375,6 +384,14 @@
 				9CF73F922532317600DBD943 /* FloatActionButton.swift */,
 			);
 			path = Story;
+			sourceTree = "<group>";
+		};
+		9CF73F962534C51900DBD943 /* FavoritesList */ = {
+			isa = PBXGroup;
+			children = (
+				9CF73F972534C53700DBD943 /* FavoritesListPresenter.swift */,
+			);
+			path = FavoritesList;
 			sourceTree = "<group>";
 		};
 		9CF94208252B01A30089801D /* Frameworks */ = {
@@ -540,11 +557,13 @@
 				9CF94221252F469E0089801D /* StoriesGateway.swift in Sources */,
 				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
 				9CF73F8F2532173F00DBD943 /* StoryViewController.swift in Sources */,
+				9CB70E892534CC0C0096FA25 /* BaseStoriesListPresenter.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9CF73F9125321E9300DBD943 /* ParagraphViewCell.swift in Sources */,
 				9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
 				9C0D1DF625261A1600B73A3F /* Story.swift in Sources */,
+				9CF73F982534C53700DBD943 /* FavoritesListPresenter.swift in Sources */,
 				9CF73F932532317600DBD943 /* FloatActionButton.swift in Sources */,
 				9CF942072529F6B30089801D /* StoriesEntity.swift in Sources */,
 			);
@@ -562,6 +581,7 @@
 				9CF73F4D2530ED3500DBD943 /* StoriesListViewRouterSpy.swift in Sources */,
 				9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */,
 				9CF73F8B253207BA00DBD943 /* StoryViewSpy.swift in Sources */,
+				9CF73F952534C46500DBD943 /* FavoritesListPresenterTests.swift in Sources */,
 				9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */,
 				9CF73F4025309E9100DBD943 /* StoryCellViewSpy.swift in Sources */,
 				9C0D1DE22525F9E800B73A3F /* DisplayStoriesUseCaseTests.swift in Sources */,
