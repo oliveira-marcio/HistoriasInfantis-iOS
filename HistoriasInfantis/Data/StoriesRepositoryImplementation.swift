@@ -18,7 +18,7 @@ class StoriesRepositoryImplementation: StoriesRepository {
         self.storiesLocalGateway = storiesLocalGateway
     }
     
-    func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
+    func fetchAll(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
         storiesLocalGateway.fetchAll { result in
             if result.isSuccess,
                 let stories = try? result.dematerialize(),
@@ -30,7 +30,13 @@ class StoriesRepositoryImplementation: StoriesRepository {
         }
     }
 
-    func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
+    func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
+        storiesLocalGateway.fetchFavorites { result in
+            handler(result)
+        }
+    }
+
+    func requestNew(then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
         storiesGateway.fetchStories { [weak self] result in
             if result.isSuccess {
                 let stories = try? result.dematerialize()
@@ -41,7 +47,7 @@ class StoriesRepositoryImplementation: StoriesRepository {
         }
     }
 
-    private func syncPersistence(stories: [Story]?, then handler: @escaping StoriesRepositoryFetchAllCompletionHandler) {
+    private func syncPersistence(stories: [Story]?, then handler: @escaping StoriesRepositoryFetchCompletionHandler) {
         guard let stories = stories else { return }
 
         storiesLocalGateway.clearAll { [weak self] error in

@@ -18,18 +18,19 @@ class FakeStoriesLocalGateway: StoriesLocalGateway {
     var updateWasCalled = false
 
     var shouldFetchAllFail = false
+    var shouldFetchFavoritesFail = false
     var shouldClearAllFail = false
     var shouldInsertFail = false
     var shouldUpdateFail = false
 
-    func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
+    func fetchAll(then handler: @escaping StoriesLocalGatewayFetchCompletionHandler) {
         fetchAllWasCalled = true
         handler(shouldFetchAllFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
     }
 
-    func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
+    func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchCompletionHandler) {
         fetchFavoritesWasCalled = true
-        handler(shouldFetchAllFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
+        handler(shouldFetchFavoritesFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
     }
 
     func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {

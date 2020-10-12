@@ -41,11 +41,11 @@ class CoreDataStoriesLocalGateway: StoriesLocalGateway {
         )
     ]
 
-    func fetchAll(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
+    func fetchAll(then handler: @escaping StoriesLocalGatewayFetchCompletionHandler) {
         handler(.success(stories))
     }
 
-    func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchAllCompletionHandler) {
+    func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchCompletionHandler) {
         let favoriteStories = stories.filter { $0.favorite }
         handler(.success(favoriteStories))
     }

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-typealias StoriesRepositoryFetchAllCompletionHandler = (Result<[Story]>) -> Void
+typealias StoriesRepositoryFetchCompletionHandler = (Result<[Story]>) -> Void
 
 public enum StoriesRepositoryError: Error, Equatable {
     case gatewayRequestFail(String)
@@ -16,6 +16,7 @@ public enum StoriesRepositoryError: Error, Equatable {
 }
 
 protocol StoriesRepository {
-    func fetchAll(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler)
-    func requestNew(then handler: @escaping StoriesRepositoryFetchAllCompletionHandler)
+    func fetchAll(then handler: @escaping StoriesRepositoryFetchCompletionHandler)
+    func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler)
+    func requestNew(then handler: @escaping StoriesRepositoryFetchCompletionHandler)
 }
