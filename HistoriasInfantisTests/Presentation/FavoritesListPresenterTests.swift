@@ -30,6 +30,10 @@ class FavoritesListPresenterTests: XCTestCase {
                                            eventNotifier: eventNotifierStub)
     }
 
+    override func tearDown() {
+        eventNotifierStub.tearDown()
+    }
+
     func test_it_should_display_favorites_list_when_is_favorite_presentation_and_view_did_load_and_there_are_stories_available() {
 
         let expectedStories = [
@@ -116,12 +120,6 @@ class FavoritesListPresenterTests: XCTestCase {
                 favorite: true)
         ]
 
-        let eventNotifier = NotificationCenterEventNotifier()
-        presenter = FavoritesListPresenter(view: viewSpy,
-                                                  router: routerSpy,
-                                                  displayFavoritesListUseCase: DisplayFavoritesListUseCase(storiesRepository: fakeStoriesRepository),
-                                                  eventNotifier: eventNotifier)
-
         presenter.viewDidLoad()
 
         let loadExpectation = expectation(description: "load expectation")
@@ -134,7 +132,7 @@ class FavoritesListPresenterTests: XCTestCase {
         viewSpy.didDisplayLoading = []
         viewSpy.didRequestRefreshStories = false
 
-        eventNotifier.notify(notification: StoriesRepositoryNotification.didUpdateFavorites)
+        eventNotifierStub.notify(notification: StoriesRepositoryNotification.didUpdateFavorites)
 
         let didUpdateFavoritesExpectation = expectation(description: "did update favorites expectation")
         viewSpy.refreshStoriesHandler = {
@@ -152,8 +150,6 @@ class FavoritesListPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.stories.count, 2)
         XCTAssertEqual(cellSpies[0].title, "Story 1")
         XCTAssertEqual(cellSpies[1].title, "Story 2")
-
-        eventNotifier.removeObserver(StoriesRepositoryNotification.didUpdateFavorites.notificationName)
     }
 
     func test_it_should_navigate_to_selected_story_when_show_story_is_called() {

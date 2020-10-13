@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FavoritesListPresenter: BaseStoriesListPresenter {
+class FavoritesListPresenter: NSObject, BaseStoriesListPresenter {
 
     internal(set) public weak var view: StoriesListView?
     internal(set) public var router: StoriesListViewRouter
