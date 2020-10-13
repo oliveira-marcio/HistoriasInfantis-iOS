@@ -8,17 +8,21 @@
 
 import Foundation
 
+protocol FavoritesListView: BaseStoriesListView {
+    var presenter: FavoritesListPresenter! { get set }
+}
+
 class FavoritesListPresenter: NSObject, BaseStoriesListPresenter {
 
-    internal(set) public weak var view: StoriesListView?
-    internal(set) public var router: StoriesListViewRouter
+    internal(set) public weak var view: FavoritesListView?
+    internal(set) public var router: BaseStoriesListViewRouter
     private(set) var displayFavoritesListUseCase: DisplayFavoritesListUseCase
     private(set) var eventNotifier: EventNotifier
 
     var stories = [Story]()
 
-    init(view: StoriesListView,
-         router: StoriesListViewRouter,
+    init(view: FavoritesListView,
+         router: BaseStoriesListViewRouter,
          displayFavoritesListUseCase: DisplayFavoritesListUseCase,
          eventNotifier: EventNotifier) {
         self.view = view

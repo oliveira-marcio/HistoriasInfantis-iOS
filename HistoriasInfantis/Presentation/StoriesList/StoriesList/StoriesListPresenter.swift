@@ -8,17 +8,21 @@
 
 import Foundation
 
+protocol StoriesListView: BaseStoriesListView {
+    var presenter: StoriesListPresenter! { get set }
+}
+
 class StoriesListPresenter: BaseStoriesListPresenter {
 
-    internal(set) public weak var view: StoriesListView?
-    internal(set) public var router: StoriesListViewRouter
+    private(set) public weak var view: StoriesListView?
+    internal(set) public var router: BaseStoriesListViewRouter
     private(set) var displayStoriesListUseCase: DisplayStoriesListUseCase
     private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
 
     var stories = [Story]()
 
     init(view: StoriesListView,
-         router: StoriesListViewRouter,
+         router: BaseStoriesListViewRouter,
          displayStoriesListUseCase: DisplayStoriesListUseCase,
          requestNewStoriesUseCase: RequestNewStoriesUseCase) {
         self.view = view

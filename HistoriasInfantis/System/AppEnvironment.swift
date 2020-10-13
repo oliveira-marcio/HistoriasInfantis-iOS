@@ -37,4 +37,5 @@ final class DependencyResolver {
 
     lazy var displayStoriesUseCase = DisplayStoriesListUseCase(storiesRepository: storiesRepository)
     lazy var requestNewStoriesUseCase = RequestNewStoriesUseCase(storiesRepository: storiesRepository)
+    lazy var displayFavoritesListUseCase = DisplayFavoritesListUseCase(storiesRepository: storiesRepository)
 }

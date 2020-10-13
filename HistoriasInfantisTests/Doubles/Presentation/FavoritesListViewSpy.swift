@@ -1,5 +1,5 @@
 //
-//  StoriesListViewSpy.swift
+//  FavoritesListViewSpy.swift
 //  HistoriasInfantisTests
 //
 //  Created by Márcio Oliveira on 10/13/20.
@@ -8,6 +8,6 @@
 
 @testable import HistoriasInfantis
 
-class StoriesListViewSpy: BaseStoriesListViewSpy, StoriesListView {
-    var presenter: StoriesListPresenter!
+class FavoritesListViewSpy: BaseStoriesListViewSpy, FavoritesListView {
+    var presenter: FavoritesListPresenter!
 }

@@ -8,7 +8,7 @@
 
 @testable import HistoriasInfantis
 
-class StoriesListViewRouterSpy: StoriesListViewRouter {
+class StoriesListViewRouterSpy: BaseStoriesListViewRouter {
 
     var story: Story?
     var navigateToStoryViewCompletion: (() -> Void)?

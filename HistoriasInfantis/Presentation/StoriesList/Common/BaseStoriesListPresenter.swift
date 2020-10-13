@@ -8,9 +8,7 @@
 
 import Foundation
 
-protocol StoriesListView: class {
-    var presenter: StoriesListPresenter! { get set }
-
+protocol BaseStoriesListView: class {
     func displayLoading(isLoading: Bool)
     func displayEmptyStories()
     func displayStoriesRetrievalError(message: String?)
@@ -24,8 +22,7 @@ protocol StoryCellView: class {
 }
 
 protocol BaseStoriesListPresenter: class {
-    var view: StoriesListView? { get set }
-    var router: StoriesListViewRouter { get set }
+    var router: BaseStoriesListViewRouter { get set }
     var stories: [Story] { get set }
 
     func viewDidLoad()

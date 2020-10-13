@@ -12,7 +12,7 @@ import XCTest
 class FavoritesListPresenterTests: XCTestCase {
 
     var presenter: FavoritesListPresenter!
-    var viewSpy: StoriesListViewSpy!
+    var viewSpy: FavoritesListViewSpy!
     var routerSpy: StoriesListViewRouterSpy!
     var fakeStoriesRepository: FakeStoriesRepository!
     var eventNotifierStub: EventNotifierStub!
@@ -20,7 +20,7 @@ class FavoritesListPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        viewSpy = StoriesListViewSpy()
+        viewSpy = FavoritesListViewSpy()
         routerSpy = StoriesListViewRouterSpy()
         fakeStoriesRepository = FakeStoriesRepository()
         eventNotifierStub = EventNotifierStub()

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol StoriesListViewRouter: ViewRouter {
+protocol BaseStoriesListViewRouter: ViewRouter {
     func navigateToStory(_ story: Story)
 }
 
@@ -17,10 +17,10 @@ enum StoriesViewSegue: String {
     case toStory = "toStory"
 }
 
-class StoriesListViewRouterImplementation: StoriesListViewRouter {
-    fileprivate weak var storiesListViewController: StoriesListViewController?
+class BaseStoriesListViewRouterImplementation: BaseStoriesListViewRouter {
+    fileprivate weak var storiesListViewController: UIViewController?
 
-    init(storiesListViewController: StoriesListViewController) {
+    init(storiesListViewController: UIViewController) {
         self.storiesListViewController = storiesListViewController
     }
 

@@ -37,15 +37,20 @@
 		9CB70E912534DB940096FA25 /* EventNotifierStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E902534DB940096FA25 /* EventNotifierStub.swift */; };
 		9CB70E942534F2980096FA25 /* NotificationCenterEventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E932534F2980096FA25 /* NotificationCenterEventNotifier.swift */; };
 		9CB70E962535E6F80096FA25 /* EventNotifierStubsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E952535E6F80096FA25 /* EventNotifierStubsTests.swift */; };
+		9CB70E992536091F0096FA25 /* FavoritesListViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E982536091F0096FA25 /* FavoritesListViewConfigurator.swift */; };
+		9CB70E9B25360AF80096FA25 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E9A25360AF80096FA25 /* FavoritesListViewController.swift */; };
+		9CB70E9D25360FEC0096FA25 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E9C25360FEC0096FA25 /* StoriesListViewSpy.swift */; };
+		9CB70E9F2536108B0096FA25 /* FavoritesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70E9E2536108B0096FA25 /* FavoritesListViewSpy.swift */; };
+		9CB70EA1253612C90096FA25 /* BaseStoriesListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70EA0253612C90096FA25 /* BaseStoriesListDelegate.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
-		9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */; };
+		9CF73F3E252FA1C100DBD943 /* BaseStoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */; };
 		9CF73F4025309E9100DBD943 /* StoryCellViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3F25309E9100DBD943 /* StoryCellViewSpy.swift */; };
 		9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */; };
 		9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */; };
 		9CF73F462530C4A200DBD943 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F452530C4A200DBD943 /* TabBarViewController.swift */; };
 		9CF73F482530E99200DBD943 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F472530E99200DBD943 /* ViewRouter.swift */; };
-		9CF73F4A2530E9C800DBD943 /* StoriesListViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */; };
+		9CF73F4A2530E9C800DBD943 /* BaseStoriesListViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F492530E9C800DBD943 /* BaseStoriesListViewRouter.swift */; };
 		9CF73F4D2530ED3500DBD943 /* StoriesListViewRouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F4C2530ED3500DBD943 /* StoriesListViewRouterSpy.swift */; };
 		9CF73F4F2530F33F00DBD943 /* StoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F4E2530F33F00DBD943 /* StoryPresenterTests.swift */; };
 		9CF73F512530F35700DBD943 /* StoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F502530F35700DBD943 /* StoryPresenter.swift */; };
@@ -131,15 +136,20 @@
 		9CB70E902534DB940096FA25 /* EventNotifierStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifierStub.swift; sourceTree = "<group>"; };
 		9CB70E932534F2980096FA25 /* NotificationCenterEventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterEventNotifier.swift; sourceTree = "<group>"; };
 		9CB70E952535E6F80096FA25 /* EventNotifierStubsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifierStubsTests.swift; sourceTree = "<group>"; };
+		9CB70E982536091F0096FA25 /* FavoritesListViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewConfigurator.swift; sourceTree = "<group>"; };
+		9CB70E9A25360AF80096FA25 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
+		9CB70E9C25360FEC0096FA25 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
+		9CB70E9E2536108B0096FA25 /* FavoritesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewSpy.swift; sourceTree = "<group>"; };
+		9CB70EA0253612C90096FA25 /* BaseStoriesListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListDelegate.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
-		9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewSpy.swift; sourceTree = "<group>"; };
+		9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListViewSpy.swift; sourceTree = "<group>"; };
 		9CF73F3F25309E9100DBD943 /* StoryCellViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellViewSpy.swift; sourceTree = "<group>"; };
 		9CF73F412530A9BD00DBD943 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewConfigurator.swift; sourceTree = "<group>"; };
 		9CF73F452530C4A200DBD943 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9CF73F472530E99200DBD943 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
-		9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewRouter.swift; sourceTree = "<group>"; };
+		9CF73F492530E9C800DBD943 /* BaseStoriesListViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListViewRouter.swift; sourceTree = "<group>"; };
 		9CF73F4C2530ED3500DBD943 /* StoriesListViewRouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListViewRouterSpy.swift; sourceTree = "<group>"; };
 		9CF73F4E2530F33F00DBD943 /* StoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F502530F35700DBD943 /* StoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPresenter.swift; sourceTree = "<group>"; };
@@ -351,13 +361,9 @@
 		9C406178252F774E002CDA3E /* StoriesList */ = {
 			isa = PBXGroup;
 			children = (
-				9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */,
+				9CB70EA3253617320096FA25 /* Common */,
+				9CB70EA2253617210096FA25 /* StoriesList */,
 				9CF73F962534C51900DBD943 /* FavoritesList */,
-				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
-				9CF73F492530E9C800DBD943 /* StoriesListViewRouter.swift */,
-				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
-				9C0D1DCE2525F9E500B73A3F /* StoriesListViewController.swift */,
-				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
 			);
 			path = StoriesList;
 			sourceTree = "<group>";
@@ -386,6 +392,27 @@
 			path = System;
 			sourceTree = "<group>";
 		};
+		9CB70EA2253617210096FA25 /* StoriesList */ = {
+			isa = PBXGroup;
+			children = (
+				9CF73F432530AFAA00DBD943 /* StoriesListViewConfigurator.swift */,
+				9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */,
+				9C0D1DCE2525F9E500B73A3F /* StoriesListViewController.swift */,
+			);
+			path = StoriesList;
+			sourceTree = "<group>";
+		};
+		9CB70EA3253617320096FA25 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9CB70EA0253612C90096FA25 /* BaseStoriesListDelegate.swift */,
+				9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */,
+				9CF73F492530E9C800DBD943 /* BaseStoriesListViewRouter.swift */,
+				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		9CF73F37252F9CC000DBD943 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,7 +426,9 @@
 		9CF73F3C252FA17300DBD943 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				9CF73F3D252FA1C100DBD943 /* StoriesListViewSpy.swift */,
+				9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */,
+				9CB70E9C25360FEC0096FA25 /* StoriesListViewSpy.swift */,
+				9CB70E9E2536108B0096FA25 /* FavoritesListViewSpy.swift */,
 				9CF73F3F25309E9100DBD943 /* StoryCellViewSpy.swift */,
 				9CF73F4C2530ED3500DBD943 /* StoriesListViewRouterSpy.swift */,
 				9CF73F8A253207BA00DBD943 /* StoryViewSpy.swift */,
@@ -423,7 +452,9 @@
 		9CF73F962534C51900DBD943 /* FavoritesList */ = {
 			isa = PBXGroup;
 			children = (
+				9CB70E982536091F0096FA25 /* FavoritesListViewConfigurator.swift */,
 				9CF73F972534C53700DBD943 /* FavoritesListPresenter.swift */,
+				9CB70E9A25360AF80096FA25 /* FavoritesListViewController.swift */,
 			);
 			path = FavoritesList;
 			sourceTree = "<group>";
@@ -570,11 +601,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF73F4A2530E9C800DBD943 /* StoriesListViewRouter.swift in Sources */,
+				9CF73F4A2530E9C800DBD943 /* BaseStoriesListViewRouter.swift in Sources */,
+				9CB70EA1253612C90096FA25 /* BaseStoriesListDelegate.swift in Sources */,
 				9C0D1DCF2525F9E500B73A3F /* StoriesListViewController.swift in Sources */,
 				9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */,
 				9CF73F462530C4A200DBD943 /* TabBarViewController.swift in Sources */,
 				9C0D1DF32526191F00B73A3F /* Result.swift in Sources */,
+				9CB70E9B25360AF80096FA25 /* FavoritesListViewController.swift in Sources */,
 				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
 				9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */,
@@ -597,6 +630,7 @@
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9CF73F9125321E9300DBD943 /* ParagraphViewCell.swift in Sources */,
 				9CB70E942534F2980096FA25 /* NotificationCenterEventNotifier.swift in Sources */,
+				9CB70E992536091F0096FA25 /* FavoritesListViewConfigurator.swift in Sources */,
 				9CF73F442530AFAA00DBD943 /* StoriesListViewConfigurator.swift in Sources */,
 				9C0D1E1225276FE300B73A3F /* StoriesGatewayImplementation.swift in Sources */,
 				9C0D1DF625261A1600B73A3F /* Story.swift in Sources */,
@@ -618,19 +652,21 @@
 				9CF73F4D2530ED3500DBD943 /* StoriesListViewRouterSpy.swift in Sources */,
 				9CB70E962535E6F80096FA25 /* EventNotifierStubsTests.swift in Sources */,
 				9CB70E912534DB940096FA25 /* EventNotifierStub.swift in Sources */,
+				9CB70E9D25360FEC0096FA25 /* StoriesListViewSpy.swift in Sources */,
 				9C0D1E0E252747EB00B73A3F /* RequestNewStoriesUseCaseTests.swift in Sources */,
 				9CF73F8B253207BA00DBD943 /* StoryViewSpy.swift in Sources */,
 				9CF73F952534C46500DBD943 /* FavoritesListPresenterTests.swift in Sources */,
 				9C0D1E1B2529D87600B73A3F /* URLSessionStub.swift in Sources */,
 				9CF73F4025309E9100DBD943 /* StoryCellViewSpy.swift in Sources */,
 				9C0D1DE22525F9E800B73A3F /* DisplayStoriesListUseCaseTests.swift in Sources */,
+				9CB70E9F2536108B0096FA25 /* FavoritesListViewSpy.swift in Sources */,
 				9C0D1E0625264D5100B73A3F /* StoriesRepositoryTests.swift in Sources */,
 				9CF94216252B09910089801D /* HtmlParserTests.swift in Sources */,
 				9CB70E8D2534D3690096FA25 /* DisplayFavoritesListUseCaseTests.swift in Sources */,
 				9C0D1E0C25264FF200B73A3F /* FakeStoriesLocalGateway.swift in Sources */,
 				9C0D1E1D2529D9D500B73A3F /* StoriesGatewayTest.swift in Sources */,
 				9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */,
-				9CF73F3E252FA1C100DBD943 /* StoriesListViewSpy.swift in Sources */,
+				9CF73F3E252FA1C100DBD943 /* BaseStoriesListViewSpy.swift in Sources */,
 				9CF9421D252CF1CF0089801D /* StoriesLocalGatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

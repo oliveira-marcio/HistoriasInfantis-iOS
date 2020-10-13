@@ -8,7 +8,7 @@
 
 class StoriesListViewConfigurator {
     func configure(storiesListViewController: StoriesListViewController) {
-        let router = StoriesListViewRouterImplementation(storiesListViewController: storiesListViewController)
+        let router = BaseStoriesListViewRouterImplementation(storiesListViewController: storiesListViewController)
         let presenter = StoriesListPresenter(view: storiesListViewController,
                                              router: router,
                                              displayStoriesListUseCase: SceneDelegate.appEnvironment.dependencies.displayStoriesUseCase,

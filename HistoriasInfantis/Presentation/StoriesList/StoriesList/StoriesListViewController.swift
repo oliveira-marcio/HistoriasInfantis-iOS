@@ -8,9 +8,10 @@
 
 import UIKit
 
-class StoriesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoriesListView {
+class StoriesListViewController: UIViewController, StoriesListView {
 
     var presenter: StoriesListPresenter!
+    var tableViewDelegate: BaseStoriesListDelegate!
 
     // MARK: - Outlets
 
@@ -29,10 +30,13 @@ class StoriesListViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     private func setupTableView() {
+        tableViewDelegate = BaseStoriesListDelegate(presenter: presenter)
+        tableView.delegate = tableViewDelegate
+        tableView.dataSource = tableViewDelegate
         tableView.tableHeaderView = tableHeaderView
     }
 
-    // MARK: - StoriesListView
+    // MARK: - BaseStoriesListView
 
     func displayLoading(isLoading: Bool) {
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
@@ -52,25 +56,6 @@ class StoriesListViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.reloadData()
         tableView.isScrollEnabled = true
         tableView.backgroundView = nil
-    }
-
-    // MARK: - UITableViewDataSource
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.stories.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StoryViewCell.reuseIdentifier, for: indexPath) as! StoryViewCell
-        presenter.configureStoryCellView(cell, for: indexPath.row)
-        return cell
-    }
-
-    // MARK: - UITableViewDelegate
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.showStory(at: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - IBActions

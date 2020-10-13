@@ -44,10 +44,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="yUY-7U-jtT"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LOr-8F-Csd"/>
-                                </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="XjP-x2-Qgi">
                                 <rect key="frame" x="185" y="426" width="44" height="44"/>
