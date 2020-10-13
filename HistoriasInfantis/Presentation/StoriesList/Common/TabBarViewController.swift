@@ -23,6 +23,10 @@ class TabBarViewController: UITabBarController {
                 let storiesListVC = navigationController.topViewController as? StoriesListViewController {
                 let configurator = StoriesListViewConfigurator()
                 configurator.configure(storiesListViewController: storiesListVC)
+            } else if let navigationController = viewController as? UINavigationController,
+                let favoritesListVC = navigationController.topViewController as? FavoritesListViewController {
+                let configurator = FavoritesListViewConfigurator()
+                configurator.configure(favoritesListViewController: favoritesListVC)
             }
         }
     }

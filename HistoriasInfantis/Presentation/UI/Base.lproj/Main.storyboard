@@ -248,7 +248,7 @@
                     <viewLayoutGuide key="safeArea" id="VUn-kw-fMK"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="3011.594202898551" y="101.78571428571428"/>
+            <point key="canvasLocation" x="3358" y="560"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="L1V-gu-659">
@@ -261,11 +261,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="aLR-LS-miD" kind="relationship" relationship="viewControllers" id="uP8-Nb-ZWP"/>
+                        <segue destination="QXC-aj-CdX" kind="relationship" relationship="viewControllers" id="E22-K1-sPM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gsS-ks-3dT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412" y="103"/>
+            <point key="canvasLocation" x="233" y="560"/>
         </scene>
         <!--Stories-->
         <scene sceneID="ai6-W1-PWC">
@@ -285,7 +286,144 @@
             </objects>
             <point key="canvasLocation" x="1278" y="102"/>
         </scene>
+        <!--Histórias Infantis-->
+        <scene sceneID="g6c-us-OBu">
+            <objects>
+                <viewController id="pgd-uy-Rpr" customClass="FavoritesListViewController" customModule="HistoriasInfantis" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZZn-IX-vUE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="dF3-Uj-CaJ">
+                                <rect key="frame" x="185" y="426" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mJE-ZZ-HbC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="StoryViewCell" id="Je6-Pk-Fba" customClass="StoryViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Je6-Pk-Fba" id="UZH-cu-12c">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-KE-feX">
+                                                    <rect key="frame" x="186" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="gbh-KE-feX" firstAttribute="centerY" secondItem="UZH-cu-12c" secondAttribute="centerY" id="2Rl-zC-6wc"/>
+                                                <constraint firstItem="gbh-KE-feX" firstAttribute="centerX" secondItem="UZH-cu-12c" secondAttribute="centerX" id="Vdq-HI-hM3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="gbh-KE-feX" id="PLu-xr-YJ0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="trailing" secondItem="Mtx-Tu-fed" secondAttribute="trailing" id="0P5-Y2-xvu"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="bottom" secondItem="Mtx-Tu-fed" secondAttribute="bottom" id="G2Z-Wp-fcJ"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="trailing" secondItem="Mtx-Tu-fed" secondAttribute="trailing" id="R7g-Rv-bFY"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="top" secondItem="Mtx-Tu-fed" secondAttribute="top" id="SDE-dP-7Oh"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="bottom" secondItem="Mtx-Tu-fed" secondAttribute="bottom" id="aJA-eQ-j6j"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="top" secondItem="Mtx-Tu-fed" secondAttribute="top" id="ayV-HQ-yZX"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="leading" secondItem="Mtx-Tu-fed" secondAttribute="leading" id="vmh-sW-Enc"/>
+                            <constraint firstItem="mJE-ZZ-HbC" firstAttribute="leading" secondItem="Mtx-Tu-fed" secondAttribute="leading" id="xJz-9y-sgK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mtx-Tu-fed"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Histórias Infantis" id="oTD-T9-azC"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="dF3-Uj-CaJ" id="cYK-nM-oim"/>
+                        <outlet property="noStoriesView" destination="auJ-Lg-ee6" id="sAF-X4-dQs"/>
+                        <outlet property="tableHeaderView" destination="Ya7-cM-DSF" id="WhK-M2-vHe"/>
+                        <outlet property="tableView" destination="mJE-ZZ-HbC" id="Gj1-Kg-MEB"/>
+                        <segue destination="XAv-XJ-Fs5" kind="presentation" identifier="toStory" id="MbZ-tx-b3s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ha-SR-vJE" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Ya7-cM-DSF" userLabel="Header View">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wq-9N-eQj">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-9N-LdC">
+                                    <rect key="frame" x="0.0" y="2" width="240" height="96.5"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="OSd-9N-LdC" secondAttribute="trailing" id="BMm-nh-vLl"/>
+                                <constraint firstItem="OSd-9N-LdC" firstAttribute="leading" secondItem="6wq-9N-eQj" secondAttribute="leading" id="Eht-hY-uMx"/>
+                                <constraint firstItem="OSd-9N-LdC" firstAttribute="top" secondItem="6wq-9N-eQj" secondAttribute="top" id="Mzt-RN-veg"/>
+                                <constraint firstAttribute="bottom" secondItem="OSd-9N-LdC" secondAttribute="bottom" id="OVX-uR-SwG"/>
+                                <constraint firstAttribute="height" constant="100" id="hY8-EM-cV0"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="Oes-Lw-C03" firstAttribute="trailing" secondItem="6wq-9N-eQj" secondAttribute="trailing" id="BYe-vJ-87C"/>
+                        <constraint firstItem="6wq-9N-eQj" firstAttribute="top" secondItem="Ya7-cM-DSF" secondAttribute="top" id="Oxr-CO-vSd"/>
+                        <constraint firstItem="6wq-9N-eQj" firstAttribute="leading" secondItem="Oes-Lw-C03" secondAttribute="leading" id="c4x-bc-2d1"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Oes-Lw-C03"/>
+                </view>
+                <view contentMode="scaleToFill" id="auJ-Lg-ee6" userLabel="No Stories View">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No stories found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQi-kA-0Yf">
+                            <rect key="frame" x="57" y="75.5" width="126.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="hQi-kA-0Yf" firstAttribute="centerX" secondItem="phZ-gd-NMn" secondAttribute="centerX" id="JUh-5e-N0v"/>
+                        <constraint firstItem="hQi-kA-0Yf" firstAttribute="centerY" secondItem="phZ-gd-NMn" secondAttribute="centerY" id="sEL-iy-Gp9"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="phZ-gd-NMn"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="2105.7971014492755" y="907.36607142857133"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="UPm-ES-cfQ">
+            <objects>
+                <navigationController id="QXC-aj-CdX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="book.fill" catalog="system" id="5a3-sK-PpY"/>
+                    <navigationItem key="navigationItem" id="d9C-xd-nyG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4SJ-PI-lIa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pgd-uy-Rpr" kind="relationship" relationship="rootViewController" id="05v-kR-stj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="obb-vD-xn9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="907"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MbZ-tx-b3s"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="book.fill" catalog="system" width="128" height="100"/>

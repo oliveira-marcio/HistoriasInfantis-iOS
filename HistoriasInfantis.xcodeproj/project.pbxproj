@@ -253,7 +253,6 @@
 		9C0D1DED2525FC4D00B73A3F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				9CF73F452530C4A200DBD943 /* TabBarViewController.swift */,
 				9C406178252F774E002CDA3E /* StoriesList */,
 				9CF73F4B2530EC9000DBD943 /* Story */,
 				9C40617B252F8048002CDA3E /* UI */,
@@ -409,6 +408,7 @@
 				9CB70E882534CC0C0096FA25 /* BaseStoriesListPresenter.swift */,
 				9CF73F492530E9C800DBD943 /* BaseStoriesListViewRouter.swift */,
 				9C406179252F77C9002CDA3E /* StoryViewCell.swift */,
+				9CF73F452530C4A200DBD943 /* TabBarViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
