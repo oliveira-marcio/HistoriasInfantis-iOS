@@ -27,11 +27,12 @@ class CoreDataStoriesLocalGateway: StoriesLocalGateway {
             imageUrl: "http://image2",
             paragraphs: [.text("paragraph2")],
             createDate: Date(),
-            updateDate: Date()
+            updateDate: Date(),
+            favorite: true
         ),
         Story(
-            id: 3,
-            title: "Story 3",
+            id: 2903,
+            title: "Roy, o Cavalo que Queria ser Cowboy",
             url: "http://story3",
             imageUrl: "http://image3",
             paragraphs: [.text("paragraph3")],
