@@ -98,12 +98,24 @@ class StoriesRepositoryImplementation: StoriesRepository {
         }
     }
 
-    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryWriteErrorCompletionHandler) {
+    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryToggleFavoriteCompletionHandler) {
         storiesLocalGateway.update(storyId: story.id, favorite: !story.favorite) { error in
-            if error == nil {
+            if let error = error {
+                handler(.failure(error))
+            } else {
                 self.eventNotifier.notify(notification: StoriesRepositoryNotification.didUpdateFavorites)
+
+                let favoriteToggledStory = Story(id: story.id,
+                                                 title: story.title,
+                                                 url: story.url,
+                                                 imageUrl: story.imageUrl,
+                                                 paragraphs: story.paragraphs,
+                                                 createDate: story.createDate,
+                                                 updateDate: story.updateDate,
+                                                 favorite: !story.favorite)
+
+                handler(.success(favoriteToggledStory))
             }
-            handler(error)
         }
     }
 }

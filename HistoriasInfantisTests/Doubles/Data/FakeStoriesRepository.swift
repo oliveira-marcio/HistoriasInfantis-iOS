@@ -10,6 +10,7 @@
 
 class FakeStoriesRepository: StoriesRepository {
     var stories = [Story]()
+    var favoriteToggledStory: Story!
     var fetchAllWasCalled = false
     var fetchFavoritesWasCalled = false
     var requestNewWasCalled = false
@@ -42,8 +43,8 @@ class FakeStoriesRepository: StoriesRepository {
         handler(shouldFetchFavoritesFail ? .failure(StoriesRepositoryError.unableToRetrieve) : .success(stories))
     }
 
-    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryWriteErrorCompletionHandler) {
+    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryToggleFavoriteCompletionHandler) {
         toggleFavoriteWasCalled = true
-         handler(shouldToggleFavoriteFail ? StoriesRepositoryError.unableToSave : nil)
+        handler(shouldToggleFavoriteFail ? .failure(StoriesRepositoryError.unableToSave) : .success(favoriteToggledStory))
     }
 }

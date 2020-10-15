@@ -23,6 +23,7 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
     }
 
     func test_it_should_request_new_stories() {
+        let date = Date()
         let expectedStories = [
             Story(
                 id: 1,
@@ -30,16 +31,16 @@ class RequestNewStoriesUseCaseTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesRepository.stories = expectedStories

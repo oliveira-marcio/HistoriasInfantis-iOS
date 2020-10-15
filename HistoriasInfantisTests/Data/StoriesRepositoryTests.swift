@@ -17,6 +17,7 @@ class StoriesRepositoryTests: XCTestCase {
     var eventNotifierStub: EventNotifierStub!
 
     let notificationRawName = StoriesRepositoryNotification.didUpdateFavorites.notificationName.rawValue
+    let date = Date()
 
     override func setUp() {
         super.setUp()
@@ -31,7 +32,6 @@ class StoriesRepositoryTests: XCTestCase {
     }
 
     func test_when_request_new_then_stories_are_synced_between_web_and_local_gateway() {
-        let date = Date()
         let currentStories = [
             Story(
                 id: 1,
@@ -84,7 +84,6 @@ class StoriesRepositoryTests: XCTestCase {
     }
 
     func test_when_request_new_then_stories_are_synced_between_web_and_local_gateway_and_keep_favorites() {
-        let date = Date()
         let currentStories = [
             Story(
                 id: 1,
@@ -187,8 +186,8 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         let fetchedStories = [
@@ -198,16 +197,16 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesGateway.stories = fetchedStories
@@ -241,8 +240,8 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         let fetchedStories = [
@@ -252,16 +251,16 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesGateway.stories = fetchedStories
@@ -295,16 +294,16 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesLocalGateway.stories = expectedStories
@@ -330,16 +329,16 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesLocalGateway.shouldFetchAllFail = true
@@ -371,16 +370,16 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesGateway.stories = expectedStories
@@ -432,8 +431,8 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true
             ),
             Story(
@@ -442,8 +441,8 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true
             )
         ]
@@ -502,42 +501,70 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: false
             )
 
-        let fetchExpectation = expectation(description: "toggle favorite expectation")
-
-        storiesRepository.toggleFavorite(story: unfavoritedStory) { _ in
-            fetchExpectation.fulfill()
-        }
-        waitForExpectations(timeout: 1)
-
-        XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
-        XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, true)
-        XCTAssertEqual(eventNotifierStub.didPost(eventNamed: notificationRawName), true)
-    }
-
-    func test_given_favorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_false_and_update_is_notified() {
         let favoritedStory = Story(
                 id: 1,
                 title: "Story 1",
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true
             )
 
+        var favoriteToggledStory: Story?
         let fetchExpectation = expectation(description: "toggle favorite expectation")
 
-        storiesRepository.toggleFavorite(story: favoritedStory) { _ in
+        storiesRepository.toggleFavorite(story: unfavoritedStory) { result in
+            favoriteToggledStory = try? result.dematerialize()
             fetchExpectation.fulfill()
         }
         waitForExpectations(timeout: 1)
 
+        XCTAssertEqual(favoriteToggledStory, favoritedStory)
+        XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
+        XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, true)
+        XCTAssertEqual(eventNotifierStub.didPost(eventNamed: notificationRawName), true)
+    }
+
+    func test_given_favorited_story_when_toggle_favorite_then_local_gateway_update_is_called_with_false_and_update_is_notified() {
+        let unfavoritedStory = Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: date,
+                updateDate: date,
+                favorite: false
+            )
+
+        let favoritedStory = Story(
+                id: 1,
+                title: "Story 1",
+                url: "http://story1",
+                imageUrl: "http://image1",
+                paragraphs: [.text("paragraph1")],
+                createDate: date,
+                updateDate: date,
+                favorite: true
+            )
+
+        var favoriteToggledStory: Story?
+        let fetchExpectation = expectation(description: "toggle favorite expectation")
+
+        storiesRepository.toggleFavorite(story: favoritedStory) { result in
+            favoriteToggledStory = try? result.dematerialize()
+            fetchExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(favoriteToggledStory, unfavoritedStory)
         XCTAssertEqual(fakeStoriesLocalGateway.updateStoryId, 1)
         XCTAssertEqual(fakeStoriesLocalGateway.updateFavorite, false)
         XCTAssertEqual(eventNotifierStub.didPost(eventNamed: notificationRawName), true)
@@ -550,8 +577,8 @@ class StoriesRepositoryTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true
             )
 
@@ -560,8 +587,10 @@ class StoriesRepositoryTests: XCTestCase {
         var error: StoriesRepositoryError?
         let fetchExpectation = expectation(description: "toggle favorite expectation")
 
-        storiesRepository.toggleFavorite(story: favoritedStory) { resultError in
-            error = resultError
+        storiesRepository.toggleFavorite(story: favoritedStory) { result in
+            if case .failure(let resultError) = result {
+                error = resultError as? StoriesRepositoryError
+            }
             fetchExpectation.fulfill()
         }
         waitForExpectations(timeout: 1)

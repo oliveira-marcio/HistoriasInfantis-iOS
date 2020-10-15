@@ -16,6 +16,8 @@ class StoriesListPresenterTests: XCTestCase {
     var routerSpy: StoriesListViewRouterSpy!
     var fakeStoriesRepository: FakeStoriesRepository!
 
+    let date = Date()
+
     override func setUp() {
         super.setUp()
 
@@ -36,16 +38,16 @@ class StoriesListPresenterTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesRepository.stories = expectedStories
@@ -97,16 +99,16 @@ class StoriesListPresenterTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date()),
+                createDate: date,
+                updateDate: date),
             Story(
                 id: 2,
                 title: "Story 2",
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         fakeStoriesRepository.stories = expectedStories
@@ -176,8 +178,8 @@ class StoriesListPresenterTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
         presenter.showStory(at: 0)

@@ -12,7 +12,8 @@ import XCTest
 var presenter: StoryPresenter!
 var viewSpy: StoryViewSpy!
 
-let story = Story(
+let date = Date()
+let unfavoriteStory = Story(
     id: 1,
     title: "Story 1",
     url: "http://story1",
@@ -24,8 +25,25 @@ let story = Story(
         .end("The End"),
         .author("Author")
     ],
-    createDate: Date(),
-    updateDate: Date())
+    createDate: date,
+    updateDate: date,
+    favorite: false)
+
+let favoriteStory = Story(
+    id: 1,
+    title: "Story 1",
+    url: "http://story1",
+    imageUrl: "http://image1",
+    paragraphs: [
+        .text("Paragraph 1"),
+        .image("http://image2"),
+        .text("Paragraph 2"),
+        .end("The End"),
+        .author("Author")
+    ],
+    createDate: date,
+    updateDate: date,
+    favorite: true)
 
 
 class StoryPresenterTests: XCTestCase {
@@ -34,26 +52,30 @@ class StoryPresenterTests: XCTestCase {
         super.setUp()
 
         viewSpy = StoryViewSpy()
-        presenter = StoryPresenter(view: viewSpy, story: story)
     }
 
     func test_it_should_display_story_title_when_view_did_load() {
+        presenter = StoryPresenter(view: viewSpy, story: unfavoriteStory)
         presenter.viewDidLoad()
 
-        XCTAssertEqual(viewSpy.title, story.title)
+        XCTAssertEqual(viewSpy.title, unfavoriteStory.title)
     }
 
     func test_it_should_return_paragraph_type_from_selected_paragraph_when_get_paragraph_type_is_called() {
-        for i in (0..<story.paragraphs.count) {
+        presenter = StoryPresenter(view: viewSpy, story: unfavoriteStory)
+
+        for i in (0..<unfavoriteStory.paragraphs.count) {
             XCTAssertEqual(
                 presenter.getParagraphType(for: i),
-                story.paragraphs[i].type
+                unfavoriteStory.paragraphs[i].type
             )
         }
     }
 
     func test_it_should_display_complete_story_when_view_did_load() {
-        let cellSpies = story.paragraphs.map { _ in ParagraphCellViewSpy() }
+        presenter = StoryPresenter(view: viewSpy, story: unfavoriteStory)
+
+        let cellSpies = unfavoriteStory.paragraphs.map { _ in ParagraphCellViewSpy() }
         for index in 0..<cellSpies.count {
             presenter.configureCell(cellSpies[index], for: index)
         }
@@ -82,5 +104,22 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertEqual(cellSpies[4].author, "Author")
         XCTAssertNil(cellSpies[4].end)
         XCTAssertNil(cellSpies[4].image)
+    }
+
+    func test_it_should_display_favorite_button_marked_when_view_did_load_when_story_is_favorite() {
+        presenter = StoryPresenter(view: viewSpy, story: favoriteStory)
+        presenter.viewDidLoad()
+    }
+
+    func test_it_should_display_favorite_button_unmarked_when_view_did_load_when_story_is_not_favorite() {
+
+    }
+
+    func test_it_should_add_movie_to_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_not_favorite() {
+
+    }
+
+    func test_it_should_remove_movie_from_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_favorite() {
+
     }
 }

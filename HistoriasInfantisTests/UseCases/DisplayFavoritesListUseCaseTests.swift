@@ -23,6 +23,7 @@ class DisplayFavoritesListUseCaseTests: XCTestCase {
     }
 
     func test_it_should_display_stories_list() {
+        let date = Date()
         let expectedStories = [
             Story(
                 id: 1,
@@ -30,8 +31,8 @@ class DisplayFavoritesListUseCaseTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true
             ),
             Story(
@@ -40,8 +41,8 @@ class DisplayFavoritesListUseCaseTests: XCTestCase {
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true
             )
         ]
@@ -61,7 +62,7 @@ class DisplayFavoritesListUseCaseTests: XCTestCase {
         XCTAssertEqual(stories, expectedStories)
     }
 
-    func test_it_should_display_gateway_error_when_fetch_all_fails() {
+    func test_it_should_return_gateway_error_when_fetch_all_fails() {
         fakeStoriesRepository.shouldFetchFavoritesFail = true
 
         var error: StoriesRepositoryError?

@@ -7,7 +7,7 @@
 //
 
 typealias StoriesRepositoryFetchCompletionHandler = (Result<[Story]>) -> Void
-typealias StoriesRepositoryWriteErrorCompletionHandler = (StoriesRepositoryError?) -> Void
+typealias StoriesRepositoryToggleFavoriteCompletionHandler = (Result<Story>) -> Void
 
 public enum StoriesRepositoryError: Error, Equatable {
     case gatewayRequestFail(String)
@@ -24,5 +24,5 @@ protocol StoriesRepository {
     func fetchAll(then handler: @escaping StoriesRepositoryFetchCompletionHandler)
     func requestNew(then handler: @escaping StoriesRepositoryFetchCompletionHandler)
     func fetchFavorites(then handler: @escaping StoriesRepositoryFetchCompletionHandler)
-    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryWriteErrorCompletionHandler)
+    func toggleFavorite(story: Story, then handler: @escaping StoriesRepositoryToggleFavoriteCompletionHandler)
 }

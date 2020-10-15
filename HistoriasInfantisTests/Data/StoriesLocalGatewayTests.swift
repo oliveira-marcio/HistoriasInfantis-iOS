@@ -103,6 +103,7 @@ class StoriesLocalGatewayTests: XCTestCase {
 
     func test_given_entries_stored_when_insert_stories_then_should_return_updated_entries_on_fetch_all() {
         let initialStories = populateSampleData()
+        let date = Date()
         let newStory = [
             Story(
                 id: 6,
@@ -110,8 +111,8 @@ class StoriesLocalGatewayTests: XCTestCase {
                 url: "http://story6",
                 imageUrl: "http://image6",
                 paragraphs: [.text("paragraph6")],
-                createDate: Date(),
-                updateDate: Date())
+                createDate: date,
+                updateDate: date)
         ]
 
 
