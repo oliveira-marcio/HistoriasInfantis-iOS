@@ -39,6 +39,14 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
 
+    func display(favorited: Bool) {
+        print(favorited)
+    }
+
+    func display(error: String) {
+
+    }
+
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,5 +63,6 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBAction func favoriteTapped(_ sender: Any) {
         print("Favorited!")
+        presenter.toggleFavorite()
     }
 }

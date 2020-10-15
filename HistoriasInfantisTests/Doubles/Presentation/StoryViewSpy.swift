@@ -13,8 +13,11 @@ class StoryViewSpy: StoryView {
     var presenter: StoryPresenter!
     var title: String?
     var image: Data?
+    var favorited: Bool?
+    var error: String?
 
     var displayImageHandler: (() -> Void)?
+    var displayFavoritedHandler: (() -> Void)?
 
     func display(title: String) {
         self.title = title
@@ -23,5 +26,15 @@ class StoryViewSpy: StoryView {
     func display(image: Data) {
         self.image = image
         displayImageHandler?()
+    }
+
+    func display(favorited: Bool) {
+        self.favorited = favorited
+        displayFavoritedHandler?()
+    }
+
+    func display(error: String) {
+        self.error = error
+        displayFavoritedHandler?()
     }
 }

@@ -8,7 +8,9 @@
 
 class StoryViewConfigurator {
     func configure(storyViewController: StoryViewController, story: Story) {
-        let presenter = StoryPresenter(view: storyViewController, story: story)
+        let presenter = StoryPresenter(view: storyViewController,
+                                       story: story,
+                                       toggleFavoriteStoryUseCase: SceneDelegate.appEnvironment.dependencies.toggleFavoriteStoryUseCase)
         storyViewController.presenter = presenter
     }
 }

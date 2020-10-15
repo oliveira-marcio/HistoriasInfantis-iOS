@@ -11,6 +11,7 @@ import XCTest
 
 var presenter: StoryPresenter!
 var viewSpy: StoryViewSpy!
+var fakeStoriesRepository: FakeStoriesRepository!
 
 let date = Date()
 let unfavoriteStory = Story(
@@ -52,18 +53,19 @@ class StoryPresenterTests: XCTestCase {
         super.setUp()
 
         viewSpy = StoryViewSpy()
+        fakeStoriesRepository = FakeStoriesRepository()
+        presenter = StoryPresenter(view: viewSpy,
+                                   story: unfavoriteStory,
+                                   toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
     }
 
     func test_it_should_display_story_title_when_view_did_load() {
-        presenter = StoryPresenter(view: viewSpy, story: unfavoriteStory)
         presenter.viewDidLoad()
 
         XCTAssertEqual(viewSpy.title, unfavoriteStory.title)
     }
 
     func test_it_should_return_paragraph_type_from_selected_paragraph_when_get_paragraph_type_is_called() {
-        presenter = StoryPresenter(view: viewSpy, story: unfavoriteStory)
-
         for i in (0..<unfavoriteStory.paragraphs.count) {
             XCTAssertEqual(
                 presenter.getParagraphType(for: i),
@@ -73,8 +75,6 @@ class StoryPresenterTests: XCTestCase {
     }
 
     func test_it_should_display_complete_story_when_view_did_load() {
-        presenter = StoryPresenter(view: viewSpy, story: unfavoriteStory)
-
         let cellSpies = unfavoriteStory.paragraphs.map { _ in ParagraphCellViewSpy() }
         for index in 0..<cellSpies.count {
             presenter.configureCell(cellSpies[index], for: index)
@@ -107,19 +107,69 @@ class StoryPresenterTests: XCTestCase {
     }
 
     func test_it_should_display_favorite_button_marked_when_view_did_load_when_story_is_favorite() {
-        presenter = StoryPresenter(view: viewSpy, story: favoriteStory)
+        presenter = StoryPresenter(view: viewSpy,
+                                   story: favoriteStory,
+                                   toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
+
         presenter.viewDidLoad()
+
+        XCTAssertEqual(viewSpy.favorited, true)
     }
 
     func test_it_should_display_favorite_button_unmarked_when_view_did_load_when_story_is_not_favorite() {
+        presenter.viewDidLoad()
 
+        XCTAssertEqual(viewSpy.favorited, false)
     }
 
     func test_it_should_add_movie_to_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_not_favorite() {
+        let toggleExpectation = expectation(description: "toggle favorite expectation")
 
+        viewSpy.displayFavoritedHandler = {
+            toggleExpectation.fulfill()
+        }
+
+        fakeStoriesRepository.favoriteToggledStory = favoriteStory
+        presenter.toggleFavorite()
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.favorited, true)
     }
 
     func test_it_should_remove_movie_from_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_favorite() {
+        presenter = StoryPresenter(view: viewSpy,
+                                   story: favoriteStory,
+                                   toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
 
+        let toggleExpectation = expectation(description: "toggle favorite expectation")
+
+        viewSpy.displayFavoritedHandler = {
+            toggleExpectation.fulfill()
+        }
+
+        fakeStoriesRepository.favoriteToggledStory = unfavoriteStory
+        presenter.toggleFavorite()
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.favorited, false)
+
+    }
+
+    func test_it_should_display_error_and_keep_button_state_when_toggle_favorite_fails() {
+        let toggleExpectation = expectation(description: "toggle favorite expectation")
+
+        viewSpy.displayFavoritedHandler = {
+            toggleExpectation.fulfill()
+        }
+
+        fakeStoriesRepository.shouldToggleFavoriteFail = true
+        presenter.toggleFavorite()
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.error, "Toggle favorite error")
+        XCTAssertNil(viewSpy.favorited)
     }
 }

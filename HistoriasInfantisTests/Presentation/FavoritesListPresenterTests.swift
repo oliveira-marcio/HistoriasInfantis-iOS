@@ -17,6 +17,8 @@ class FavoritesListPresenterTests: XCTestCase {
     var fakeStoriesRepository: FakeStoriesRepository!
     var eventNotifierStub: EventNotifierStub!
 
+    let date = Date()
+
     override func setUp() {
         super.setUp()
 
@@ -43,8 +45,8 @@ class FavoritesListPresenterTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true),
             Story(
                 id: 2,
@@ -52,8 +54,8 @@ class FavoritesListPresenterTests: XCTestCase {
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true)
         ]
 
@@ -106,8 +108,8 @@ class FavoritesListPresenterTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true),
             Story(
                 id: 2,
@@ -115,29 +117,29 @@ class FavoritesListPresenterTests: XCTestCase {
                 url: "http://story2",
                 imageUrl: "http://image2",
                 paragraphs: [.text("paragraph2")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true)
         ]
-
-        presenter.viewDidLoad()
 
         let loadExpectation = expectation(description: "load expectation")
         viewSpy.refreshStoriesHandler = {
             loadExpectation.fulfill()
         }
+
+        presenter.viewDidLoad()
         waitForExpectations(timeout: 1)
 
         fakeStoriesRepository.stories = expectedStories
         viewSpy.didDisplayLoading = []
         viewSpy.didRequestRefreshStories = false
 
-        eventNotifierStub.notify(notification: StoriesRepositoryNotification.didUpdateFavorites)
-
         let didUpdateFavoritesExpectation = expectation(description: "did update favorites expectation")
         viewSpy.refreshStoriesHandler = {
             didUpdateFavoritesExpectation.fulfill()
         }
+
+        eventNotifierStub.notify(notification: StoriesRepositoryNotification.didUpdateFavorites)
         waitForExpectations(timeout: 1)
 
         let cellSpies = expectedStories.map { _ in StoryCellViewSpy() }
@@ -160,8 +162,8 @@ class FavoritesListPresenterTests: XCTestCase {
                 url: "http://story1",
                 imageUrl: "http://image1",
                 paragraphs: [.text("paragraph1")],
-                createDate: Date(),
-                updateDate: Date(),
+                createDate: date,
+                updateDate: date,
                 favorite: true)
         ]
 

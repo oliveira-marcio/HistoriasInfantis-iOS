@@ -12,26 +12,38 @@ protocol StoriesListView: BaseStoriesListView {
     var presenter: StoriesListPresenter! { get set }
 }
 
-class StoriesListPresenter: BaseStoriesListPresenter {
+class StoriesListPresenter: NSObject, BaseStoriesListPresenter {
 
     private(set) public weak var view: StoriesListView?
     internal(set) public var router: BaseStoriesListViewRouter
     private(set) var displayStoriesListUseCase: DisplayStoriesListUseCase
     private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
+    private(set) var eventNotifier: EventNotifier
 
     var stories = [Story]()
 
     init(view: StoriesListView,
          router: BaseStoriesListViewRouter,
          displayStoriesListUseCase: DisplayStoriesListUseCase,
-         requestNewStoriesUseCase: RequestNewStoriesUseCase) {
+         requestNewStoriesUseCase: RequestNewStoriesUseCase,
+         eventNotifier: EventNotifier) {
         self.view = view
         self.router = router
         self.displayStoriesListUseCase = displayStoriesListUseCase
         self.requestNewStoriesUseCase = requestNewStoriesUseCase
+        self.eventNotifier = eventNotifier
     }
 
     func viewDidLoad() {
+        fetchStories()
+
+        eventNotifier.addObserver(self,
+                                  selector: #selector(didUpdateFavorites),
+                                  name: StoriesRepositoryNotification.didUpdateFavorites.notificationName,
+                                  object: nil)
+    }
+
+    private func fetchStories() {
         view?.displayLoading(isLoading: true)
         displayStoriesListUseCase.invoke { [weak self] result in
             DispatchQueue.main.async {
@@ -44,6 +56,10 @@ class StoriesListPresenter: BaseStoriesListPresenter {
                 }
             }
         }
+    }
+
+    @objc func didUpdateFavorites() {
+        fetchStories()
     }
 
     func refresh() {

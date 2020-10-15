@@ -12,7 +12,8 @@ class StoriesListViewConfigurator {
         let presenter = StoriesListPresenter(view: storiesListViewController,
                                              router: router,
                                              displayStoriesListUseCase: SceneDelegate.appEnvironment.dependencies.displayStoriesUseCase,
-                                             requestNewStoriesUseCase: SceneDelegate.appEnvironment.dependencies.requestNewStoriesUseCase)
+                                             requestNewStoriesUseCase: SceneDelegate.appEnvironment.dependencies.requestNewStoriesUseCase,
+                                             eventNotifier: SceneDelegate.appEnvironment.dependencies.eventNotifier)
 
         storiesListViewController.presenter = presenter
     }
