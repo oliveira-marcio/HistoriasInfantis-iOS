@@ -80,7 +80,23 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(cellSpies[1].title, "Story 2")
     }
 
-    func test_it_should_display_empty_view_and_display_error_when_view_did_load_and_there_are_no_stories_available() {
+    func test_it_should_display_empty_view_when_view_did_load_and_there_are_no_stories_available() {
+        presenter.viewDidLoad()
+
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.displayEmptyStoriesHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
+        XCTAssertFalse(viewSpy.didRequestRefreshStories)
+        XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
+        XCTAssertNil(viewSpy.storiesRetrievalError)
+    }
+
+    func test_it_should_display_empty_view_and_error_when_view_did_load_and_there_are_no_stories_available() {
         fakeStoriesRepository.shouldFetchAllFail = true
 
         presenter.viewDidLoad()
@@ -139,6 +155,22 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.stories.count, 2)
         XCTAssertEqual(cellSpies[0].title, "Story 1")
         XCTAssertEqual(cellSpies[1].title, "Story 2")
+    }
+
+    func test_it_should_display_empty_stories_when_refresh_is_called_and_there_are_no_stories_available() {
+        presenter.refresh()
+
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.displayEmptyStoriesHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
+        XCTAssertFalse(viewSpy.didRequestRefreshStories)
+        XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
+        XCTAssertNil(viewSpy.storiesRetrievalError)
     }
 
     func test_it_should_display_server_error_when_refresh_is_called_and_web_gateway_fails() {
@@ -200,7 +232,7 @@ class StoriesListPresenterTests: XCTestCase {
         ]
 
         let loadExpectation = expectation(description: "load expectation")
-        viewSpy.refreshStoriesHandler = {
+        viewSpy.displayEmptyStoriesHandler = {
             loadExpectation.fulfill()
         }
 

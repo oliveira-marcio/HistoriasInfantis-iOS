@@ -60,7 +60,7 @@ class FavoritesListPresenter: NSObject, BaseStoriesListPresenter {
     }
 
     private func updateStories(result: Result<[Story]>) {
-        if let stories = try? result.dematerialize() {
+        if let stories = try? result.dematerialize(), !stories.isEmpty {
             self.stories = stories
             view?.refreshStories()
         } else {

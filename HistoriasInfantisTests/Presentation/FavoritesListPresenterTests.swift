@@ -36,7 +36,7 @@ class FavoritesListPresenterTests: XCTestCase {
         eventNotifierStub.tearDown()
     }
 
-    func test_it_should_display_favorites_list_when_is_favorite_presentation_and_view_did_load_and_there_are_stories_available() {
+    func test_it_should_display_favorites_list_when_view_did_load_and_there_are_stories_available() {
 
         let expectedStories = [
             Story(
@@ -82,7 +82,23 @@ class FavoritesListPresenterTests: XCTestCase {
         XCTAssertEqual(cellSpies[1].title, "Story 2")
     }
 
-    func test_it_should_display_empty_view_when_is_favorite_presentation_and_view_did_load_and_there_are_no_stories_available() {
+    func test_it_should_display_empty_view_when_view_did_load_and_there_are_no_stories_available() {
+        presenter.viewDidLoad()
+
+        let loadExpectation = expectation(description: "load expectation")
+        viewSpy.displayEmptyStoriesHandler = {
+            loadExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
+        XCTAssertFalse(viewSpy.didRequestRefreshStories)
+        XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
+        XCTAssertNil(viewSpy.storiesRetrievalError)
+    }
+
+    func test_it_should_display_empty_view_and_error_when_view_did_load_and_gateway_fails() {
         fakeStoriesRepository.shouldFetchFavoritesFail = true
 
         presenter.viewDidLoad()
@@ -123,7 +139,7 @@ class FavoritesListPresenterTests: XCTestCase {
         ]
 
         let loadExpectation = expectation(description: "load expectation")
-        viewSpy.refreshStoriesHandler = {
+        viewSpy.displayEmptyStoriesHandler = {
             loadExpectation.fulfill()
         }
 

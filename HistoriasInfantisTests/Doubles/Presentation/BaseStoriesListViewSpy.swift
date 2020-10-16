@@ -14,6 +14,7 @@ class BaseStoriesListViewSpy: BaseStoriesListView {
     var didRequestRefreshStories: Bool = false
     var storiesRetrievalError: String?
 
+    var displayEmptyStoriesHandler: (() -> Void)?
     var displayStoriesRetrievalErrorHandler: (() -> Void)?
     var refreshStoriesHandler: (() -> Void)?
 
@@ -23,6 +24,7 @@ class BaseStoriesListViewSpy: BaseStoriesListView {
 
     func displayEmptyStories() {
         didRequestDisplayEmptyStories = true
+        displayEmptyStoriesHandler?()
     }
 
     func displayStoriesRetrievalError(message: String?) {
