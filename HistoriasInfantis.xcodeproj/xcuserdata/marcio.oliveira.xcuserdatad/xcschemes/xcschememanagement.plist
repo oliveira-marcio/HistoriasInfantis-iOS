@@ -4,10 +4,28 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HistoriasInfantis.xcscheme_^#shared#^_</key>
+		<key>HistoriasInfantis (Mock).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>HistoriasInfantis.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9C0D1DC62525F9E500B73A3F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C0D1DDC2525F9E800B73A3F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -20,6 +20,26 @@ extension AppEnvironment {
 }
 
 final class DependencyResolver {
+    lazy var gateways: Gateways = CommandLine.arguments.contains("--mock") ? MockGateways() : RealGateways()
+
+    lazy var eventNotifier: NotificationCenterEventNotifier = NotificationCenterEventNotifier()
+
+    lazy var storiesRepository: StoriesRepository = StoriesRepositoryImplementation(storiesGateway: gateways.storiesGateway,
+                                                                                    storiesLocalGateway: gateways.storiesLocalGateway,
+                                                                                    eventNotifier: eventNotifier)
+
+    lazy var displayStoriesUseCase = DisplayStoriesListUseCase(storiesRepository: storiesRepository)
+    lazy var requestNewStoriesUseCase = RequestNewStoriesUseCase(storiesRepository: storiesRepository)
+    lazy var displayFavoritesListUseCase = DisplayFavoritesListUseCase(storiesRepository: storiesRepository)
+    lazy var toggleFavoriteStoryUseCase = ToggleFavoriteStoryUseCase(storiesRepository: storiesRepository)
+}
+
+protocol Gateways: class {
+    var storiesGateway: StoriesGateway { set get }
+    var storiesLocalGateway: StoriesLocalGateway { set get }
+}
+
+class RealGateways: Gateways {
     lazy var htmlParser: HtmlParser = SwiftSoupHtmlParser(author: "Rodrigo Lopes", end: "FIM")
 
     lazy var storiesGateway: StoriesGateway = StoriesGatewayImplementation(urlSession: URLSession.shared,
@@ -28,15 +48,9 @@ final class DependencyResolver {
                                                                            maxPages: 99999)
 
     lazy var storiesLocalGateway: StoriesLocalGateway = CoreDataStoriesLocalGateway()
+}
 
-    lazy var eventNotifier: NotificationCenterEventNotifier = NotificationCenterEventNotifier()
-
-    lazy var storiesRepository: StoriesRepository = StoriesRepositoryImplementation(storiesGateway: storiesGateway,
-                                                                                    storiesLocalGateway: storiesLocalGateway,
-                                                                                    eventNotifier: eventNotifier)
-
-    lazy var displayStoriesUseCase = DisplayStoriesListUseCase(storiesRepository: storiesRepository)
-    lazy var requestNewStoriesUseCase = RequestNewStoriesUseCase(storiesRepository: storiesRepository)
-    lazy var displayFavoritesListUseCase = DisplayFavoritesListUseCase(storiesRepository: storiesRepository)
-    lazy var toggleFavoriteStoryUseCase = ToggleFavoriteStoryUseCase(storiesRepository: storiesRepository)
+class MockGateways: Gateways {
+    lazy var storiesGateway: StoriesGateway = MockStoriesGateway()
+    lazy var storiesLocalGateway: StoriesLocalGateway = InMemoryStoriesLocalGateway()
 }

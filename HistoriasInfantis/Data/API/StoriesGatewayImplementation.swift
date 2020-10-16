@@ -111,7 +111,6 @@ class StoriesGatewayImplementation: StoriesGateway {
         task.resume()
     }
 
-    // TODO: Create proper HTML Parser!
     private func parse(stories: [StoryEntity]) -> [Story] {
         var parsedStories = [Story]()
         for story in stories {

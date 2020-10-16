@@ -44,6 +44,8 @@
 		9CB70EA1253612C90096FA25 /* BaseStoriesListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70EA0253612C90096FA25 /* BaseStoriesListDelegate.swift */; };
 		9CB70EA52538BEF30096FA25 /* ToggleFavoriteStoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70EA42538BEF20096FA25 /* ToggleFavoriteStoryUseCase.swift */; };
 		9CB70EA72538C0260096FA25 /* ToggleFavoriteStoryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB70EA62538C0260096FA25 /* ToggleFavoriteStoryUseCaseTests.swift */; };
+		9CC3432A2539A23F00C3658B /* InMemoryStoriesLocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC343292539A23F00C3658B /* InMemoryStoriesLocalGateway.swift */; };
+		9CC3432C2539A32A00C3658B /* MockStoriesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3432B2539A32A00C3658B /* MockStoriesGateway.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* BaseStoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */; };
@@ -145,6 +147,8 @@
 		9CB70EA0253612C90096FA25 /* BaseStoriesListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListDelegate.swift; sourceTree = "<group>"; };
 		9CB70EA42538BEF20096FA25 /* ToggleFavoriteStoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleFavoriteStoryUseCase.swift; sourceTree = "<group>"; };
 		9CB70EA62538C0260096FA25 /* ToggleFavoriteStoryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleFavoriteStoryUseCaseTests.swift; sourceTree = "<group>"; };
+		9CC343292539A23F00C3658B /* InMemoryStoriesLocalGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStoriesLocalGateway.swift; sourceTree = "<group>"; };
+		9CC3432B2539A32A00C3658B /* MockStoriesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStoriesGateway.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListViewSpy.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 			children = (
 				9CF942062529F6B30089801D /* StoriesEntity.swift */,
 				9C0D1E1125276FE300B73A3F /* StoriesGatewayImplementation.swift */,
+				9CC3432B2539A32A00C3658B /* MockStoriesGateway.swift */,
 				9C0D1E162529D5AA00B73A3F /* URLSessionProtocol.swift */,
 				9CF94211252B02E30089801D /* HtmlParser.swift */,
 			);
@@ -478,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF94218252CE9D20089801D /* CoreDataStoriesLocalGateway.swift */,
+				9CC343292539A23F00C3658B /* InMemoryStoriesLocalGateway.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -630,10 +636,12 @@
 				9C0D1E102527493000B73A3F /* RequestNewStoriesUseCase.swift in Sources */,
 				9CF73F8D253216ED00DBD943 /* StoryViewConfigurator.swift in Sources */,
 				9CF94221252F469E0089801D /* StoriesGateway.swift in Sources */,
+				9CC3432A2539A23F00C3658B /* InMemoryStoriesLocalGateway.swift in Sources */,
 				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
 				9CF73F8F2532173F00DBD943 /* StoryViewController.swift in Sources */,
 				9CB70E892534CC0C0096FA25 /* BaseStoriesListPresenter.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
+				9CC3432C2539A32A00C3658B /* MockStoriesGateway.swift in Sources */,
 				9CF73F9125321E9300DBD943 /* ParagraphViewCell.swift in Sources */,
 				9CB70E942534F2980096FA25 /* NotificationCenterEventNotifier.swift in Sources */,
 				9CB70E992536091F0096FA25 /* FavoritesListViewConfigurator.swift in Sources */,
