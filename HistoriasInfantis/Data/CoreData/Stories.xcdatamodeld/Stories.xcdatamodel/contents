@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Paragraph" representedClassName="CDParagraph" syncable="YES" codeGenerationType="class">
+        <attribute name="text" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <relationship name="story" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="paragraphs" inverseEntity="Story"/>
+    </entity>
+    <entity name="Story" representedClassName="CDStory" syncable="YES" codeGenerationType="class">
+        <attribute name="createDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="favorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" attributeType="String"/>
+        <relationship name="paragraphs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Paragraph" inverseName="story" inverseEntity="Paragraph"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Story" positionX="-73.9453125" positionY="-24.734375" width="128" height="163"/>
+        <element name="Paragraph" positionX="141.13671875" positionY="10.30859375" width="128" height="88"/>
+    </elements>
+</model>

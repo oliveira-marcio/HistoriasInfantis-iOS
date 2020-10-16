@@ -20,6 +20,25 @@ struct Story: Equatable {
             case .end(_): return "end"
             }
         }
+
+        var text: String {
+            switch self {
+            case .text(let text): return text
+            case .image(let text): return text
+            case .author(let text): return text
+            case .end(let text): return text
+            }
+        }
+
+        static func makeParagraph(with name: String, text: String) -> Paragraph? {
+            switch name.lowercased() {
+            case "text": return .text(text)
+            case "image": return .image(text)
+            case "author": return .author(text)
+            case "end": return .end(text)
+            default: return nil
+            }
+        }
     }
     
     let id: Int
