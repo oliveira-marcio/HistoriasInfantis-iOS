@@ -11,11 +11,11 @@ import Foundation
 
 class FakeImageLoader: ImageLoader {
     var data: Data?
-    var url: String?
+    var urls = [String]()
     var shouldFail = false
 
     func getImage(from url: String, completion: @escaping (Data?) -> Void) {
-        self.url = url
+        urls.append(url)
         completion(shouldFail ? nil : data)
     }
 }

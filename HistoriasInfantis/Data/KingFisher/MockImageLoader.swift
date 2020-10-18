@@ -11,8 +11,6 @@ import UIKit
 
 struct MockImageLoader: ImageLoader {
     func getImage(from url: String, completion: @escaping (Data?) -> Void) {
-        DispatchQueue.main.async {
-            completion(UIImage(systemName: "book.fill")?.pngData())
-        }
+        completion(UIImage(systemName: "book.fill")?.pngData())
     }
 }

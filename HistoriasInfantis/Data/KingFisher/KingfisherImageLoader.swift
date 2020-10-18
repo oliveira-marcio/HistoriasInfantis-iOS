@@ -17,13 +17,11 @@ struct KingfisherImageLoader: ImageLoader {
         }
 
         KingfisherManager.shared.retrieveImage(with: url) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let value):
-                    completion(value.image.pngData())
-                case .failure(_):
-                    completion(nil)
-                }
+            switch result {
+            case .success(let value):
+                completion(value.image.pngData())
+            case .failure(_):
+                completion(nil)
             }
         }
     }

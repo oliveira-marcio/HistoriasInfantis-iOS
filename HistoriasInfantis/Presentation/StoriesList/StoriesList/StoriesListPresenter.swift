@@ -15,6 +15,7 @@ protocol StoriesListView: BaseStoriesListView {
 class StoriesListPresenter: NSObject, BaseStoriesListPresenter {
 
     private(set) public weak var view: StoriesListView?
+    internal(set) public var imageLoader: ImageLoader
     internal(set) public var router: BaseStoriesListViewRouter
     private(set) var displayStoriesListUseCase: DisplayStoriesListUseCase
     private(set) var requestNewStoriesUseCase: RequestNewStoriesUseCase
@@ -23,11 +24,13 @@ class StoriesListPresenter: NSObject, BaseStoriesListPresenter {
     var stories = [Story]()
 
     init(view: StoriesListView,
+         imageLoader: ImageLoader,
          router: BaseStoriesListViewRouter,
          displayStoriesListUseCase: DisplayStoriesListUseCase,
          requestNewStoriesUseCase: RequestNewStoriesUseCase,
          eventNotifier: EventNotifier) {
         self.view = view
+        self.imageLoader = imageLoader
         self.router = router
         self.displayStoriesListUseCase = displayStoriesListUseCase
         self.requestNewStoriesUseCase = requestNewStoriesUseCase

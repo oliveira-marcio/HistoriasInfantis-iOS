@@ -22,6 +22,7 @@ protocol StoryCellView: class {
 }
 
 protocol BaseStoriesListPresenter: class {
+    var imageLoader: ImageLoader { get set }
     var router: BaseStoriesListViewRouter { get set }
     var stories: [Story] { get set }
 
@@ -33,6 +34,13 @@ protocol BaseStoriesListPresenter: class {
 extension BaseStoriesListPresenter {
     func configureStoryCellView(_ storyView: StoryCellView, for row: Int) {
         storyView.display(title: stories[row].title)
+        imageLoader.getImage(from: stories[row].imageUrl) { image in
+            if let image = image {
+                storyView.display(image: image)
+            } else {
+                storyView.display(image: "placeholder")
+            }
+        }
     }
 
     func showStory(at row: Int) {

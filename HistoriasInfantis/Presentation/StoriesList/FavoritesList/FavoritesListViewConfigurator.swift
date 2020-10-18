@@ -10,6 +10,7 @@ class FavoritesListViewConfigurator {
     func configure(favoritesListViewController: FavoritesListViewController) {
         let router = BaseStoriesListViewRouterImplementation(storiesListViewController: favoritesListViewController)
         let presenter = FavoritesListPresenter(view: favoritesListViewController,
+                                               imageLoader: SceneDelegate.appEnvironment.dependencies.gateways.imageLoader,
                                                router: router,
                                                displayFavoritesListUseCase: SceneDelegate.appEnvironment.dependencies.displayFavoritesListUseCase,
                                                eventNotifier: SceneDelegate.appEnvironment.dependencies.eventNotifier)

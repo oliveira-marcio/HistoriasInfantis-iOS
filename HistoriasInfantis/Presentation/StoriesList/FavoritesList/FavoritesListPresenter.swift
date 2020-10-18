@@ -15,6 +15,7 @@ protocol FavoritesListView: BaseStoriesListView {
 class FavoritesListPresenter: NSObject, BaseStoriesListPresenter {
 
     internal(set) public weak var view: FavoritesListView?
+    internal(set) public var imageLoader: ImageLoader
     internal(set) public var router: BaseStoriesListViewRouter
     private(set) var displayFavoritesListUseCase: DisplayFavoritesListUseCase
     private(set) var eventNotifier: EventNotifier
@@ -22,10 +23,12 @@ class FavoritesListPresenter: NSObject, BaseStoriesListPresenter {
     var stories = [Story]()
 
     init(view: FavoritesListView,
+         imageLoader: ImageLoader,
          router: BaseStoriesListViewRouter,
          displayFavoritesListUseCase: DisplayFavoritesListUseCase,
          eventNotifier: EventNotifier) {
         self.view = view
+        self.imageLoader = imageLoader
         self.router = router
         self.displayFavoritesListUseCase = displayFavoritesListUseCase
         self.eventNotifier = eventNotifier

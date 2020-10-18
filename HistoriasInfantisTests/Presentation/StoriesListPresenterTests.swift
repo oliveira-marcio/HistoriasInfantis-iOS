@@ -13,6 +13,7 @@ class StoriesListPresenterTests: XCTestCase {
 
     var presenter: StoriesListPresenter!
     var viewSpy: StoriesListViewSpy!
+    var fakeImageLoader: FakeImageLoader!
     var routerSpy: StoriesListViewRouterSpy!
     var fakeStoriesRepository: FakeStoriesRepository!
     var eventNotifierStub: EventNotifierStub!
@@ -23,10 +24,12 @@ class StoriesListPresenterTests: XCTestCase {
         super.setUp()
 
         viewSpy = StoriesListViewSpy()
+        fakeImageLoader = FakeImageLoader()
         routerSpy = StoriesListViewRouterSpy()
         fakeStoriesRepository = FakeStoriesRepository()
         eventNotifierStub = EventNotifierStub()
         presenter = StoriesListPresenter(view: viewSpy,
+                                         imageLoader: fakeImageLoader,
                                          router: routerSpy,
                                          displayStoriesListUseCase: DisplayStoriesListUseCase(storiesRepository: fakeStoriesRepository),
                                          requestNewStoriesUseCase: RequestNewStoriesUseCase(storiesRepository: fakeStoriesRepository),
@@ -58,6 +61,8 @@ class StoriesListPresenterTests: XCTestCase {
         ]
 
         fakeStoriesRepository.stories = expectedStories
+        fakeImageLoader.data = Data()
+
         presenter.viewDidLoad()
 
         let loadExpectation = expectation(description: "load expectation")
@@ -76,8 +81,11 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertNil(viewSpy.storiesRetrievalError)
         XCTAssertEqual(presenter.stories.count, 2)
+        XCTAssertEqual(fakeImageLoader.urls, ["http://image1", "http://image2"])
         XCTAssertEqual(cellSpies[0].title, "Story 1")
+        XCTAssertEqual(cellSpies[0].imageData, Data())
         XCTAssertEqual(cellSpies[1].title, "Story 2")
+        XCTAssertEqual(cellSpies[1].imageData, Data())
     }
 
     func test_it_should_display_empty_view_when_view_did_load_and_there_are_no_stories_available() {
@@ -135,6 +143,8 @@ class StoriesListPresenterTests: XCTestCase {
         ]
 
         fakeStoriesRepository.stories = expectedStories
+        fakeImageLoader.data = Data()
+
         presenter.refresh()
 
         let loadExpectation = expectation(description: "refresh expectation")
@@ -153,8 +163,11 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
         XCTAssertNil(viewSpy.storiesRetrievalError)
         XCTAssertEqual(presenter.stories.count, 2)
+        XCTAssertEqual(fakeImageLoader.urls, ["http://image1", "http://image2"])
         XCTAssertEqual(cellSpies[0].title, "Story 1")
+        XCTAssertEqual(cellSpies[0].imageData, Data())
         XCTAssertEqual(cellSpies[1].title, "Story 2")
+        XCTAssertEqual(cellSpies[1].imageData, Data())
     }
 
     func test_it_should_display_empty_stories_when_refresh_is_called_and_there_are_no_stories_available() {
@@ -240,6 +253,7 @@ class StoriesListPresenterTests: XCTestCase {
         waitForExpectations(timeout: 1)
 
         fakeStoriesRepository.stories = expectedStories
+        fakeImageLoader.data = Data()
         viewSpy.didDisplayLoading = []
         viewSpy.didRequestRefreshStories = false
 
@@ -259,8 +273,11 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertTrue(viewSpy.didRequestRefreshStories)
         XCTAssertEqual(presenter.stories.count, 2)
+        XCTAssertEqual(fakeImageLoader.urls, ["http://image1", "http://image2"])
         XCTAssertEqual(cellSpies[0].title, "Story 1")
+        XCTAssertEqual(cellSpies[0].imageData, Data())
         XCTAssertEqual(cellSpies[1].title, "Story 2")
+        XCTAssertEqual(cellSpies[1].imageData, Data())
     }
 
     func test_it_should_navigate_to_selected_story_when_show_story_is_called() {

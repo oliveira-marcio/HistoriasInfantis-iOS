@@ -12,17 +12,18 @@ class StoryViewCell: UITableViewCell, StoryCellView {
 
     static var reuseIdentifier: String { "\(self)" }
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var storyImageView: UIImageView!
+    @IBOutlet weak var storyLabel: UILabel!
 
     func display(image from: Data) {
-
+        storyImageView.image = UIImage(data: from)
     }
 
     func display(image named: String) {
-
+        storyImageView.image = UIImage(named: named)
     }
 
     func display(title: String) {
-        label.text = title
+        storyLabel.text = title
     }
 }
