@@ -11,6 +11,7 @@ import XCTest
 
 var presenter: StoryPresenter!
 var viewSpy: StoryViewSpy!
+var fakeImageLoader: FakeImageLoader!
 var fakeStoriesRepository: FakeStoriesRepository!
 
 let date = Date()
@@ -21,7 +22,7 @@ let unfavoriteStory = Story(
     imageUrl: "http://image1",
     paragraphs: [
         .text("Paragraph 1"),
-        .image("http://image2"),
+        .image("http://image1"),
         .text("Paragraph 2"),
         .end("The End"),
         .author("Author")
@@ -37,7 +38,7 @@ let favoriteStory = Story(
     imageUrl: "http://image1",
     paragraphs: [
         .text("Paragraph 1"),
-        .image("http://image2"),
+        .image("http://image1"),
         .text("Paragraph 2"),
         .end("The End"),
         .author("Author")
@@ -53,9 +54,12 @@ class StoryPresenterTests: XCTestCase {
         super.setUp()
 
         viewSpy = StoryViewSpy()
+        fakeImageLoader = FakeImageLoader()
+        fakeImageLoader.data = Data()
         fakeStoriesRepository = FakeStoriesRepository()
         presenter = StoryPresenter(view: viewSpy,
                                    story: unfavoriteStory,
+                                   imageLoader: fakeImageLoader,
                                    toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
     }
 
@@ -89,6 +93,7 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertNil(cellSpies[1].author)
         XCTAssertNil(cellSpies[1].end)
         XCTAssertEqual(cellSpies[1].image, Data())
+        XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
 
         XCTAssertEqual(cellSpies[2].text, "Paragraph 2")
         XCTAssertNil(cellSpies[2].author)
@@ -109,6 +114,7 @@ class StoryPresenterTests: XCTestCase {
     func test_it_should_display_favorite_button_marked_when_view_did_load_when_story_is_favorite() {
         presenter = StoryPresenter(view: viewSpy,
                                    story: favoriteStory,
+                                   imageLoader: fakeImageLoader,
                                    toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
 
         presenter.viewDidLoad()
@@ -140,6 +146,7 @@ class StoryPresenterTests: XCTestCase {
     func test_it_should_remove_movie_from_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_favorite() {
         presenter = StoryPresenter(view: viewSpy,
                                    story: favoriteStory,
+                                   imageLoader: fakeImageLoader,
                                    toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
 
         let toggleExpectation = expectation(description: "toggle favorite expectation")

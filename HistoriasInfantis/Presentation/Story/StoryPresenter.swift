@@ -27,13 +27,16 @@ class StoryPresenter {
 
     private(set) weak var view: StoryView?
     private(set) public var story: Story
+    private(set) public var imageLoader: ImageLoader
     private(set) public var toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase
 
     init(view: StoryView,
          story: Story,
+         imageLoader: ImageLoader,
          toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase) {
         self.view = view
         self.story = story
+        self.imageLoader = imageLoader
         self.toggleFavoriteStoryUseCase = toggleFavoriteStoryUseCase
     }
 
@@ -55,7 +58,11 @@ class StoryPresenter {
         case .text(let text): view.display(text: text)
         case .author(let author): view.display(author: author)
         case .end(let end): view.display(end: end)
-        case .image(_): view.display(image: Data())
+        case .image(let imageUrl): imageLoader.getImage(from: imageUrl) { image in
+                if let image = image {
+                    view.display(image: image)
+                }
+            }
         }
     }
 

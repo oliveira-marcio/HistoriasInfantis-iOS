@@ -10,6 +10,7 @@ class StoryViewConfigurator {
     func configure(storyViewController: StoryViewController, story: Story) {
         let presenter = StoryPresenter(view: storyViewController,
                                        story: story,
+                                       imageLoader: SceneDelegate.appEnvironment.dependencies.gateways.imageLoader,
                                        toggleFavoriteStoryUseCase: SceneDelegate.appEnvironment.dependencies.toggleFavoriteStoryUseCase)
         storyViewController.presenter = presenter
     }
