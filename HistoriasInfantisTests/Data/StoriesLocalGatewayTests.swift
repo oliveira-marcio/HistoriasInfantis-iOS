@@ -170,15 +170,16 @@ class StoriesLocalGatewayTests: XCTestCase {
     }
 
     private func populateSampleData(values: Int, favoriteIds: [Int] = []) -> [Story] {
-        let stories = Array(1...values).reversed().map { id in
-            Story(
+        let stories: [Story] = Array(1...values).reversed().map { id in
+            let todayDate = Date()
+            return Story(
                 id: id,
                 title: "Story \(id)",
                 url: "http://story\(id)",
                 imageUrl: "http://image\(id)",
                 paragraphs: [.text("paragraph\(id)")],
-                createDate: Calendar.current.date(byAdding: .day, value: id, to: Date())!,
-                updateDate: Date(),
+                createDate: Calendar.current.date(byAdding: .day, value: id, to: todayDate)!,
+                updateDate: Calendar.current.date(byAdding: .day, value: id, to: todayDate)!,
                 favorite: favoriteIds.contains(id)
             )
         }

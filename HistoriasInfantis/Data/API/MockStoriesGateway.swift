@@ -16,15 +16,22 @@ class MockStoriesGateway: StoriesGateway {
     }
 
     private func populateSampleData(last: Int) -> [Story] {
-        return Array(1...last).map { id in
-            Story(
+        return Array(1...last).reversed().map { id in
+            let todayDate = Date()
+            return Story(
                 id: id,
                 title: "Story \(id)",
                 url: "http://story\(id)",
                 imageUrl: "http://image\(id)",
-                paragraphs: [.text("paragraph\(id)")],
-                createDate: Date(),
-                updateDate: Date(),
+                paragraphs: [
+                    .text("paragraph\(id)-1"),
+                    .image("http://image\(id)"),
+                    .text("paragraph\(id)-2"),
+                    .end("FIM"),
+                    .author("Rodrigo Lopes")
+                ],
+                createDate: Calendar.current.date(byAdding: .day, value: id, to: todayDate)!,
+                updateDate: Calendar.current.date(byAdding: .day, value: id, to: todayDate)!,
                 favorite: false
             )
         }

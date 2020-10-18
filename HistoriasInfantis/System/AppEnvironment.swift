@@ -37,6 +37,7 @@ final class DependencyResolver {
 protocol Gateways: class {
     var storiesGateway: StoriesGateway { set get }
     var storiesLocalGateway: StoriesLocalGateway { set get }
+    var imageLoader: ImageLoader { set get }
 }
 
 class RealGateways: Gateways {
@@ -48,9 +49,11 @@ class RealGateways: Gateways {
                                                                            maxPages: 99999)
 
     lazy var storiesLocalGateway: StoriesLocalGateway = CoreDataStoriesLocalGateway()
+    lazy var imageLoader: ImageLoader = KingfisherImageLoader()
 }
 
 class MockGateways: Gateways {
     lazy var storiesGateway: StoriesGateway = MockStoriesGateway()
     lazy var storiesLocalGateway: StoriesLocalGateway = InMemoryStoriesLocalGateway()
+    lazy var imageLoader: ImageLoader = MockImageLoader()
 }

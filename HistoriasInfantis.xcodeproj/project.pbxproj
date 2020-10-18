@@ -50,6 +50,10 @@
 		9CC343312539DFE900C3658B /* Stories.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3432F2539DFE900C3658B /* Stories.xcdatamodeld */; };
 		9CC34333253A02C700C3658B /* CDStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC34332253A02C700C3658B /* CDStory.swift */; };
 		9CC34338253A283B00C3658B /* StoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC34337253A283B00C3658B /* StoryTests.swift */; };
+		9CC3433A253C9BC600C3658B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC34339253C9BC600C3658B /* ImageLoader.swift */; };
+		9CC3433C253C9C1000C3658B /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3433B253C9C1000C3658B /* KingfisherImageLoader.swift */; };
+		9CC3433F253C9CF200C3658B /* FakeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3433E253C9CF200C3658B /* FakeImageLoader.swift */; };
+		9CC34341253C9E0C00C3658B /* MockImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC34340253C9E0C00C3658B /* MockImageLoader.swift */; };
 		9CF73F39252F9CFA00DBD943 /* StoriesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */; };
 		9CF73F3B252F9DBC00DBD943 /* StoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */; };
 		9CF73F3E252FA1C100DBD943 /* BaseStoriesListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */; };
@@ -157,6 +161,10 @@
 		9CC343302539DFE900C3658B /* Stories.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stories.xcdatamodel; sourceTree = "<group>"; };
 		9CC34332253A02C700C3658B /* CDStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStory.swift; sourceTree = "<group>"; };
 		9CC34337253A283B00C3658B /* StoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTests.swift; sourceTree = "<group>"; };
+		9CC34339253C9BC600C3658B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		9CC3433B253C9C1000C3658B /* KingfisherImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherImageLoader.swift; sourceTree = "<group>"; };
+		9CC3433E253C9CF200C3658B /* FakeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeImageLoader.swift; sourceTree = "<group>"; };
+		9CC34340253C9E0C00C3658B /* MockImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageLoader.swift; sourceTree = "<group>"; };
 		9CF73F38252F9CFA00DBD943 /* StoriesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenterTests.swift; sourceTree = "<group>"; };
 		9CF73F3A252F9DBC00DBD943 /* StoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListPresenter.swift; sourceTree = "<group>"; };
 		9CF73F3D252FA1C100DBD943 /* BaseStoriesListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStoriesListViewSpy.swift; sourceTree = "<group>"; };
@@ -273,6 +281,7 @@
 				9CF73F4B2530EC9000DBD943 /* Story */,
 				9C40617B252F8048002CDA3E /* UI */,
 				9CF73F472530E99200DBD943 /* ViewRouter.swift */,
+				9CC34339253C9BC600C3658B /* ImageLoader.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -328,6 +337,7 @@
 				9CF94220252F469E0089801D /* StoriesGateway.swift */,
 				9C0D1E0925264F5E00B73A3F /* StoriesLocalGateway.swift */,
 				9C0D1DFC252633B600B73A3F /* StoriesRepositoryImplementation.swift */,
+				9CC3433D253C9C1300C3658B /* KingFisher */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -350,6 +360,7 @@
 				9C0D1E132527750800B73A3F /* FakeStoriesGateway.swift */,
 				9CF94213252B04000089801D /* FakeHtmlParser.swift */,
 				9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */,
+				9CC3433E253C9CF200C3658B /* FakeImageLoader.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -431,6 +442,15 @@
 				9CF73F452530C4A200DBD943 /* TabBarViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		9CC3433D253C9C1300C3658B /* KingFisher */ = {
+			isa = PBXGroup;
+			children = (
+				9CC3433B253C9C1000C3658B /* KingfisherImageLoader.swift */,
+				9CC34340253C9E0C00C3658B /* MockImageLoader.swift */,
+			);
+			path = KingFisher;
 			sourceTree = "<group>";
 		};
 		9CF73F37252F9CC000DBD943 /* Presentation */ = {
@@ -635,6 +655,7 @@
 				9CF94212252B02E30089801D /* HtmlParser.swift in Sources */,
 				9CC343312539DFE900C3658B /* Stories.xcdatamodeld in Sources */,
 				9C0D1E0A25264F5E00B73A3F /* StoriesLocalGateway.swift in Sources */,
+				9CC3433C253C9C1000C3658B /* KingfisherImageLoader.swift in Sources */,
 				9CF73F422530A9BD00DBD943 /* AppEnvironment.swift in Sources */,
 				9CF73F512530F35700DBD943 /* StoryPresenter.swift in Sources */,
 				9CF73F482530E99200DBD943 /* ViewRouter.swift in Sources */,
@@ -653,6 +674,8 @@
 				9CF9421F252F45660089801D /* StoriesRepository.swift in Sources */,
 				9CF73F8F2532173F00DBD943 /* StoryViewController.swift in Sources */,
 				9CB70E892534CC0C0096FA25 /* BaseStoriesListPresenter.swift in Sources */,
+				9CC3433A253C9BC600C3658B /* ImageLoader.swift in Sources */,
+				9CC34341253C9E0C00C3658B /* MockImageLoader.swift in Sources */,
 				9C0D1DCD2525F9E500B73A3F /* SceneDelegate.swift in Sources */,
 				9CC3432C2539A32A00C3658B /* MockStoriesGateway.swift in Sources */,
 				9CF73F9125321E9300DBD943 /* ParagraphViewCell.swift in Sources */,
@@ -690,6 +713,7 @@
 				9CB70EA72538C0260096FA25 /* ToggleFavoriteStoryUseCaseTests.swift in Sources */,
 				9CF73F4025309E9100DBD943 /* StoryCellViewSpy.swift in Sources */,
 				9C0D1DE22525F9E800B73A3F /* DisplayStoriesListUseCaseTests.swift in Sources */,
+				9CC3433F253C9CF200C3658B /* FakeImageLoader.swift in Sources */,
 				9CB70E9F2536108B0096FA25 /* FavoritesListViewSpy.swift in Sources */,
 				9CC34338253A283B00C3658B /* StoryTests.swift in Sources */,
 				9C0D1E0625264D5100B73A3F /* StoriesRepositoryTests.swift in Sources */,
