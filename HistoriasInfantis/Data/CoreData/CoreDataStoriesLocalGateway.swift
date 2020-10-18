@@ -7,72 +7,85 @@
 //
 
 import Foundation
+import CoreData
 
-/// TODO: Initially an in-memory database. It should be replaced by real CoreData stack
 class CoreDataStoriesLocalGateway: StoriesLocalGateway {
-    var stories = [
-        Story(
-            id: 1,
-            title: "Story 1",
-            url: "http://story1",
-            imageUrl: "http://image1",
-            paragraphs: [.text("paragraph1")],
-            createDate: Date(),
-            updateDate: Date()
-        ),
-        Story(
-            id: 2,
-            title: "Story 2",
-            url: "http://story2",
-            imageUrl: "http://image2",
-            paragraphs: [.text("paragraph2")],
-            createDate: Date(),
-            updateDate: Date(),
-            favorite: true
-        ),
-        Story(
-            id: 2903,
-            title: "Roy, o Cavalo que Queria ser Cowboy",
-            url: "http://story3",
-            imageUrl: "http://image3",
-            paragraphs: [.text("paragraph3")],
-            createDate: Date(),
-            updateDate: Date(),
-            favorite: true
-        )
-    ]
+
+    private let manager: CoreDataManager
+    static var defaultSortDescriptors = [NSSortDescriptor(key: "createDate", ascending: false)]
+
+    init() {
+        manager = CoreDataManager(modelName: "Stories")
+    }
+
 
     func fetchAll(then handler: @escaping StoriesLocalGatewayFetchCompletionHandler) {
-        handler(.success(stories))
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Story")
+        request.sortDescriptors = CoreDataStoriesLocalGateway.defaultSortDescriptors
+
+        let stories = try? self.manager.managedObjectContext.fetch(request)
+        if let stories = stories as? [CDStory] {
+            handler(.success(stories.compactMap { Story(from: $0) }))
+        } else {
+            handler(.failure(StoriesRepositoryError.unableToRetrieve))
+        }
     }
 
     func fetchFavorites(then handler: @escaping StoriesLocalGatewayFetchCompletionHandler) {
-        let favoriteStories = stories.filter { $0.favorite }
-        handler(.success(favoriteStories))
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Story")
+        request.predicate = NSPredicate(format: "favorite == true")
+        request.sortDescriptors = CoreDataStoriesLocalGateway.defaultSortDescriptors
+
+        let stories = try? self.manager.managedObjectContext.fetch(request)
+        if let stories = stories as? [CDStory] {
+            handler(.success(stories.compactMap { Story(from: $0) }))
+        } else {
+            handler(.failure(StoriesRepositoryError.unableToRetrieve))
+        }
     }
 
     func clearAll(then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
-        stories = []
-        handler(nil)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Story")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
+        do {
+            try manager.managedObjectContext.execute(deleteRequest)
+            try manager.managedObjectContext.save()
+            handler(nil)
+        } catch {
+            print("Failed deleting stories")
+            handler(.unableToSave)
+        }
     }
 
     func insert(stories: [Story], then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
-        self.stories += stories
-        handler(nil)
+        for story in stories {
+            story.newManagedObject(inContext: self.manager.managedObjectContext)
+        }
+
+        save(handler: handler)
     }
 
     func update(storyId: Int, favorite: Bool, then handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
-        self.stories = stories.map {
-            $0.id != storyId ? $0 : Story(id: $0.id,
-                                          title: $0.title,
-                                          url: $0.url,
-                                          imageUrl: $0.imageUrl,
-                                          paragraphs: $0.paragraphs,
-                                          createDate: $0.createDate,
-                                          updateDate: $0.updateDate,
-                                          favorite: favorite)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Story")
+        request.predicate = NSPredicate(format: "id == %d", storyId)
+        request.sortDescriptors = CoreDataStoriesLocalGateway.defaultSortDescriptors
+
+        let stories = try? self.manager.managedObjectContext.fetch(request)
+        if let stories = stories as? [CDStory], let story = stories.first {
+            story.favorite = favorite
+            save(handler: handler)
+        } else {
+            handler(.unableToSave)
         }
-        handler(nil)
+    }
+
+    private func save(handler: @escaping StoriesLocalGatewayWriteErrorCompletionHandler) {
+        do {
+            try self.manager.managedObjectContext.save()
+            handler(nil)
+        } catch {
+            handler(.unableToSave)
+        }
     }
 }
