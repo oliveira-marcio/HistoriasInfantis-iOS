@@ -22,11 +22,13 @@ extension Story {
             let paragraphsEntity = record.paragraphs?.allObjects as? [CDParagraph]
             else { return nil }
 
-        let paragraphs: [Story.Paragraph] = paragraphsEntity.compactMap {
-            guard let type = $0.type, let text = $0.text
-                else { return nil }
+        let paragraphs: [Story.Paragraph] = paragraphsEntity
+            .sorted { $0.index < $1.index }
+            .compactMap {
+                guard let type = $0.type, let text = $0.text
+                    else { return nil }
 
-            return Story.Paragraph.makeParagraph(with: type, text: text)
+                return Story.Paragraph.makeParagraph(with: type, text: text)
         }
 
         self.init(id: Int(record.id),
@@ -51,8 +53,9 @@ extension Story {
         story.updateDate = updateDate
         story.favorite = favorite
 
-        for paragraph in paragraphs {
+        for (index, paragraph) in paragraphs.enumerated() {
             let entry = CDParagraph(context: context)
+            entry.index = Int64(index)
             entry.type = paragraph.type
             entry.text = paragraph.text
             story.addToParagraphs(entry)

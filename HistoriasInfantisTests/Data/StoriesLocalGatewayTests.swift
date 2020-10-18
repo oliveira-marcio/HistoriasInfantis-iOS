@@ -177,7 +177,7 @@ class StoriesLocalGatewayTests: XCTestCase {
                 title: "Story \(id)",
                 url: "http://story\(id)",
                 imageUrl: "http://image\(id)",
-                paragraphs: [.text("paragraph\(id)")],
+                paragraphs: [.text("paragraph\(id+1)"),.text("paragraph\(id+2)"),.text("paragraph\(id+3)"),.text("paragraph\(id+4)")],
                 createDate: Calendar.current.date(byAdding: .day, value: id, to: todayDate)!,
                 updateDate: Calendar.current.date(byAdding: .day, value: id, to: todayDate)!,
                 favorite: favoriteIds.contains(id)
