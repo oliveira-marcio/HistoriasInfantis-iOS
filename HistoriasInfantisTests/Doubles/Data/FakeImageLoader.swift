@@ -16,11 +16,6 @@ class FakeImageLoader: ImageLoader {
     var shouldFail = false
     var loadImageCompletion: (() -> Void)?
 
-    func getImage(from url: String, completion: @escaping (Data?) -> Void) {
-        urls.append(url)
-        completion(shouldFail ? nil : data)
-    }
-
     func loadImage(from url: String, into view: UIImageView, placeholder: String) {
         urls.append(url)
         loadImageCompletion?()
