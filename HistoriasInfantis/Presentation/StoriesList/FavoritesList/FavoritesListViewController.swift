@@ -44,6 +44,7 @@ class FavoritesListViewController: UIViewController, FavoritesListView {
     func displayEmptyStories() {
         tableView.backgroundView = noStoriesView
         tableView.isScrollEnabled = false
+        tableView.reloadData()
     }
 
     func displayStoriesRetrievalError(message: String?) {
