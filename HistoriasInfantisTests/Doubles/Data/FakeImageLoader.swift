@@ -14,6 +14,7 @@ class FakeImageLoader: ImageLoader {
     var data: Data?
     var urls = [String]()
     var shouldFail = false
+    var loadImageCompletion: (() -> Void)?
 
     func getImage(from url: String, completion: @escaping (Data?) -> Void) {
         urls.append(url)
@@ -22,5 +23,6 @@ class FakeImageLoader: ImageLoader {
 
     func loadImage(from url: String, into view: UIImageView, placeholder: String) {
         urls.append(url)
+        loadImageCompletion?()
     }
 }

@@ -20,7 +20,7 @@ protocol ParagraphCellView: class {
     func display(text: String)
     func display(author: String)
     func display(end: String)
-    func display(image: Data)
+    func display(image url: String, with imageLoader: ImageLoader, placeholder: String)
 }
 
 class StoryPresenter {
@@ -58,11 +58,7 @@ class StoryPresenter {
         case .text(let text): view.display(text: text)
         case .author(let author): view.display(author: author)
         case .end(let end): view.display(end: end)
-        case .image(let imageUrl): imageLoader.getImage(from: imageUrl) { image in
-                if let image = image {
-                    view.display(image: image)
-                }
-            }
+        case .image(let imageUrl): view.display(image: imageUrl, with: imageLoader, placeholder: "placeholder")
         }
     }
 

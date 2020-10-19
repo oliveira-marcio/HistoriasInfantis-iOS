@@ -7,15 +7,14 @@
 //
 
 import Foundation
+import UIKit
 @testable import HistoriasInfantis
 
 class ParagraphCellViewSpy: ParagraphCellView {
+
     var text: String?
     var author: String?
     var end: String?
-    var image: Data?
-
-    var displayImageHandler: (() -> Void)?
 
     func display(text: String) {
         self.text = text
@@ -29,8 +28,7 @@ class ParagraphCellViewSpy: ParagraphCellView {
         self.end = end
     }
 
-    func display(image: Data) {
-        self.image = image
-        displayImageHandler?()
+    func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
+        imageLoader.loadImage(from: url, into: UIImageView(), placeholder: placeholder)
     }
 }
