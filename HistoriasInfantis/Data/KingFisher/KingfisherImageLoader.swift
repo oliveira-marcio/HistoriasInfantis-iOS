@@ -14,9 +14,26 @@ struct KingfisherImageLoader: ImageLoader {
         let placeholderImage = UIImage(named: placeholder)
         if let url = URL(string: url) {
             view.kf.indicatorType = .activity
-            view.kf.setImage(with: url, placeholder: placeholderImage)
+            view.kf.setImage(with: url, placeholder: placeholderImage) { result in
+                switch result {
+                case .success(_): break
+                case .failure(let error): print("Image loader error: \(error.localizedDescription)")
+                }
+            }
         } else {
             view.image = placeholderImage
+        }
+    }
+
+    func loadImage(from url: String, into view: UIImageView) {
+        if let url = URL(string: url) {
+            view.kf.indicatorType = .activity
+            view.kf.setImage(with: url) { result in
+                switch result {
+                case .success(_): break
+                case .failure(let error): print("Image loader error: \(error.localizedDescription)")
+                }
+            }
         }
     }
 }

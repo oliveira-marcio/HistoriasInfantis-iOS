@@ -19,4 +19,10 @@ class FakeImageLoader: ImageLoader {
         view.image = UIImage()
         loadImageCompletion?()
     }
+
+    func loadImage(from url: String, into view: UIImageView) {
+        urls.append(url)
+        view.image = UIImage()
+        loadImageCompletion?()
+    }
 }

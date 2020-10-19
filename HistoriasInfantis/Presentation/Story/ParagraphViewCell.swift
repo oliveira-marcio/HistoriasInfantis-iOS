@@ -33,9 +33,9 @@ class ParagraphViewCell: UITableViewCell, ParagraphCellView {
         paragraphImageView.isHidden = true
     }
 
-    func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
+    func display(image url: String, with imageLoader: ImageLoader) {
         paragraphLabel.isHidden = true
         paragraphImageView.isHidden = false
-        imageLoader.loadImage(from: url, into: paragraphImageView, placeholder: placeholder)
+        imageLoader.loadImage(from: url, into: paragraphImageView)
     }
 }

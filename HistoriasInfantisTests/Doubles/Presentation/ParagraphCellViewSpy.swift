@@ -29,7 +29,7 @@ class ParagraphCellViewSpy: ParagraphCellView {
         self.end = end
     }
 
-    func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
-        imageLoader.loadImage(from: url, into: imageView, placeholder: placeholder)
+    func display(image url: String, with imageLoader: ImageLoader) {
+        imageLoader.loadImage(from: url, into: imageView)
     }
 }
