@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 struct MockImageLoader: ImageLoader {
+    func loadImage(from url: String, into view: UIImageView, placeholder: String) {
+        view.image = UIImage(systemName: "book.fill")
+    }
+
     func getImage(from url: String, completion: @escaping (Data?) -> Void) {
         completion(UIImage(systemName: "book.fill")?.pngData())
     }

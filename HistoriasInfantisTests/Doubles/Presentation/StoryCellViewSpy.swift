@@ -7,19 +7,14 @@
 //
 
 import Foundation
+import UIKit
 @testable import HistoriasInfantis
 
 class StoryCellViewSpy: StoryCellView {
-    var imageData: Data?
-    var imageName: String?
     var title: String?
 
-    func display(image from: Data) {
-        imageData = from
-    }
-
-    func display(image named: String) {
-        imageName = named
+    func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
+        imageLoader.loadImage(from: url, into: UIImageView(), placeholder: placeholder)
     }
 
     func display(title: String) {

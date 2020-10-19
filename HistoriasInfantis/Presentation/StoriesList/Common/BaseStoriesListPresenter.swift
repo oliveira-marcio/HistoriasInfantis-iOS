@@ -16,8 +16,7 @@ protocol BaseStoriesListView: class {
 }
 
 protocol StoryCellView: class {
-    func display(image from: Data)
-    func display(image named: String)
+    func display(image url: String, with imageLoader: ImageLoader, placeholder: String)
     func display(title: String)
 }
 
@@ -34,13 +33,7 @@ protocol BaseStoriesListPresenter: class {
 extension BaseStoriesListPresenter {
     func configureStoryCellView(_ storyView: StoryCellView, for row: Int) {
         storyView.display(title: stories[row].title)
-        imageLoader.getImage(from: stories[row].imageUrl) { image in
-            if let image = image {
-                storyView.display(image: image)
-            } else {
-                storyView.display(image: "placeholder")
-            }
-        }
+        storyView.display(image: stories[row].imageUrl, with: imageLoader, placeholder: "placeholder")
     }
 
     func showStory(at row: Int) {

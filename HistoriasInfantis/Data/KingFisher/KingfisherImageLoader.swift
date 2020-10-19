@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import Kingfisher
 
 struct KingfisherImageLoader: ImageLoader {
@@ -23,6 +24,16 @@ struct KingfisherImageLoader: ImageLoader {
             case .failure(_):
                 completion(nil)
             }
+        }
+    }
+
+    func loadImage(from url: String, into view: UIImageView, placeholder: String) {
+        let placeholderImage = UIImage(named: placeholder)
+        if let url = URL(string: url) {
+            view.kf.indicatorType = .activity
+            view.kf.setImage(with: url, placeholder: placeholderImage)
+        } else {
+            view.image = placeholderImage
         }
     }
 }

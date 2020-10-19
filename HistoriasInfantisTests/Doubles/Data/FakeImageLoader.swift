@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 @testable import HistoriasInfantis
 
 class FakeImageLoader: ImageLoader {
@@ -17,5 +18,9 @@ class FakeImageLoader: ImageLoader {
     func getImage(from url: String, completion: @escaping (Data?) -> Void) {
         urls.append(url)
         completion(shouldFail ? nil : data)
+    }
+
+    func loadImage(from url: String, into view: UIImageView, placeholder: String) {
+        urls.append(url)
     }
 }

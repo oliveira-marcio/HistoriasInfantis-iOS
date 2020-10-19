@@ -15,12 +15,8 @@ class StoryViewCell: UITableViewCell, StoryCellView {
     @IBOutlet weak var storyImageView: UIImageView!
     @IBOutlet weak var storyLabel: UILabel!
 
-    func display(image from: Data) {
-        storyImageView.image = UIImage(data: from)
-    }
-
-    func display(image named: String) {
-        storyImageView.image = UIImage(named: named)
+    func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
+        imageLoader.loadImage(from: url, into: storyImageView, placeholder: placeholder)
     }
 
     func display(title: String) {
