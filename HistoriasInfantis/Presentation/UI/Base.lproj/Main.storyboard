@@ -165,21 +165,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ParagraphViewCell" id="vG9-uy-gR7" customClass="ParagraphViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="310.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextParagraphViewCell" id="vG9-uy-gR7" customClass="TextParagraphViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vG9-uy-gR7" id="w6M-T3-CWP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="310.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="neo-h7-wWw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="310.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="neo-h7-wWw" secondAttribute="height" multiplier="4:3" id="Pd9-2f-94a"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqg-U3-kk0">
-                                                    <rect key="frame" x="20" y="11" width="374" height="288.5"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -187,19 +181,92 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="neo-h7-wWw" firstAttribute="top" secondItem="w6M-T3-CWP" secondAttribute="top" id="4Vr-RA-rWN"/>
                                                 <constraint firstItem="hqg-U3-kk0" firstAttribute="leading" secondItem="w6M-T3-CWP" secondAttribute="leadingMargin" id="4lJ-kL-X3r"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hqg-U3-kk0" secondAttribute="trailing" id="ArG-V3-7N2"/>
-                                                <constraint firstItem="neo-h7-wWw" firstAttribute="leading" secondItem="w6M-T3-CWP" secondAttribute="leading" id="fvI-Yl-nGw"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="hqg-U3-kk0" secondAttribute="bottom" id="hlf-OQ-a59"/>
                                                 <constraint firstItem="hqg-U3-kk0" firstAttribute="top" secondItem="w6M-T3-CWP" secondAttribute="topMargin" id="oow-V4-MB1"/>
-                                                <constraint firstAttribute="trailing" secondItem="neo-h7-wWw" secondAttribute="trailing" id="tBD-2B-IPK"/>
-                                                <constraint firstAttribute="bottom" secondItem="neo-h7-wWw" secondAttribute="bottom" id="uFQ-ru-Qx7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="paragraphImageView" destination="neo-h7-wWw" id="V6M-RG-eBo"/>
-                                            <outlet property="paragraphLabel" destination="hqg-U3-kk0" id="x0i-OL-p9M"/>
+                                            <outlet property="paragraphTextLabel" destination="hqg-U3-kk0" id="FiG-ni-iJ1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageParagraphViewCell" id="1kg-3k-Jk3" customClass="ImageParagraphViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="98" width="414" height="286.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1kg-3k-Jk3" id="f5Z-h2-87k">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="286.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="no7-Im-sUX">
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="286.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="no7-Im-sUX" secondAttribute="height" multiplier="4:3" id="6pe-Tb-6AL"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="no7-Im-sUX" secondAttribute="bottom" id="HQ3-xp-Qon"/>
+                                                <constraint firstItem="no7-Im-sUX" firstAttribute="leading" secondItem="f5Z-h2-87k" secondAttribute="leading" constant="16" id="Z2v-hb-8Zk"/>
+                                                <constraint firstAttribute="trailing" secondItem="no7-Im-sUX" secondAttribute="trailing" constant="16" id="Zz4-fn-sfU"/>
+                                                <constraint firstItem="no7-Im-sUX" firstAttribute="top" secondItem="f5Z-h2-87k" secondAttribute="top" id="uvl-AZ-sdw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="paragraphImageView" destination="no7-Im-sUX" id="LPH-Iq-ePx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EndParagraphViewCell" id="bDP-a5-KrG" customClass="EndParagraphViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="384.5" width="414" height="42.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bDP-a5-KrG" id="XR3-DU-RWu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27Z-dv-hgE">
+                                                    <rect key="frame" x="20" y="11" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="27Z-dv-hgE" secondAttribute="trailing" id="90V-im-gxV"/>
+                                                <constraint firstItem="27Z-dv-hgE" firstAttribute="top" secondItem="XR3-DU-RWu" secondAttribute="topMargin" id="Q3V-Os-eAf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="27Z-dv-hgE" secondAttribute="bottom" id="a5H-cb-diD"/>
+                                                <constraint firstItem="27Z-dv-hgE" firstAttribute="leading" secondItem="XR3-DU-RWu" secondAttribute="leadingMargin" id="dUh-c7-OP0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="paragraphEndLabel" destination="27Z-dv-hgE" id="B7g-5T-eJj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AuthorParagraphViewCell" id="RGi-QC-mwY" customClass="AuthorParagraphViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="427" width="414" height="42.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RGi-QC-mwY" id="qQN-Xg-rfm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLb-6W-0of">
+                                                    <rect key="frame" x="20" y="11" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hLb-6W-0of" secondAttribute="bottom" id="8sn-kp-0f9"/>
+                                                <constraint firstItem="hLb-6W-0of" firstAttribute="leading" secondItem="qQN-Xg-rfm" secondAttribute="leadingMargin" id="DNv-AR-rEx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hLb-6W-0of" secondAttribute="trailing" id="Ws2-I9-DvZ"/>
+                                                <constraint firstItem="hLb-6W-0of" firstAttribute="top" secondItem="qQN-Xg-rfm" secondAttribute="topMargin" id="coC-u8-MEe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="paragraphAuthorLabel" destination="hLb-6W-0of" id="0Mo-A8-e3c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -1,35 +1,35 @@
 //
-//  ParagraphCellViewSpy..swift
+//  ParagraphCellViewSpy.swift
 //  HistoriasInfantisTests
 //
 //  Created by Márcio Oliveira on 10/9/20.
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-import Foundation
 import UIKit
 @testable import HistoriasInfantis
 
-class ParagraphCellViewSpy: ParagraphCellView {
+class ParagraphCellViewSpy: TextParagraphCellView, ImageParagraphCellView, EndParagraphCellView, AuthorParagraphCellView {
+    static var reuseIdentifier: String = "AuthorParagraphCellViewSpy"
 
-    var text: String?
-    var author: String?
-    var end: String?
     var imageView = UIImageView()
+    var text: String?
+    var end: String?
+    var author: String?
 
     func display(text: String) {
         self.text = text
     }
 
-    func display(author: String) {
-        self.author = author
+    func display(image url: String, with imageLoader: ImageLoader) {
+        imageLoader.loadImage(from: url, into: imageView)
     }
 
     func display(end: String) {
         self.end = end
     }
 
-    func display(image url: String, with imageLoader: ImageLoader) {
-        imageLoader.loadImage(from: url, into: imageView)
+    func display(author: String) {
+        self.author = author
     }
 }

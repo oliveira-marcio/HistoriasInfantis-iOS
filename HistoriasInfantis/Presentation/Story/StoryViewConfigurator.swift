@@ -12,6 +12,15 @@ class StoryViewConfigurator {
                                        story: story,
                                        imageLoader: SceneDelegate.appEnvironment.dependencies.gateways.imageLoader,
                                        toggleFavoriteStoryUseCase: SceneDelegate.appEnvironment.dependencies.toggleFavoriteStoryUseCase)
+
+        let reuseIdentifiers: [String: String] = [
+               Story.Paragraph.text("").type : TextParagraphViewCell.reuseIdentifier,
+               Story.Paragraph.image("").type : ImageParagraphViewCell.reuseIdentifier,
+               Story.Paragraph.end("").type : EndParagraphViewCell.reuseIdentifier,
+               Story.Paragraph.author("").type : AuthorParagraphViewCell.reuseIdentifier
+           ]
+
         storyViewController.presenter = presenter
+        storyViewController.reuseIdentifiers = reuseIdentifiers
     }
 }

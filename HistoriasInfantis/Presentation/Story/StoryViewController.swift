@@ -11,6 +11,7 @@ import UIKit
 class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoryView {
 
     var presenter: StoryPresenter!
+    var reuseIdentifiers: [String: String]!
 
     // MARK: - Outlets
 
@@ -54,9 +55,17 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ParagraphViewCell.reuseIdentifier, for: indexPath) as! ParagraphCellView
+        let dataType = presenter.getParagraphType(for: indexPath.row)
+
+        guard let reuseIdentifier = reuseIdentifiers[dataType],
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? ParagraphCellView
+            else {
+                return UITableViewCell()
+        }
+
         presenter.configureCell(cell, for: indexPath.row)
-        return cell as! UITableViewCell
+        
+        return cell as? UITableViewCell ?? UITableViewCell()
     }
 
     // MARK: - IBActions

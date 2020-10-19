@@ -16,15 +16,7 @@ protocol StoryView: class {
     func display(error: String)
 }
 
-protocol ParagraphCellView: class {
-    func display(text: String)
-    func display(author: String)
-    func display(end: String)
-    func display(image url: String, with imageLoader: ImageLoader)
-}
-
 class StoryPresenter {
-
     private(set) weak var view: StoryView?
     private(set) public var story: Story
     private(set) public var imageLoader: ImageLoader
@@ -55,10 +47,10 @@ class StoryPresenter {
 
     func configureCell(_ view: ParagraphCellView, for row: Int) {
         switch story.paragraphs[row] {
-        case .text(let text): view.display(text: text)
-        case .author(let author): view.display(author: author)
-        case .end(let end): view.display(end: end)
-        case .image(let imageUrl): view.display(image: imageUrl, with: imageLoader)
+        case .text(let text): (view as? TextParagraphCellView)?.display(text: text)
+        case .author(let author): (view as? AuthorParagraphCellView)?.display(author: author)
+        case .end(let end): (view as? EndParagraphCellView)?.display(end: end)
+        case .image(let imageUrl): (view as? ImageParagraphCellView)?.display(image: imageUrl, with: imageLoader)
         }
     }
 
