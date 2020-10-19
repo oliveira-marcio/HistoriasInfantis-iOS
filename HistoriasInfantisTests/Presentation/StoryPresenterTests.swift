@@ -86,23 +86,28 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertEqual(cellSpies[0].text, "Paragraph 1")
         XCTAssertNil(cellSpies[0].author)
         XCTAssertNil(cellSpies[0].end)
+        XCTAssertNil(cellSpies[0].imageView.image)
 
         XCTAssertNil(cellSpies[1].text)
         XCTAssertNil(cellSpies[1].author)
         XCTAssertNil(cellSpies[1].end)
+        XCTAssertEqual(cellSpies[1].imageView.image, UIImage())
         XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
 
         XCTAssertEqual(cellSpies[2].text, "Paragraph 2")
         XCTAssertNil(cellSpies[2].author)
         XCTAssertNil(cellSpies[2].end)
+        XCTAssertNil(cellSpies[2].imageView.image)
 
         XCTAssertNil(cellSpies[3].text)
         XCTAssertNil(cellSpies[3].author)
         XCTAssertEqual(cellSpies[3].end, "The End")
+        XCTAssertNil(cellSpies[3].imageView.image)
 
         XCTAssertNil(cellSpies[4].text)
         XCTAssertEqual(cellSpies[4].author, "Author")
         XCTAssertNil(cellSpies[4].end)
+        XCTAssertNil(cellSpies[4].imageView.image)
     }
 
     func test_it_should_display_favorite_button_marked_when_view_did_load_when_story_is_favorite() {

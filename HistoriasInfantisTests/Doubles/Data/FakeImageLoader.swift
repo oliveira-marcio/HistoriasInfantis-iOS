@@ -11,13 +11,12 @@ import UIKit
 @testable import HistoriasInfantis
 
 class FakeImageLoader: ImageLoader {
-    var data: Data?
     var urls = [String]()
-    var shouldFail = false
     var loadImageCompletion: (() -> Void)?
 
     func loadImage(from url: String, into view: UIImageView, placeholder: String) {
         urls.append(url)
+        view.image = UIImage()
         loadImageCompletion?()
     }
 }

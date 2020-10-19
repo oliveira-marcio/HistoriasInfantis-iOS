@@ -15,6 +15,7 @@ class ParagraphCellViewSpy: ParagraphCellView {
     var text: String?
     var author: String?
     var end: String?
+    var imageView = UIImageView()
 
     func display(text: String) {
         self.text = text
@@ -29,6 +30,6 @@ class ParagraphCellViewSpy: ParagraphCellView {
     }
 
     func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
-        imageLoader.loadImage(from: url, into: UIImageView(), placeholder: placeholder)
+        imageLoader.loadImage(from: url, into: imageView, placeholder: placeholder)
     }
 }
