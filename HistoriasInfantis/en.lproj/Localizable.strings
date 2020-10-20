@@ -1,0 +1,13 @@
+/*
+  Localizable.strings
+  HistoriasInfantis
+
+  Created by Márcio Oliveira on 10/20/20.
+  Copyright © 2020 Márcio Oliveira. All rights reserved.
+*/
+
+"error" = "Error";
+"dismiss" = "Dismiss";
+"server_error" = "It wasn't possible to get stories from server now.";
+"persistence_error" = "There are problems with local persistence.";
+"toggle_favorite_error" = "Favorite state wasn't toggled.";

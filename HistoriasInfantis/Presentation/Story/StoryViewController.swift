@@ -45,7 +45,7 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func display(error: String) {
-
+        presentAlert(withTitle: "error", message: error)
     }
 
     // MARK: - UITableViewDataSource

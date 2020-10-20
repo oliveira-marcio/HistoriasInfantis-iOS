@@ -225,7 +225,7 @@ class StoryPresenterTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
 
-        XCTAssertEqual(viewSpy.error, "Toggle favorite error")
+        XCTAssertEqual(viewSpy.error, "toggle_favorite_error")
         XCTAssertNil(viewSpy.favorited)
     }
 }

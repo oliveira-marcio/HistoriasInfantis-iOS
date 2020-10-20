@@ -49,8 +49,8 @@ class StoriesListViewController: UIViewController, StoriesListView {
         tableView.reloadData()
     }
 
-    func displayStoriesRetrievalError(message: String?) {
-        print("ERROR")
+    func displayStoriesRetrievalError(message: String) {
+        presentAlert(withTitle: "error", message: message.localized())
     }
 
     func refreshStories() {

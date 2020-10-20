@@ -174,7 +174,7 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
-        XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "server_error")
     }
 
     func test_it_should_display_refreshed_stories_when_refresh_is_called_and_there_are_stories_available() {
@@ -259,7 +259,7 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertFalse(viewSpy.didRequestDisplayEmptyStories)
-        XCTAssertEqual(viewSpy.storiesRetrievalError, "Server Error")
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "server_error")
     }
 
     func test_it_should_display_empty_stories_and_persistence_error_when_refresh_is_called_and_sync_with_local_gateway_fails() {
@@ -277,7 +277,7 @@ class StoriesListPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
-        XCTAssertEqual(viewSpy.storiesRetrievalError, "Persistence Error")
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "persistence_error")
     }
 
     func test_it_should_refresh_stories_list_when_repository_notifies_persistence_update() {

@@ -77,7 +77,7 @@ class StoryPresenter {
                 if result.isSuccess, let story = try? result.dematerialize() {
                     self.view?.display(favorited: story.favorite)
                 } else {
-                    self.view?.display(error: "Toggle favorite error")
+                    self.view?.display(error: "toggle_favorite_error")
                 }
             }
         }

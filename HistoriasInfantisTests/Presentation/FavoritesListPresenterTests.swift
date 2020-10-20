@@ -179,7 +179,7 @@ class FavoritesListPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.didDisplayLoading, [true, false])
         XCTAssertFalse(viewSpy.didRequestRefreshStories)
         XCTAssertTrue(viewSpy.didRequestDisplayEmptyStories)
-        XCTAssertEqual(viewSpy.storiesRetrievalError, "Persistence Error")
+        XCTAssertEqual(viewSpy.storiesRetrievalError, "persistence_error")
     }
 
     func test_it_should_refresh_stories_list_when_repository_notifies_persistence_update() {

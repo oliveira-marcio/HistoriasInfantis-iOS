@@ -52,7 +52,7 @@ class FavoritesListPresenter: NSObject, BaseStoriesListPresenter {
                     self?.updateStories(result: result)
                 } else {
                     self?.view?.displayEmptyStories()
-                    self?.view?.displayStoriesRetrievalError(message: "Persistence Error")
+                    self?.view?.displayStoriesRetrievalError(message: "persistence_error")
                 }
             }
         }

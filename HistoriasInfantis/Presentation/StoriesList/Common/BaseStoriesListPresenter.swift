@@ -12,7 +12,7 @@ import UIKit
 protocol BaseStoriesListView: class {
     func displayLoading(isLoading: Bool)
     func displayEmptyStories()
-    func displayStoriesRetrievalError(message: String?)
+    func displayStoriesRetrievalError(message: String)
     func refreshStories()
 }
 

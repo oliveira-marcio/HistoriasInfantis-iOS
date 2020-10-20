@@ -55,7 +55,7 @@ class StoriesListPresenter: NSObject, BaseStoriesListPresenter {
                     self?.updateStories(result: result)
                 } else {
                     self?.view?.displayEmptyStories()
-                    self?.view?.displayStoriesRetrievalError(message: "Server Error")
+                    self?.view?.displayStoriesRetrievalError(message: "server_error")
                 }
             }
         }
@@ -84,9 +84,9 @@ class StoriesListPresenter: NSObject, BaseStoriesListPresenter {
             let error = resultError as? StoriesRepositoryError {
             if error == .unableToSave {
                 updateStories(result: result)
-                view?.displayStoriesRetrievalError(message: "Persistence Error")
+                view?.displayStoriesRetrievalError(message: "persistence_error")
             } else {
-                view?.displayStoriesRetrievalError(message: "Server Error")
+                view?.displayStoriesRetrievalError(message: "server_error")
             }
         }
     }

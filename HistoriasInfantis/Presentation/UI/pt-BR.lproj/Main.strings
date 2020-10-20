@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "27Z-dv-hgE"; */
+"27Z-dv-hgE.text" = "Label";
+
+/* Class = "UILabel"; text = "No stories found"; ObjectID = "38W-ML-D4O"; */
+"38W-ML-D4O.text" = "No stories found";
+
+/* Class = "UITabBarItem"; title = "Favorites"; ObjectID = "5a3-sK-PpY"; */
+"5a3-sK-PpY.title" = "Favorites";
+
+/* Class = "UINavigationItem"; title = "Histórias Infantis"; ObjectID = "7BS-p3-DxC"; */
+"7BS-p3-DxC.title" = "Histórias Infantis";
+
+/* Class = "UITabBarItem"; title = "Stories"; ObjectID = "EB6-kJ-vKG"; */
+"EB6-kJ-vKG.title" = "Stories";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "MOo-GR-nMO"; */
+"MOo-GR-nMO.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Oln-K5-AKT"; */
+"Oln-K5-AKT.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bYe-ir-4fQ"; */
+"bYe-ir-4fQ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gbh-KE-feX"; */
+"gbh-KE-feX.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hLb-6W-0of"; */
+"hLb-6W-0of.text" = "Label";
+
+/* Class = "UILabel"; text = "No stories found"; ObjectID = "hQi-kA-0Yf"; */
+"hQi-kA-0Yf.text" = "No stories found";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hqg-U3-kk0"; */
+"hqg-U3-kk0.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Histórias Infantis"; ObjectID = "oTD-T9-azC"; */
+"oTD-T9-azC.title" = "Histórias Infantis";

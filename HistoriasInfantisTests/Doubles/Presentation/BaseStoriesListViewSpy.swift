@@ -27,7 +27,7 @@ class BaseStoriesListViewSpy: BaseStoriesListView {
         displayEmptyStoriesHandler?()
     }
 
-    func displayStoriesRetrievalError(message: String?) {
+    func displayStoriesRetrievalError(message: String) {
         storiesRetrievalError = message
         displayStoriesRetrievalErrorHandler?()
     }
