@@ -22,4 +22,12 @@ class StoryViewCell: UITableViewCell, StoryCellView {
     func display(title: String) {
         storyLabel.text = title
     }
+
+    func display(image from: UIImage) {
+        storyImageView.image = from
+    }
+
+    func display(image named: String) {
+        storyImageView.image = UIImage(named: named)
+    }
 }

@@ -11,4 +11,5 @@ import UIKit
 protocol ImageLoader {
     func loadImage(from url: String, into view: UIImageView, placeholder: String)
     func loadImage(from url: String, into view: UIImageView)
+    func getImage(from url: String, completion: @escaping (UIImage?) -> Void) 
 }

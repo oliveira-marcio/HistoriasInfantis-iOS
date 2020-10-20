@@ -16,4 +16,8 @@ struct MockImageLoader: ImageLoader {
     func loadImage(from url: String, into view: UIImageView) {
         view.image = UIImage(systemName: "book.fill")
     }
+
+    func getImage(from url: String, completion: @escaping (UIImage?) -> Void) {
+        completion(UIImage(systemName: "book.fill"))
+    }
 }

@@ -14,4 +14,8 @@ class ImageParagraphViewCell: UITableViewCell, ImageParagraphCellView {
     func display(image url: String, with imageLoader: ImageLoader) {
         imageLoader.loadImage(from: url, into: paragraphImageView)
     }
+
+    func display(image from: UIImage) {
+        paragraphImageView.image = from
+    }
 }

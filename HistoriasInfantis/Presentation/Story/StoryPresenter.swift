@@ -50,7 +50,17 @@ class StoryPresenter {
         case .text(let text): (view as? TextParagraphCellView)?.display(text: text)
         case .author(let author): (view as? AuthorParagraphCellView)?.display(author: author)
         case .end(let end): (view as? EndParagraphCellView)?.display(end: end)
-        case .image(let imageUrl): (view as? ImageParagraphCellView)?.display(image: imageUrl, with: imageLoader)
+        case .image(let imageUrl): configureImageCell(view: view, imageUrl: imageUrl)
+        }
+    }
+
+    private func configureImageCell(view: ParagraphCellView, imageUrl: String) {
+        guard let view = view as? ImageParagraphCellView else { return }
+
+        imageLoader.getImage(from: imageUrl) { image in
+            if let image = image {
+                view.display(image: image)
+            }
         }
     }
 

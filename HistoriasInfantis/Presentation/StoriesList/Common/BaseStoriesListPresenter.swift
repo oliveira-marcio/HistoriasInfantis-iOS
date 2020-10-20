@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol BaseStoriesListView: class {
     func displayLoading(isLoading: Bool)
@@ -18,6 +19,8 @@ protocol BaseStoriesListView: class {
 protocol StoryCellView: class {
     func display(image url: String, with imageLoader: ImageLoader, placeholder: String)
     func display(title: String)
+    func display(image from: UIImage)
+    func display(image named: String)
 }
 
 protocol BaseStoriesListPresenter: class {
@@ -33,7 +36,14 @@ protocol BaseStoriesListPresenter: class {
 extension BaseStoriesListPresenter {
     func configureStoryCellView(_ storyView: StoryCellView, for row: Int) {
         storyView.display(title: stories[row].title)
-        storyView.display(image: stories[row].imageUrl, with: imageLoader, placeholder: "placeholder")
+        imageLoader.getImage(from: stories[row].imageUrl) { image in
+            if let image = image {
+                storyView.display(image: image)
+            } else {
+                storyView.display(image: "placeholder")
+            }
+        }
+//        storyView.display(image: stories[row].imageUrl, with: imageLoader, placeholder: "placeholder")
     }
 
     func showStory(at row: Int) {
