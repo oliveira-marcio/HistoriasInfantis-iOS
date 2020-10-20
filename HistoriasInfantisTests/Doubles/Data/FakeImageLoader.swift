@@ -13,16 +13,11 @@ import UIKit
 class FakeImageLoader: ImageLoader {
     var urls = [String]()
     var loadImageCompletion: (() -> Void)?
+    var shouldGetImageFail = false
 
-    func loadImage(from url: String, into view: UIImageView, placeholder: String) {
+    func getImage(from url: String, completion: @escaping (UIImage?) -> Void) {
         urls.append(url)
-        view.image = UIImage()
-        loadImageCompletion?()
-    }
-
-    func loadImage(from url: String, into view: UIImageView) {
-        urls.append(url)
-        view.image = UIImage()
+        completion(shouldGetImageFail ? nil : UIImage())
         loadImageCompletion?()
     }
 }

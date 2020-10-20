@@ -21,7 +21,7 @@ protocol TextParagraphCellView: ParagraphCellView {
 }
 
 protocol ImageParagraphCellView: ParagraphCellView {
-    func display(image from: UIImage)
+    func display(image: UIImage)
 }
 
 protocol EndParagraphCellView: ParagraphCellView {

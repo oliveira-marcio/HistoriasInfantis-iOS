@@ -12,14 +12,19 @@ import UIKit
 
 class StoryCellViewSpy: StoryCellView {
     var title: String?
-    var image: Data?
-    var imageView = UIImageView()
-
-    func display(image url: String, with imageLoader: ImageLoader, placeholder: String) {
-        imageLoader.loadImage(from: url, into: imageView, placeholder: placeholder)
-    }
+    var image: UIImage?
+    var placeholder: String?
 
     func display(title: String) {
         self.title = title
+    }
+
+    func display(image: UIImage) {
+        self.image = image
+
+    }
+
+    func display(image named: String) {
+        self.placeholder = named
     }
 }

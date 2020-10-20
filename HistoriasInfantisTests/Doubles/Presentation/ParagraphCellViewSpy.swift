@@ -10,9 +10,9 @@ import UIKit
 @testable import HistoriasInfantis
 
 class ParagraphCellViewSpy: TextParagraphCellView, ImageParagraphCellView, EndParagraphCellView, AuthorParagraphCellView {
-    static var reuseIdentifier: String = "AuthorParagraphCellViewSpy"
+    static var reuseIdentifier: String = "ParagraphCellViewSpy"
 
-    var imageView = UIImageView()
+    var image: UIImage?
     var text: String?
     var end: String?
     var author: String?
@@ -21,8 +21,8 @@ class ParagraphCellViewSpy: TextParagraphCellView, ImageParagraphCellView, EndPa
         self.text = text
     }
 
-    func display(image url: String, with imageLoader: ImageLoader) {
-        imageLoader.loadImage(from: url, into: imageView)
+    func display(image: UIImage) {
+        self.image = image
     }
 
     func display(end: String) {

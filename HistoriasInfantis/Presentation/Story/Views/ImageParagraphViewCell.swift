@@ -11,7 +11,7 @@ import UIKit
 class ImageParagraphViewCell: UITableViewCell, ImageParagraphCellView {
     @IBOutlet weak var paragraphImageView: UIImageView!
 
-    func display(image from: UIImage) {
-        paragraphImageView.image = from
+    func display(image: UIImage) {
+        paragraphImageView.image = image
     }
 }

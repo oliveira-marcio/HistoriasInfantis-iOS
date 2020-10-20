@@ -19,8 +19,8 @@ class StoryViewCell: UITableViewCell, StoryCellView {
         storyLabel.text = title
     }
 
-    func display(image from: UIImage) {
-        storyImageView.image = from
+    func display(image: UIImage) {
+        storyImageView.image = image
     }
 
     func display(image named: String) {

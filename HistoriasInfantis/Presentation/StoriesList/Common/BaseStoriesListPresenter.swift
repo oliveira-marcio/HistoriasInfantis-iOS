@@ -18,7 +18,7 @@ protocol BaseStoriesListView: class {
 
 protocol StoryCellView: class {
     func display(title: String)
-    func display(image from: UIImage)
+    func display(image: UIImage)
     func display(image named: String)
 }
 
@@ -42,7 +42,6 @@ extension BaseStoriesListPresenter {
                 storyView.display(image: "placeholder")
             }
         }
-//        storyView.display(image: stories[row].imageUrl, with: imageLoader, placeholder: "placeholder")
     }
 
     func showStory(at row: Int) {
