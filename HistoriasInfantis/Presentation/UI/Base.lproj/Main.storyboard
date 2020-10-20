@@ -36,7 +36,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lOb-sl-dXH">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xe4-8D-M5k">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Xe4-8D-M5k">
                                                                             <rect key="frame" x="8" y="8" width="120" height="80"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="80" id="0XI-0N-6Go"/>
@@ -126,20 +126,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="Zn8-CT-yRW" userLabel="Header View">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIt-dE-zoY">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tJF-4S-ClU">
-                                    <rect key="frame" x="0.0" y="2" width="240" height="96.5"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Toolbar" translatesAutoresizingMaskIntoConstraints="NO" id="tJF-4S-ClU">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="tJF-4S-ClU" secondAttribute="bottom" id="52S-XH-Kr7"/>
-                                <constraint firstAttribute="height" constant="100" id="6CP-HX-NAh"/>
+                                <constraint firstAttribute="height" constant="150" id="6CP-HX-NAh"/>
                                 <constraint firstAttribute="trailing" secondItem="tJF-4S-ClU" secondAttribute="trailing" id="GFo-3o-L1w"/>
                                 <constraint firstItem="tJF-4S-ClU" firstAttribute="leading" secondItem="sIt-dE-zoY" secondAttribute="leading" id="P8N-g6-UBJ"/>
                                 <constraint firstItem="tJF-4S-ClU" firstAttribute="top" secondItem="sIt-dE-zoY" secondAttribute="top" id="RDL-Ry-VWQ"/>
@@ -304,7 +304,7 @@
                                     <outlet property="delegate" destination="XAv-XJ-Fs5" id="Lg2-bE-MKN"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS8-em-yMa" customClass="FloatActionButton" customModule="HistoriasInfantis" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS8-em-yMa" customClass="FloatActionButton" customModule="HistoriasInfantis" customModuleProvider="target">
                                 <rect key="frame" x="338" y="732" width="60" height="60"/>
                                 <color key="backgroundColor" name="Accent"/>
                                 <constraints>
@@ -312,7 +312,7 @@
                                     <constraint firstAttribute="height" constant="60" id="PHA-67-cWt"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="book.fill" catalog="system"/>
+                                <state key="normal" image="Abobrinha"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="30"/>
@@ -354,8 +354,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XAT-Zr-9fz">
                             <rect key="frame" x="0.0" y="26" width="240" height="229"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RZC-aH-2SR">
-                                    <rect key="frame" x="0.0" y="2" width="240" height="146.5"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About" translatesAutoresizingMaskIntoConstraints="NO" id="RZC-aH-2SR">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                                     <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="150" id="EEv-no-nw3"/>
@@ -409,7 +409,7 @@
         <scene sceneID="ai6-W1-PWC">
             <objects>
                 <navigationController id="aLR-LS-miD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stories" image="book.fill" catalog="system" id="EB6-kJ-vKG"/>
+                    <tabBarItem key="tabBarItem" title="Stories" image="Abobrinha" id="EB6-kJ-vKG"/>
                     <navigationItem key="navigationItem" id="6YO-sr-IDw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="kj2-8a-PCi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -456,7 +456,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGn-dM-bvT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-af-aBw">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-af-aBw">
                                                                             <rect key="frame" x="8" y="8" width="120" height="80"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="80" id="Gcs-wY-Ba5"/>
@@ -537,14 +537,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ha-SR-vJE" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="Ya7-cM-DSF" userLabel="Header View">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wq-9N-eQj">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-9N-LdC">
-                                    <rect key="frame" x="0.0" y="2" width="240" height="96.5"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Toolbar" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-9N-LdC">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="150"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -553,7 +553,7 @@
                                 <constraint firstItem="OSd-9N-LdC" firstAttribute="leading" secondItem="6wq-9N-eQj" secondAttribute="leading" id="Eht-hY-uMx"/>
                                 <constraint firstItem="OSd-9N-LdC" firstAttribute="top" secondItem="6wq-9N-eQj" secondAttribute="top" id="Mzt-RN-veg"/>
                                 <constraint firstAttribute="bottom" secondItem="OSd-9N-LdC" secondAttribute="bottom" id="OVX-uR-SwG"/>
-                                <constraint firstAttribute="height" constant="100" id="hY8-EM-cV0"/>
+                                <constraint firstAttribute="height" constant="150" id="hY8-EM-cV0"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -590,7 +590,7 @@
         <scene sceneID="UPm-ES-cfQ">
             <objects>
                 <navigationController id="QXC-aj-CdX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="book.fill" catalog="system" id="5a3-sK-PpY"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="5a3-sK-PpY"/>
                     <navigationItem key="navigationItem" id="d9C-xd-nyG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="4SJ-PI-lIa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -607,11 +607,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wAj-S1-sx3"/>
+        <segue reference="MbZ-tx-b3s"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Abobrinha" width="25" height="24.666666030883789"/>
+        <image name="About" width="292" height="205"/>
+        <image name="Placeholder" width="360" height="200"/>
+        <image name="Toolbar" width="974.66668701171875" height="266.66665649414062"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
-        <image name="book.fill" catalog="system" width="128" height="100"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <namedColor name="Accent">
             <color red="0.927062571" green="0.44218099119999998" blue="0.18028721210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
