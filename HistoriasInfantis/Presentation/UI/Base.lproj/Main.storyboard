@@ -32,13 +32,30 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T50-Zc-cQR">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xe4-8D-M5k">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lOb-sl-dXH">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xe4-8D-M5k">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="100" id="0XI-0N-6Go"/>
+                                                                                <constraint firstAttribute="width" constant="100" id="TXT-zy-wPQ"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tba-3G-7lb">
+                                                                            <rect key="frame" x="40" y="40" width="20" height="20"/>
+                                                                        </activityIndicatorView>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="100" id="0XI-0N-6Go"/>
-                                                                        <constraint firstAttribute="width" constant="100" id="TXT-zy-wPQ"/>
+                                                                        <constraint firstItem="Xe4-8D-M5k" firstAttribute="top" secondItem="lOb-sl-dXH" secondAttribute="top" id="0YM-id-WXZ"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Xe4-8D-M5k" secondAttribute="bottom" id="Sma-J6-ayD"/>
+                                                                        <constraint firstItem="Xe4-8D-M5k" firstAttribute="leading" secondItem="lOb-sl-dXH" secondAttribute="leading" id="WPe-m9-ufk"/>
+                                                                        <constraint firstItem="tba-3G-7lb" firstAttribute="centerY" secondItem="lOb-sl-dXH" secondAttribute="centerY" id="bfF-0t-VxX"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Xe4-8D-M5k" secondAttribute="trailing" id="hrs-Pv-iam"/>
+                                                                        <constraint firstItem="tba-3G-7lb" firstAttribute="centerX" secondItem="lOb-sl-dXH" secondAttribute="centerX" id="ycW-Tv-hfB"/>
                                                                     </constraints>
-                                                                </imageView>
+                                                                </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oln-K5-AKT">
                                                                     <rect key="frame" x="108" y="40" width="274" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -66,6 +83,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="storyImageActivityIndicator" destination="tba-3G-7lb" id="AhV-Ei-qec"/>
                                             <outlet property="storyImageView" destination="Xe4-8D-M5k" id="eHw-fg-wKb"/>
                                             <outlet property="storyLabel" destination="Oln-K5-AKT" id="XAO-ep-9re"/>
                                         </connections>
@@ -420,13 +438,30 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bH3-PV-zby">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-af-aBw">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGn-dM-bvT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-af-aBw">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="100" id="Gcs-wY-Ba5"/>
+                                                                                <constraint firstAttribute="width" constant="100" id="r66-to-ZNl"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6FI-Pg-Oei">
+                                                                            <rect key="frame" x="40" y="40" width="20" height="20"/>
+                                                                        </activityIndicatorView>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="100" id="Gcs-wY-Ba5"/>
-                                                                        <constraint firstAttribute="width" constant="100" id="r66-to-ZNl"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="ngz-af-aBw" secondAttribute="bottom" id="6Ln-Ih-vdP"/>
+                                                                        <constraint firstItem="ngz-af-aBw" firstAttribute="leading" secondItem="HGn-dM-bvT" secondAttribute="leading" id="9Ic-5t-8rz"/>
+                                                                        <constraint firstItem="ngz-af-aBw" firstAttribute="top" secondItem="HGn-dM-bvT" secondAttribute="top" id="GKH-tW-SQN"/>
+                                                                        <constraint firstItem="6FI-Pg-Oei" firstAttribute="centerY" secondItem="HGn-dM-bvT" secondAttribute="centerY" id="Wjb-bI-vTh"/>
+                                                                        <constraint firstItem="6FI-Pg-Oei" firstAttribute="centerX" secondItem="HGn-dM-bvT" secondAttribute="centerX" id="oEi-3W-Cme"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="ngz-af-aBw" secondAttribute="trailing" id="woq-0B-5i5"/>
                                                                     </constraints>
-                                                                </imageView>
+                                                                </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-KE-feX">
                                                                     <rect key="frame" x="108" y="40" width="274" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -454,6 +489,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="storyImageActivityIndicator" destination="6FI-Pg-Oei" id="f42-7H-1ah"/>
                                             <outlet property="storyImageView" destination="ngz-af-aBw" id="7wp-ob-XXq"/>
                                             <outlet property="storyLabel" destination="gbh-KE-feX" id="PLu-xr-YJ0"/>
                                         </connections>

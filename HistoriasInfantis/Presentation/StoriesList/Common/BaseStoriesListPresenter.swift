@@ -20,6 +20,7 @@ protocol StoryCellView: class {
     func display(title: String)
     func display(image: UIImage)
     func display(image named: String)
+    func display(imageLoading: Bool)
 }
 
 protocol BaseStoriesListPresenter: class {
@@ -35,7 +36,9 @@ protocol BaseStoriesListPresenter: class {
 extension BaseStoriesListPresenter {
     func configureStoryCellView(_ storyView: StoryCellView, for row: Int) {
         storyView.display(title: stories[row].title)
+        storyView.display(imageLoading: true)
         imageLoader.getImage(from: stories[row].imageUrl) { image in
+            storyView.display(imageLoading: false)
             if let image = image {
                 storyView.display(image: image)
             } else {

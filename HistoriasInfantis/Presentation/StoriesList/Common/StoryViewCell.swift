@@ -13,6 +13,7 @@ class StoryViewCell: UITableViewCell, StoryCellView {
     static var reuseIdentifier: String { "\(self)" }
 
     @IBOutlet weak var storyImageView: UIImageView!
+    @IBOutlet weak var storyImageActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var storyLabel: UILabel!
 
     func display(title: String) {
@@ -25,5 +26,9 @@ class StoryViewCell: UITableViewCell, StoryCellView {
 
     func display(image named: String) {
         storyImageView.image = UIImage(named: named)
+    }
+
+    func display(imageLoading: Bool) {
+        imageLoading ? storyImageActivityIndicator.startAnimating() : storyImageActivityIndicator.stopAnimating()
     }
 }

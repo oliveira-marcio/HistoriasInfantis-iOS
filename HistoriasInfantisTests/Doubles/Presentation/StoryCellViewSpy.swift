@@ -14,6 +14,7 @@ class StoryCellViewSpy: StoryCellView {
     var title: String?
     var image: UIImage?
     var placeholder: String?
+    var imageLoading = [Bool]()
 
     func display(title: String) {
         self.title = title
@@ -26,5 +27,9 @@ class StoryCellViewSpy: StoryCellView {
 
     func display(image named: String) {
         self.placeholder = named
+    }
+
+    func display(imageLoading: Bool) {
+        self.imageLoading.append(imageLoading)
     }
 }

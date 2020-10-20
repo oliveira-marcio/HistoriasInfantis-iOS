@@ -84,9 +84,11 @@ class FavoritesListPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.stories.count, 2)
         XCTAssertEqual(fakeImageLoader.urls, ["http://image1", "http://image2"])
         XCTAssertEqual(cellSpies[0].title, "Story 1")
+        XCTAssertEqual(cellSpies[0].imageLoading, [true, false])
         XCTAssertEqual(cellSpies[0].image, UIImage())
         XCTAssertNil(cellSpies[0].placeholder)
         XCTAssertEqual(cellSpies[1].title, "Story 2")
+        XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
         XCTAssertEqual(cellSpies[1].image, UIImage())
         XCTAssertNil(cellSpies[1].placeholder)
     }
@@ -138,10 +140,12 @@ class FavoritesListPresenterTests: XCTestCase {
         XCTAssertEqual(fakeImageLoader.urls, ["http://image1", "http://image2"])
         XCTAssertEqual(cellSpies[0].title, "Story 1")
         XCTAssertEqual(cellSpies[0].placeholder, "placeholder")
+        XCTAssertEqual(cellSpies[0].imageLoading, [true, false])
         XCTAssertNil(cellSpies[0].image)
         XCTAssertEqual(cellSpies[1].title, "Story 2")
         XCTAssertEqual(cellSpies[1].placeholder, "placeholder")
         XCTAssertNil(cellSpies[1].image)
+        XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
     }
 
     func test_it_should_display_empty_view_when_view_did_load_and_there_are_no_stories_available() {
@@ -230,9 +234,11 @@ class FavoritesListPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.stories.count, 2)
         XCTAssertEqual(fakeImageLoader.urls, ["http://image1", "http://image2"])
         XCTAssertEqual(cellSpies[0].title, "Story 1")
+        XCTAssertEqual(cellSpies[0].imageLoading, [true, false])
         XCTAssertEqual(cellSpies[0].image, UIImage())
         XCTAssertNil(cellSpies[0].placeholder)
         XCTAssertEqual(cellSpies[1].title, "Story 2")
+        XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
         XCTAssertEqual(cellSpies[1].image, UIImage())
         XCTAssertNil(cellSpies[1].placeholder)
     }
