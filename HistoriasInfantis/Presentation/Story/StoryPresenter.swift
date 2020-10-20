@@ -73,12 +73,11 @@ class StoryPresenter {
 
     func toggleFavorite() {
         toggleFavoriteStoryUseCase.invoke(story: story) { result in
-            DispatchQueue.main.async {
-                if result.isSuccess, let story = try? result.dematerialize() {
-                    self.view?.display(favorited: story.favorite)
-                } else {
-                    self.view?.display(error: "toggle_favorite_error")
-                }
+            if result.isSuccess, let story = try? result.dematerialize() {
+                self.story = story
+                self.view?.display(favorited: story.favorite)
+            } else {
+                self.view?.display(error: "toggle_favorite_error")
             }
         }
     }

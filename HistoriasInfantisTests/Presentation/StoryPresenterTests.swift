@@ -189,6 +189,7 @@ class StoryPresenterTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
 
+        XCTAssertEqual(presenter.story, favoriteStory)
         XCTAssertEqual(viewSpy.favorited, true)
     }
 
@@ -209,6 +210,7 @@ class StoryPresenterTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
 
+        XCTAssertEqual(presenter.story, unfavoriteStory)
         XCTAssertEqual(viewSpy.favorited, false)
 
     }

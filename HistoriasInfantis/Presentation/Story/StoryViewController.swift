@@ -41,7 +41,7 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func display(favorited: Bool) {
-        print(favorited)
+        favoriteButton.activeColor = UIColor(named: favorited ? "Favorite" : "Accent")
     }
 
     func display(error: String) {
@@ -71,7 +71,6 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - IBActions
 
     @IBAction func favoriteTapped(_ sender: Any) {
-        print("Favorited!")
         presenter.toggleFavorite()
     }
 }
