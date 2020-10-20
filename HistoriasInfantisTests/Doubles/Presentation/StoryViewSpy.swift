@@ -6,13 +6,13 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-import Foundation
+import UIKit
 @testable import HistoriasInfantis
 
 class StoryViewSpy: StoryView {
     var presenter: StoryPresenter!
     var title: String?
-    var image: Data?
+    var image: UIImage?
     var favorited: Bool?
     var error: String?
 
@@ -23,7 +23,7 @@ class StoryViewSpy: StoryView {
         self.title = title
     }
 
-    func display(image: Data) {
+    func display(image: UIImage) {
         self.image = image
         displayImageHandler?()
     }

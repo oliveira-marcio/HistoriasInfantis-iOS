@@ -36,8 +36,8 @@ class StoryViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableHeaderLabel.text = title
     }
 
-    func display(image: Data) {
-
+    func display(image: UIImage) {
+        tableHeaderImageView.image = image
     }
 
     func display(favorited: Bool) {

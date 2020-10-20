@@ -6,12 +6,12 @@
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol StoryView: class {
     var presenter: StoryPresenter! { get set }
     func display(title: String)
-    func display(image: Data)
+    func display(image: UIImage)
     func display(favorited: Bool)
     func display(error: String)
 }
@@ -35,6 +35,11 @@ class StoryPresenter {
     func viewDidLoad() {
         view?.display(title: story.title)
         view?.display(favorited: story.favorite)
+        imageLoader.getImage(from: story.imageUrl) { [weak self] image in
+            if let image = image {
+                self?.view?.display(image: image)
+            }
+        }
     }
 
     func getParagraphsCount() -> Int {

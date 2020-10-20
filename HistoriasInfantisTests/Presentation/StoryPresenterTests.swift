@@ -19,7 +19,7 @@ let unfavoriteStory = Story(
     id: 1,
     title: "Story 1",
     url: "http://story1",
-    imageUrl: "http://image1",
+    imageUrl: "http://storyimage",
     paragraphs: [
         .text("Paragraph 1"),
         .image("http://image1"),
@@ -62,11 +62,23 @@ class StoryPresenterTests: XCTestCase {
                                    toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
     }
 
-    func test_it_should_display_story_title_when_view_did_load() {
+    func test_it_should_display_story_title_and_image_when_view_did_load() {
         presenter.viewDidLoad()
 
         XCTAssertEqual(viewSpy.title, unfavoriteStory.title)
+        XCTAssertEqual(fakeImageLoader.urls, ["http://storyimage"])
+        XCTAssertEqual(viewSpy.image, UIImage())
     }
+
+    func test_it_should_display_only_story_title_when_view_did_load_and_image_loader_fails() {
+        fakeImageLoader.shouldGetImageFail = true
+        presenter.viewDidLoad()
+
+        XCTAssertEqual(viewSpy.title, unfavoriteStory.title)
+        XCTAssertEqual(fakeImageLoader.urls, ["http://storyimage"])
+        XCTAssertNil(viewSpy.image)
+    }
+
 
     func test_it_should_return_paragraph_type_from_selected_paragraph_when_get_paragraph_type_is_called() {
         for i in (0..<unfavoriteStory.paragraphs.count) {
@@ -83,6 +95,8 @@ class StoryPresenterTests: XCTestCase {
             presenter.configureCell(cellSpies[index], for: index)
         }
 
+        XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
+
         XCTAssertEqual(cellSpies[0].text, "Paragraph 1")
         XCTAssertNil(cellSpies[0].author)
         XCTAssertNil(cellSpies[0].end)
@@ -93,7 +107,6 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertNil(cellSpies[1].end)
         XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
         XCTAssertEqual(cellSpies[1].image, UIImage())
-        XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
 
         XCTAssertEqual(cellSpies[2].text, "Paragraph 2")
         XCTAssertNil(cellSpies[2].author)
