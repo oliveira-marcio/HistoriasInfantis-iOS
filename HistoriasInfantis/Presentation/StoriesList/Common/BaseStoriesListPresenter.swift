@@ -17,7 +17,6 @@ protocol BaseStoriesListView: class {
 }
 
 protocol StoryCellView: class {
-    func display(image url: String, with imageLoader: ImageLoader, placeholder: String)
     func display(title: String)
     func display(image from: UIImage)
     func display(image named: String)

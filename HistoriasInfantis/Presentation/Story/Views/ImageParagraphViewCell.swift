@@ -11,10 +11,6 @@ import UIKit
 class ImageParagraphViewCell: UITableViewCell, ImageParagraphCellView {
     @IBOutlet weak var paragraphImageView: UIImageView!
 
-    func display(image url: String, with imageLoader: ImageLoader) {
-        imageLoader.loadImage(from: url, into: paragraphImageView)
-    }
-
     func display(image from: UIImage) {
         paragraphImageView.image = from
     }
