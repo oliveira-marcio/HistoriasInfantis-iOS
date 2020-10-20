@@ -13,6 +13,7 @@ class ParagraphCellViewSpy: TextParagraphCellView, ImageParagraphCellView, EndPa
     static var reuseIdentifier: String = "ParagraphCellViewSpy"
 
     var image: UIImage?
+    var imageLoading = [Bool]()
     var text: String?
     var end: String?
     var author: String?
@@ -23,6 +24,10 @@ class ParagraphCellViewSpy: TextParagraphCellView, ImageParagraphCellView, EndPa
 
     func display(image: UIImage) {
         self.image = image
+    }
+
+    func display(imageLoading: Bool) {
+        self.imageLoading.append(imageLoading)
     }
 
     func display(end: String) {

@@ -222,16 +222,22 @@
                                                         <constraint firstAttribute="width" secondItem="no7-Im-sUX" secondAttribute="height" multiplier="4:3" id="6pe-Tb-6AL"/>
                                                     </constraints>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-Sw-oGL">
+                                                    <rect key="frame" x="188.5" y="125" width="37" height="37"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="2xK-Sw-oGL" firstAttribute="centerY" secondItem="f5Z-h2-87k" secondAttribute="centerY" id="B97-mu-09y"/>
                                                 <constraint firstAttribute="bottom" secondItem="no7-Im-sUX" secondAttribute="bottom" id="HQ3-xp-Qon"/>
+                                                <constraint firstItem="2xK-Sw-oGL" firstAttribute="centerX" secondItem="f5Z-h2-87k" secondAttribute="centerX" id="Wew-Jh-nCK"/>
                                                 <constraint firstItem="no7-Im-sUX" firstAttribute="leading" secondItem="f5Z-h2-87k" secondAttribute="leading" constant="16" id="Z2v-hb-8Zk"/>
                                                 <constraint firstAttribute="trailing" secondItem="no7-Im-sUX" secondAttribute="trailing" constant="16" id="Zz4-fn-sfU"/>
                                                 <constraint firstItem="no7-Im-sUX" firstAttribute="top" secondItem="f5Z-h2-87k" secondAttribute="top" id="uvl-AZ-sdw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="paragraphImageActivityIndicator" destination="2xK-Sw-oGL" id="mRe-Cp-b3Z"/>
                                             <outlet property="paragraphImageView" destination="no7-Im-sUX" id="LPH-Iq-ePx"/>
                                         </connections>
                                     </tableViewCell>

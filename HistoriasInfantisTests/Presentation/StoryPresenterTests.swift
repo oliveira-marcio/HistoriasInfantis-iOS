@@ -91,6 +91,7 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertNil(cellSpies[1].text)
         XCTAssertNil(cellSpies[1].author)
         XCTAssertNil(cellSpies[1].end)
+        XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
         XCTAssertEqual(cellSpies[1].image, UIImage())
         XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
 
@@ -126,6 +127,7 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertNil(cellSpies[1].text)
         XCTAssertNil(cellSpies[1].author)
         XCTAssertNil(cellSpies[1].end)
+        XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
         XCTAssertNil(cellSpies[1].image)
         XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
 

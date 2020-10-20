@@ -10,8 +10,13 @@ import UIKit
 
 class ImageParagraphViewCell: UITableViewCell, ImageParagraphCellView {
     @IBOutlet weak var paragraphImageView: UIImageView!
-
+    @IBOutlet weak var paragraphImageActivityIndicator: UIActivityIndicatorView!
+    
     func display(image: UIImage) {
         paragraphImageView.image = image
+    }
+
+    func display(imageLoading: Bool) {
+        imageLoading ? paragraphImageActivityIndicator.startAnimating() : paragraphImageActivityIndicator.stopAnimating()
     }
 }

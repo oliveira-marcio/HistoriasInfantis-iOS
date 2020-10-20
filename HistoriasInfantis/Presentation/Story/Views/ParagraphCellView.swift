@@ -22,6 +22,7 @@ protocol TextParagraphCellView: ParagraphCellView {
 
 protocol ImageParagraphCellView: ParagraphCellView {
     func display(image: UIImage)
+    func display(imageLoading: Bool)
 }
 
 protocol EndParagraphCellView: ParagraphCellView {

@@ -57,7 +57,9 @@ class StoryPresenter {
     private func configureImageCell(view: ParagraphCellView, imageUrl: String) {
         guard let view = view as? ImageParagraphCellView else { return }
 
+        view.display(imageLoading: true)
         imageLoader.getImage(from: imageUrl) { image in
+            view.display(imageLoading: false)
             if let image = image {
                 view.display(image: image)
             }
