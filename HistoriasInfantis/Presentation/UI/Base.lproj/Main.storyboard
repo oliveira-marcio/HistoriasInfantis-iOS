@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +18,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8dA-dH-kL9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="StoryViewCell" id="fCz-fb-85w" customClass="StoryViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="116"/>
@@ -74,7 +75,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="Background"/>
                                             <constraints>
                                                 <constraint firstItem="3yb-BF-MSg" firstAttribute="top" secondItem="H21-iE-1Vq" secondAttribute="top" constant="8" id="GQ3-0p-McA"/>
                                                 <constraint firstAttribute="bottom" secondItem="3yb-BF-MSg" secondAttribute="bottom" constant="8" id="UZe-CW-ZTn"/>
@@ -106,6 +107,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Histórias Infantis" id="7BS-p3-DxC">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="MOo-GR-nMO">
+                            <color key="tintColor" name="StoryBackground"/>
                             <connections>
                                 <action selector="refreshTapped:" destination="BYZ-38-t0r" id="awa-7K-dTU"/>
                             </connections>
@@ -181,7 +183,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bo3-AA-cpY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="StoryBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextParagraphViewCell" id="vG9-uy-gR7" customClass="TextParagraphViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="42.5"/>
@@ -197,7 +199,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="StoryBackground"/>
                                             <constraints>
                                                 <constraint firstItem="hqg-U3-kk0" firstAttribute="leading" secondItem="w6M-T3-CWP" secondAttribute="leadingMargin" id="4lJ-kL-X3r"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hqg-U3-kk0" secondAttribute="trailing" id="ArG-V3-7N2"/>
@@ -226,7 +228,7 @@
                                                     <rect key="frame" x="188.5" y="125" width="37" height="37"/>
                                                 </activityIndicatorView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="StoryBackground"/>
                                             <constraints>
                                                 <constraint firstItem="2xK-Sw-oGL" firstAttribute="centerY" secondItem="f5Z-h2-87k" secondAttribute="centerY" id="B97-mu-09y"/>
                                                 <constraint firstAttribute="bottom" secondItem="no7-Im-sUX" secondAttribute="bottom" id="HQ3-xp-Qon"/>
@@ -255,7 +257,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="StoryBackground"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="27Z-dv-hgE" secondAttribute="trailing" id="90V-im-gxV"/>
                                                 <constraint firstItem="27Z-dv-hgE" firstAttribute="top" secondItem="XR3-DU-RWu" secondAttribute="topMargin" id="Q3V-Os-eAf"/>
@@ -281,7 +283,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="StoryBackground"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="hLb-6W-0of" secondAttribute="bottom" id="8sn-kp-0f9"/>
                                                 <constraint firstItem="hLb-6W-0of" firstAttribute="leading" secondItem="qQN-Xg-rfm" secondAttribute="leadingMargin" id="DNv-AR-rEx"/>
@@ -301,6 +303,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS8-em-yMa" customClass="FloatActionButton" customModule="HistoriasInfantis" customModuleProvider="target">
                                 <rect key="frame" x="338" y="732" width="60" height="60"/>
+                                <color key="backgroundColor" name="Accent"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6hL-XV-jCj"/>
                                     <constraint firstAttribute="height" constant="60" id="PHA-67-cWt"/>
@@ -312,7 +315,7 @@
                                         <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="Accent"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -357,12 +360,12 @@
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-ir-4fQ">
                                     <rect key="frame" x="0.0" y="149" width="240" height="80"/>
-                                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="Primary"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="eTf-pM-aMU"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="StoryBackground"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -387,6 +390,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="StoryBackground"/>
+                        <color key="selectedImageTintColor" name="Primary"/>
                     </tabBar>
                     <connections>
                         <segue destination="aLR-LS-miD" kind="relationship" relationship="viewControllers" id="uP8-Nb-ZWP"/>
@@ -403,9 +408,10 @@
                 <navigationController id="aLR-LS-miD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Stories" image="book.fill" catalog="system" id="EB6-kJ-vKG"/>
                     <navigationItem key="navigationItem" id="6YO-sr-IDw"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kj2-8a-PCi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="kj2-8a-PCi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Primary"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5aq-ue-Ifo"/>
@@ -429,7 +435,7 @@
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mJE-ZZ-HbC">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="StoryViewCell" id="Je6-Pk-Fba" customClass="StoryViewCell" customModule="HistoriasInfantis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="116"/>
@@ -486,7 +492,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="Background"/>
                                             <constraints>
                                                 <constraint firstItem="si0-xS-oyj" firstAttribute="top" secondItem="UZH-cu-12c" secondAttribute="top" constant="8" id="0dC-jh-R9B"/>
                                                 <constraint firstItem="si0-xS-oyj" firstAttribute="leading" secondItem="UZH-cu-12c" secondAttribute="leading" constant="16" id="GuH-KX-RX1"/>
@@ -566,7 +572,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="Background"/>
                     <constraints>
                         <constraint firstItem="hQi-kA-0Yf" firstAttribute="centerX" secondItem="phZ-gd-NMn" secondAttribute="centerX" id="JUh-5e-N0v"/>
                         <constraint firstItem="hQi-kA-0Yf" firstAttribute="centerY" secondItem="phZ-gd-NMn" secondAttribute="centerY" id="sEL-iy-Gp9"/>
@@ -582,9 +588,10 @@
                 <navigationController id="QXC-aj-CdX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="book.fill" catalog="system" id="5a3-sK-PpY"/>
                     <navigationItem key="navigationItem" id="d9C-xd-nyG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4SJ-PI-lIa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="4SJ-PI-lIa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Primary"/>
                     </navigationBar>
                     <connections>
                         <segue destination="pgd-uy-Rpr" kind="relationship" relationship="rootViewController" id="05v-kR-stj"/>
@@ -601,5 +608,17 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="book.fill" catalog="system" width="128" height="100"/>
+        <namedColor name="Accent">
+            <color red="0.927062571" green="0.44218099119999998" blue="0.18028721210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Background">
+            <color red="0.85903686290000003" green="0.75064021349999999" blue="0.8941337466" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Primary">
+            <color red="0.663161695" green="0.55383545160000003" blue="0.72943061590000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="StoryBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
