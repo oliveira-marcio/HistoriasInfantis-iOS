@@ -1,15 +1,18 @@
 //
-//  StoryPresenterTests.swift
+//  StoryComponentTests.swift
 //  HistoriasInfantisTests
 //
-//  Created by Márcio Oliveira on 10/9/20.
+//  Created by Márcio Oliveira on 10/21/20.
 //  Copyright © 2020 Márcio Oliveira. All rights reserved.
 //
 
 import XCTest
 @testable import HistoriasInfantis
 
-class StoryPresenterTests: XCTestCase {
+class StoryComponentTests: XCTestCase {
+
+    private var doubles: ComponentTestDoubles!
+
     private var presenter: StoryPresenter!
     private var viewSpy: StoryViewSpy!
     private var fakeImageLoader: FakeImageLoader!
@@ -21,6 +24,8 @@ class StoryPresenterTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+
+        doubles = ComponentTestDoubles()
 
         date = Date()
 
@@ -44,7 +49,7 @@ class StoryPresenterTests: XCTestCase {
             id: 1,
             title: "Story 1",
             url: "http://story1",
-            imageUrl: "http://image1",
+            imageUrl: "http://storyimage",
             paragraphs: [
                 .text("Paragraph 1"),
                 .image("http://image1"),
@@ -56,30 +61,28 @@ class StoryPresenterTests: XCTestCase {
             updateDate: date,
             favorite: true)
 
-        viewSpy = StoryViewSpy()
-        fakeImageLoader = FakeImageLoader()
-        fakeStoriesRepository = FakeStoriesRepository()
-        presenter = StoryPresenter(view: viewSpy,
+
+        presenter = StoryPresenter(view: doubles.storyView,
                                    story: unfavoriteStory,
-                                   imageLoader: fakeImageLoader,
-                                   toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
+                                   imageLoader: doubles.imageLoader,
+                                   toggleFavoriteStoryUseCase: doubles.toggleFavoriteStoryUseCase)
     }
 
     func test_it_should_display_story_title_and_image_when_view_did_load() {
         presenter.viewDidLoad()
 
-        XCTAssertEqual(viewSpy.title, unfavoriteStory.title)
-        XCTAssertEqual(fakeImageLoader.urls, ["http://storyimage"])
-        XCTAssertEqual(viewSpy.image, UIImage())
+        XCTAssertEqual(doubles.storyView.title, unfavoriteStory.title)
+        XCTAssertEqual(doubles.imageLoader.urls, ["http://storyimage"])
+        XCTAssertEqual(doubles.storyView.image, UIImage())
     }
 
     func test_it_should_display_only_story_title_when_view_did_load_and_image_loader_fails() {
-        fakeImageLoader.shouldGetImageFail = true
+        doubles.imageLoader.shouldGetImageFail = true
         presenter.viewDidLoad()
 
-        XCTAssertEqual(viewSpy.title, unfavoriteStory.title)
-        XCTAssertEqual(fakeImageLoader.urls, ["http://storyimage"])
-        XCTAssertNil(viewSpy.image)
+        XCTAssertEqual(doubles.storyView.title, unfavoriteStory.title)
+        XCTAssertEqual(doubles.imageLoader.urls, ["http://storyimage"])
+        XCTAssertNil(doubles.storyView.image)
     }
 
 
@@ -98,7 +101,7 @@ class StoryPresenterTests: XCTestCase {
             presenter.configureCell(cellSpies[index], for: index)
         }
 
-        XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
+        XCTAssertEqual(doubles.imageLoader.urls, ["http://image1"])
 
         XCTAssertEqual(cellSpies[0].text, "Paragraph 1")
         XCTAssertNil(cellSpies[0].author)
@@ -128,7 +131,7 @@ class StoryPresenterTests: XCTestCase {
     }
 
     func test_it_should_display_complete_story_without_images_when_view_did_load_and_image_loader_fails() {
-        fakeImageLoader.shouldGetImageFail = true
+        doubles.imageLoader.shouldGetImageFail = true
 
         let cellSpies = unfavoriteStory.paragraphs.map { _ in ParagraphCellViewSpy() }
         for index in 0..<cellSpies.count {
@@ -145,7 +148,7 @@ class StoryPresenterTests: XCTestCase {
         XCTAssertNil(cellSpies[1].end)
         XCTAssertEqual(cellSpies[1].imageLoading, [true, false])
         XCTAssertNil(cellSpies[1].image)
-        XCTAssertEqual(fakeImageLoader.urls, ["http://image1"])
+        XCTAssertEqual(doubles.imageLoader.urls, ["http://image1"])
 
         XCTAssertEqual(cellSpies[2].text, "Paragraph 2")
         XCTAssertNil(cellSpies[2].author)
@@ -164,72 +167,70 @@ class StoryPresenterTests: XCTestCase {
     }
 
     func test_it_should_display_favorite_button_marked_when_view_did_load_when_story_is_favorite() {
-        presenter = StoryPresenter(view: viewSpy,
+        presenter = StoryPresenter(view: doubles.storyView,
                                    story: favoriteStory,
-                                   imageLoader: fakeImageLoader,
-                                   toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
+                                   imageLoader: doubles.imageLoader,
+                                   toggleFavoriteStoryUseCase: doubles.toggleFavoriteStoryUseCase)
 
         presenter.viewDidLoad()
 
-        XCTAssertEqual(viewSpy.favorited, true)
+        XCTAssertEqual(doubles.storyView.favorited, true)
     }
 
     func test_it_should_display_favorite_button_unmarked_when_view_did_load_when_story_is_not_favorite() {
         presenter.viewDidLoad()
 
-        XCTAssertEqual(viewSpy.favorited, false)
+        XCTAssertEqual(doubles.storyView.favorited, false)
     }
 
     func test_it_should_add_movie_to_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_not_favorite() {
         let toggleExpectation = expectation(description: "toggle favorite expectation")
 
-        viewSpy.displayFavoritedHandler = {
+        doubles.storyView.displayFavoritedHandler = {
             toggleExpectation.fulfill()
         }
 
-        fakeStoriesRepository.favoriteToggledStory = favoriteStory
         presenter.toggleFavorite()
 
         waitForExpectations(timeout: 1)
 
-        XCTAssertEqual(presenter.story,favoriteStory)
-        XCTAssertEqual(viewSpy.favorited, true)
+        XCTAssertEqual(presenter.story, favoriteStory)
+        XCTAssertEqual(doubles.storyView.favorited, true)
     }
 
     func test_it_should_remove_movie_from_favorites_and_toggle_button_state_when_toggle_favorite_is_called_and_story_is_favorite() {
-        presenter = StoryPresenter(view: viewSpy,
+        presenter = StoryPresenter(view: doubles.storyView,
                                    story: favoriteStory,
-                                   imageLoader: fakeImageLoader,
-                                   toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase(storiesRepository: fakeStoriesRepository))
+                                   imageLoader: doubles.imageLoader,
+                                   toggleFavoriteStoryUseCase: doubles.toggleFavoriteStoryUseCase)
 
         let toggleExpectation = expectation(description: "toggle favorite expectation")
 
-        viewSpy.displayFavoritedHandler = {
+        doubles.storyView.displayFavoritedHandler = {
             toggleExpectation.fulfill()
         }
 
-        fakeStoriesRepository.favoriteToggledStory = unfavoriteStory
         presenter.toggleFavorite()
 
         waitForExpectations(timeout: 1)
 
         XCTAssertEqual(presenter.story, unfavoriteStory)
-        XCTAssertEqual(viewSpy.favorited, false)
+        XCTAssertEqual(doubles.storyView.favorited, false)
     }
 
     func test_it_should_display_error_and_keep_button_state_when_toggle_favorite_fails() {
         let toggleExpectation = expectation(description: "toggle favorite expectation")
 
-        viewSpy.displayFavoritedHandler = {
+        doubles.storyView.displayFavoritedHandler = {
             toggleExpectation.fulfill()
         }
 
-        fakeStoriesRepository.shouldToggleFavoriteFail = true
+        doubles.storiesLocalGateway.shouldUpdateFail = true
         presenter.toggleFavorite()
 
         waitForExpectations(timeout: 1)
 
-        XCTAssertEqual(viewSpy.error, "toggle_favorite_error")
-        XCTAssertNil(viewSpy.favorited)
+        XCTAssertEqual(doubles.storyView.error, "toggle_favorite_error")
+        XCTAssertNil(doubles.storyView.favorited)
     }
 }

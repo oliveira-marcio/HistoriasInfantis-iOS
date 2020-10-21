@@ -11,6 +11,7 @@ import Foundation
 
 struct ComponentTestDoubles {
     /// Mock I/O
+
     public lazy var eventNotifier: EventNotifierStub = EventNotifierStub()
     public lazy var imageLoader: FakeImageLoader = FakeImageLoader()
 
@@ -24,7 +25,7 @@ struct ComponentTestDoubles {
     public lazy var favoritesListView: FavoritesListViewSpy = FavoritesListViewSpy()
     public lazy  var baseStoriesListViewRouter: StoriesListViewRouterSpy = StoriesListViewRouterSpy()
 
-    public lazy var storyViewSpy: StoryViewSpy = StoryViewSpy()
+    public lazy var storyView: StoryViewSpy = StoryViewSpy()
 
     /// Data
 

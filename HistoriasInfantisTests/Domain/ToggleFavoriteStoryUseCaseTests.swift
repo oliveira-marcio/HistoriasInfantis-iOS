@@ -13,24 +13,28 @@ class ToggleFavoriteStoryUseCaseTests: XCTestCase {
 
     var fakeStoriesRepository: FakeStoriesRepository!
     var toggleFavoriteStoryUseCase: ToggleFavoriteStoryUseCase!
-
-    let story = Story(
-        id: 1,
-        title: "Story 1",
-        url: "http://story1",
-        imageUrl: "http://image1",
-        paragraphs: [
-            .text("Paragraph 1"),
-            .image("http://image2"),
-            .text("Paragraph 2"),
-            .end("The End"),
-            .author("Author")
-        ],
-        createDate: Date(),
-        updateDate: Date())
+    var date: Date!
+    var story: Story!
 
     override func setUp() {
         super.setUp()
+
+        date = Date()
+        story = Story(
+            id: 1,
+            title: "Story 1",
+            url: "http://story1",
+            imageUrl: "http://image1",
+            paragraphs: [
+                .text("Paragraph 1"),
+                .image("http://image2"),
+                .text("Paragraph 2"),
+                .end("The End"),
+                .author("Author")
+            ],
+            createDate: date,
+            updateDate: date)
+
         fakeStoriesRepository = FakeStoriesRepository()
         toggleFavoriteStoryUseCase = ToggleFavoriteStoryUseCase(
             storiesRepository: fakeStoriesRepository
