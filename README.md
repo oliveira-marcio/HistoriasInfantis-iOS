@@ -57,8 +57,7 @@ Finally, these libraries were used to simplify some of the use cases explained a
 
 - Clone this repository.
 - Run `carthage bootstrap --platform iOS` to download the libraries.
-- Import the project into [Xcode]
-(https://developer.apple.com/xcode/) and build it with a simulator.
+- Import the project into [Xcode](https://developer.apple.com/xcode/) and build it with a simulator.
 
 By default, app uses the real gateway, but if you launch the app with `--mock` command line argument the mock gateway will be used instead.
 
