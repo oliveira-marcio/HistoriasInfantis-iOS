@@ -155,8 +155,8 @@
 		9C0D1E1A2529D87600B73A3F /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 		9C0D1E1C2529D9D500B73A3F /* StoriesGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesGatewayTest.swift; sourceTree = "<group>"; };
 		9C406179252F77C9002CDA3E /* StoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewCell.swift; sourceTree = "<group>"; };
-		9CB582BA253F779900D5B174 /* Rosario-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rosario-Regular.ttf"; path = "../../../../../Downloads/Hist/Rosario-Regular.ttf"; sourceTree = "<group>"; };
-		9CB582BB253F779900D5B174 /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AmaticSC-Bold.ttf"; path = "../../../../../Downloads/Hist/AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
+		9CB582BA253F779900D5B174 /* Rosario-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rosario-Regular.ttf"; sourceTree = "<group>"; };
+		9CB582BB253F779900D5B174 /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
 		9CB582C2253F9CAA00D5B174 /* ComponentTestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTestDoubles.swift; sourceTree = "<group>"; };
 		9CB582C4253FA2D800D5B174 /* StoriesListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListComponentTests.swift; sourceTree = "<group>"; };
 		9CB582C625406D3100D5B174 /* FavoritesListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListComponentTests.swift; sourceTree = "<group>"; };
